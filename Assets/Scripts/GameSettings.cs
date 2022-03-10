@@ -15,6 +15,9 @@ public class GameSettings : MonoBehaviour
     [Header("Мах кол-во одежды у игрока")]
     public int maxCountClothes;
 
+    [Header("Таймер выдачи одежды")]
+    public float timerGiveClothes;
+
 
     private void Awake()
     {

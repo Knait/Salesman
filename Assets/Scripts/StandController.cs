@@ -7,7 +7,7 @@ public class StandController : MonoBehaviour
 {
     [Header("ׂאילונ גûהאקט מהוזהû")]
     [SerializeField]
-    private float timerGiveClothes = 2;
+    private float timerGiveClothes;
 
     //[SerializeField]
     private bool isGiveClothes = true;
@@ -20,6 +20,7 @@ public class StandController : MonoBehaviour
 
     void Start()
     {
+        timerGiveClothes = GameSettings.Instance.timerGiveClothes;
         materialStand = GetComponent<Renderer>().material;
         colorlStand = materialStand.color;
     }
@@ -30,17 +31,17 @@ public class StandController : MonoBehaviour
     /// <param name="collision"></param>
     private void OnCollisionStay(Collision collision)
     {
-        CheckStand checkStand = collision.gameObject.GetComponent<CheckStand>();
+        HeroController heroController = collision.gameObject.GetComponent<HeroController>();
 
-        if (checkStand)
+        if (heroController)
         {
             if (isGiveClothes)
             {
                 print(" Take Clothes");
                 isGiveClothes = false;
                 StartCoroutine(TimerGiveClothes(timerGiveClothes));
-                checkStand.CountClothes++;
-                checkStand.TakeClothes(materialStand);
+                heroController.CountClothes++;
+                heroController.TakeClothes(materialStand);
             }
         }
     }

@@ -1,32 +1,23 @@
-
 // Гавна скрипт висит на покупателе 
 // чекает игрока
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckHero : MonoBehaviour
+public abstract class CheckHero : MonoBehaviour
 {
-    void Start()
+   
+    protected  void OnCollisionEnter(Collision collision)
     {
-        
-    }
+        HeroController heroController = collision.gameObject.GetComponent<HeroController>();
 
-    void Update()
-    {
-        
-    }
-
-
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        CheckStand checkStand = collision.gameObject.GetComponent<CheckStand>();
-
-        if (checkStand)
+        if (heroController)
         {
-            print("Hero");
-
+            //print("Hero");
+            MyMethod(heroController);
         }
     }
+
+    protected abstract void MyMethod(HeroController heroController);
+
 }

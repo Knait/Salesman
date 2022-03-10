@@ -31,25 +31,6 @@ Transform:
   m_Father: {fileID: 6522825265094292632}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1129606318
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6216325198705279676}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bc0fc28fc85ea514590f48bf700cb471, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6522825265094292633
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,8 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6522825265094292632}
   - component: {fileID: 9207103775807342591}
-  - component: {fileID: 6085663214087252342}
   - component: {fileID: 7110846605766301794}
+  - component: {fileID: 4322695458733621650}
   m_Layer: 0
   m_Name: Shopper
   m_TagString: Untagged
@@ -98,18 +79,6 @@ CapsuleCollider:
   m_Height: 1.30741
   m_Direction: 1
   m_Center: {x: 0.012649268, y: 0.672325, z: 0}
---- !u!114 &6085663214087252342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6522825265094292633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64ad4a18d0b9eb244aad68bd410c77b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7110846605766301794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +97,20 @@ MonoBehaviour:
   - {fileID: 2100000, guid: deede0777ad77d64e9967a4688d8b3c8, type: 2}
   - {fileID: 2100000, guid: c54fb02a93e22bb43aee39c8c51e1adb, type: 2}
   - {fileID: 2100000, guid: 686773038141eb14b9425040e8e3d5a2, type: 2}
+  skinModel: {fileID: 506217837443034428}
+--- !u!114 &4322695458733621650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6522825265094292633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c19184dced8bf4fae2983949a8374d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMaterial: {fileID: 0}
   skinModel: {fileID: 506217837443034428}
 --- !u!1001 &6522825264545562605
 PrefabInstance:
@@ -196,6 +179,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: stickman_4
       objectReference: {fileID: 0}
+    - target: {fileID: 8153101253863224186, guid: 2eece5d36468f334cad3b34343b07a84, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 376a60d4386dd6c4dbab3728c936203a, type: 2}
+    - target: {fileID: 8153101253863224186, guid: 2eece5d36468f334cad3b34343b07a84, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 523122100902c4c468166f8a819f49ca, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2eece5d36468f334cad3b34343b07a84, type: 3}
 --- !u!1 &6216325198705279676 stripped
@@ -213,3 +204,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -2484921068739079471, guid: 2eece5d36468f334cad3b34343b07a84, type: 3}
   m_PrefabInstance: {fileID: 6522825264545562605}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1129606318
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6216325198705279676}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc0fc28fc85ea514590f48bf700cb471, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
