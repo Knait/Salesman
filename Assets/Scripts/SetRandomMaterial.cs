@@ -4,27 +4,36 @@ using UnityEngine;
 
 public class SetRandomMaterial : MonoBehaviour
 {
-    [Header("Массив материалов")]
-    [SerializeField]
-    private Material[] arrayMaterial;
-
     [Header("Ссылка на модель визуала")]
     [SerializeField]
     private Transform skinModel;
 
-    private Material[] copyArrayMaterials;
+    //[HideInInspector]
+    public int IDMaterialClothes;
 
+    //private Material[] copyArrayMaterials;
 
-    private void Awake()
+    private void Start()
     {
-        copyArrayMaterials = skinModel.GetComponent<Renderer>().materials;
+        SetIDMaterialBot();
+    }
 
-        copyArrayMaterials[1] = arrayMaterial[Random.Range(0, arrayMaterial.Length)];
+
+    private void SetIDMaterialBot()
+    {
+        int startIndex = 1;
+
+        Material[] arrayMaterial;
+
+        arrayMaterial = GameSettings.Instance.arrayMaterial;
+
+        IDMaterialClothes = Random.Range(startIndex, arrayMaterial.Length);
+
+        Material[] copyArrayMaterials = skinModel.GetComponent<Renderer>().materials;
+
+        copyArrayMaterials[1] = arrayMaterial[IDMaterialClothes];
 
         skinModel.GetComponent<Renderer>().materials = copyArrayMaterials;
     }
-    private void Start()
-    {
-        
-    }
+
 }

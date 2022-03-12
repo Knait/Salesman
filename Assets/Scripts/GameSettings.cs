@@ -18,6 +18,9 @@ public class GameSettings : MonoBehaviour
     [Header("Таймер выдачи одежды")]
     public float timerGiveClothes;
 
+    [Header("Массив материалов Одежды")]
+    public Material[] arrayMaterial;
+
 
     private void Awake()
     {

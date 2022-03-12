@@ -14,10 +14,10 @@ public abstract class CheckHero : MonoBehaviour
         if (heroController)
         {
             //print("Hero");
-            MyMethod(heroController);
+            IsHero(heroController);
         }
     }
 
-    protected abstract void MyMethod(HeroController heroController);
+    protected abstract void IsHero(HeroController heroController);
 
 }
