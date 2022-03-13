@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271422207588135350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.016, y: 0.0434, z: 0.0128}
-  m_LocalScale: {x: 0.20304574, y: 0.27050063, z: 0.039144836}
+  m_LocalPosition: {x: 0.016, y: 0.0434, z: 0.02724}
+  m_LocalScale: {x: 0.20304574, y: 0.27050063, z: 0.010265342}
   m_Children: []
   m_Father: {fileID: 8905646762983080596}
   m_RootOrder: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cc4afd34d1e7b7647be991626266dcc5, type: 2}
+  - {fileID: 2100000, guid: 686773038141eb14b9425040e8e3d5a2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clothesInHands: {fileID: 2893463917820252127}
-  arrayMaterialClothes: []
+  arrayIDMaterialClothes: 
 --- !u!1 &7547369515277294413
 GameObject:
   m_ObjectHideFlags: 0

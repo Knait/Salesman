@@ -168,8 +168,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6237381, y: 1, z: 0.65101814}
-  m_Center: {x: -0.0045085847, y: 0, z: 0.6413977}
+  m_Size: {x: 0.6237381, y: 0.2434366, z: 0.905349}
+  m_Center: {x: -0.0045085847, y: 0.14686225, z: 0.76856315}
 --- !u!114 &3490961370700997796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +183,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoneSpotLight: {fileID: 9126201461683112582}
+  currentIDMaterialBot: 0
+  setRandomMaterial: {fileID: 0}
+  currentMaterialBot: {fileID: 0}
+  currentColorBot: {r: 0, g: 0, b: 0, a: 0}
+  currentLight: {fileID: 0}
 --- !u!1 &6522825265094292633
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +200,9 @@ GameObject:
   - component: {fileID: 9207103775807342591}
   - component: {fileID: 7110846605766301794}
   - component: {fileID: 4322695458733621650}
+  - component: {fileID: 504720614}
+  - component: {fileID: 2009074874815816773}
+  - component: {fileID: 6870166020369476380}
   m_Layer: 0
   m_Name: Shopper
   m_TagString: Untagged
@@ -215,7 +223,6 @@ Transform:
   m_Children:
   - {fileID: 321483525}
   - {fileID: 3654526771985534993}
-  - {fileID: 1935324431589012958}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -229,10 +236,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.4361099
+  m_Radius: 0.5187118
   m_Height: 1.30741
   m_Direction: 1
-  m_Center: {x: 0.012649298, y: 0.672325, z: 0.14982021}
+  m_Center: {x: 0.012649298, y: 0.672325, z: 0.23242211}
 --- !u!114 &7110846605766301794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,36 +269,59 @@ MonoBehaviour:
   currentIDMaterialBot: 0
   skinModel: {fileID: 506217837443034428}
   setRandomMaterial: {fileID: 0}
---- !u!1 &8964662442238089849
-GameObject:
+  zoneCheckHero: {fileID: 0}
+--- !u!114 &504720614
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1935324431589012958}
-  m_Layer: 0
-  m_Name: ZoneBuy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1935324431589012958
-Transform:
+  m_GameObject: {fileID: 6522825265094292633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993164d9791cbb644b1c8632ce62045b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 0}
+  currentTarget: {fileID: 0}
+  animator: {fileID: 1129606318}
+  speedBegin: 3
+  lastPosition: {x: 0, y: 0, z: 0}
+--- !u!195 &2009074874815816773
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8964662442238089849}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6522825265094292632}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 6522825265094292633}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 0
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 1200
+  m_StoppingDistance: 0.1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &6870166020369476380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6522825265094292633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb728448cf58c184b99a43a47f6d2e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateBot: 0
 --- !u!1001 &6522825264545562605
 PrefabInstance:
   m_ObjectHideFlags: 0

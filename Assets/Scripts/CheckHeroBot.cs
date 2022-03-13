@@ -14,11 +14,14 @@ public class CheckHeroBot : CheckHero
     [SerializeField]
     private SetRandomMaterial setRandomMaterial;
 
-
+    [SerializeField]
+    private ZoneCheckHero zoneCheckHero;
 
     void Start()
     {
         setRandomMaterial = GetComponent<SetRandomMaterial>();
+
+        zoneCheckHero = GetComponentInChildren<ZoneCheckHero>();
 
     }
 
@@ -28,7 +31,16 @@ public class CheckHeroBot : CheckHero
 
         currentIDMaterialBot = setRandomMaterial.IDMaterialClothes;
 
+        int currentIdClothes = heroController.CompareClothes(currentIDMaterialBot);
 
-        heroController.CompareClothes(currentIDMaterialBot);
+        if (currentIdClothes != 0)
+        {
+            heroController.RemoveClothes(currentIdClothes);
+
+            GameController.Instance.countServedShoppers++;
+
+            zoneCheckHero.SetStateObject(false);
+        }
     }
+
 }

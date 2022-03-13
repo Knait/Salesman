@@ -26,6 +26,8 @@ public class ZoneCheckHero : MonoBehaviour
     private Light currentLight;
 
 
+
+
     private void Start()
     {
         setRandomMaterial = GetComponentInParent<SetRandomMaterial>();
@@ -75,8 +77,11 @@ public class ZoneCheckHero : MonoBehaviour
         }
     }
 
-
-    private void SetStateObject(bool stateObj)
+    /// <summary>
+    /// ¬кл выкл подсветки
+    /// </summary>
+    /// <param name="stateObj"></param>
+    public void SetStateObject(bool stateObj)
     {
 
         zoneSpotLight.gameObject.SetActive(stateObj);
