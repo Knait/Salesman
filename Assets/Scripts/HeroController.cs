@@ -12,8 +12,8 @@ public class HeroController : MonoBehaviour
     [Header("Мах кол-во одежды")]
     private int maxCountClothes;
 
-    [SerializeField]
-    private Material clothesBot;
+    //[HideInInspector]
+    public int[] arrayIDMaterialClothes;         // массив одежды у игрока на руках
 
     private int countClothes;
     public int CountClothes
@@ -22,7 +22,6 @@ public class HeroController : MonoBehaviour
         {
             return countClothes;
         }
-
         set
         {
             if (value <= maxCountClothes)  // если выходим за пределы
@@ -36,30 +35,24 @@ public class HeroController : MonoBehaviour
         }
     }
 
-    //[SerializeField]
-    //[HideInInspector]
-    public Material[] arrayMaterialClothes;         // массив одежды у игрока на руках
-
     void Start()
     {
         maxCountClothes = GameSettings.Instance.maxCountClothes;
-        arrayMaterialClothes = new Material[maxCountClothes];
+        arrayIDMaterialClothes = new int[maxCountClothes + 1];
     }
-
-
 
     /// <summary>
     /// Берет одежку
     /// </summary>
     /// <param name="materialClothes"></param>
-    public void TakeClothes(Material materialClothes)
+    public void TakeClothes(int IDMaterialClothes)
     {
-        for (int index = 0; index < arrayMaterialClothes.Length; index++)
+        for (int index = 1; index < arrayIDMaterialClothes.Length; index++)
         {
-            if (!arrayMaterialClothes[index])
+            if (arrayIDMaterialClothes[index] == 0)
             {
-                arrayMaterialClothes[index] = materialClothes;
-                clothesInHands.GetComponent<MeshRenderer>().material = materialClothes;
+                arrayIDMaterialClothes[index] = IDMaterialClothes;
+                clothesInHands.GetComponent<MeshRenderer>().material = GameSettings.Instance.arrayMaterial[IDMaterialClothes];
 
                 break;
             }
@@ -70,17 +63,21 @@ public class HeroController : MonoBehaviour
     /// <summary>
     /// Проверяем одежку на двойников если есть удаляем
     /// </summary>
-    public void CheckDoubleInArray()
+    public bool CheckDoubleInArray()
     {
-        for (int i = 0; i < arrayMaterialClothes.Length; i++)
+        bool result = false;
+
+        for (int i = 1; i < arrayIDMaterialClothes.Length; i++)
         {
-            for (int j = 0; j < arrayMaterialClothes.Length; j++)
+            for (int j = 1; j < arrayIDMaterialClothes.Length; j++)
             {
                 if (i != j)
                 {
-                    if (arrayMaterialClothes[i] == arrayMaterialClothes[j] && arrayMaterialClothes[i] != null)
+                    if (arrayIDMaterialClothes[i] == arrayIDMaterialClothes[j] && arrayIDMaterialClothes[i] > 0)
                     {
-                        RemoveClothes(arrayMaterialClothes, i);
+                        RemoveClothes(arrayIDMaterialClothes, i);
+                        result = true;
+                        break;
                     }
                 }
                 else
@@ -89,6 +86,8 @@ public class HeroController : MonoBehaviour
                 }
             }
         }
+
+        return result;
     }
 
 
@@ -97,23 +96,31 @@ public class HeroController : MonoBehaviour
     /// </summary>
     /// <param name="arrayMaterialClothes"></param>
     /// <param name="index"></param>
-    private void RemoveClothes(Material[] arrayMaterialClothes, int index)
+    private void RemoveClothes(int[] arrayMaterialClothes, int index)
     {
         print("Remove Clothes");
-        arrayMaterialClothes[index] = null;
+        arrayMaterialClothes[index] = 0;
     }
 
-    public void CompareClothes(Material clothesBot)
-    {
-        for (int index = 0; index < arrayMaterialClothes.Length; index++)
-        {
-            this.clothesBot = clothesBot;
 
-            if (clothesBot == arrayMaterialClothes[index])
+    /// <summary>
+    /// Сравниваем одекжу Бота и у игрока
+    /// </summary>
+    /// <param name="clothesBot"></param>
+    public int CompareClothes(int clothesBot)
+    {
+        int result = 0;
+
+        for (int index = 1; index < arrayIDMaterialClothes.Length; index++)
+        {
+            if (clothesBot == arrayIDMaterialClothes[index])
             {
                 print(" Yes Clothes");
+                result = index;
             }
         }
+
+        return result;
     }
 
 

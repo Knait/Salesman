@@ -12,17 +12,18 @@ public class StandController : MonoBehaviour
     //[SerializeField]
     private bool isGiveClothes = true;
 
-    [HideInInspector]
-    public Material materialStand;
-
+    [Header("ID материала Стойки Одежды")]
     [SerializeField]
-    public Color colorlStand;
+    private int IDMaterialClothes;
+
+    //[HideInInspector]
+    //public Material materialStand;
 
     void Start()
     {
         timerGiveClothes = GameSettings.Instance.timerGiveClothes;
-        materialStand = GetComponent<Renderer>().material;
-        colorlStand = materialStand.color;
+
+        SetIDMaterialStand();
     }
 
     /// <summary>
@@ -41,7 +42,7 @@ public class StandController : MonoBehaviour
                 isGiveClothes = false;
                 StartCoroutine(TimerGiveClothes(timerGiveClothes));
                 heroController.CountClothes++;
-                heroController.TakeClothes(materialStand);
+                heroController.TakeClothes(IDMaterialClothes);
             }
         }
     }
@@ -59,7 +60,22 @@ public class StandController : MonoBehaviour
     }
 
 
+    private void SetIDMaterialStand()
+    {
+        Material[] arrayMaterial;
 
+        arrayMaterial = GameSettings.Instance.arrayMaterial;
+
+        GetComponent<Renderer>().material = arrayMaterial[IDMaterialClothes];
+
+        //IDMaterialClothes = Random.Range(0, arrayMaterial.Length);
+
+        //Material[] copyArrayMaterials = skinModel.GetComponent<Renderer>().materials;
+
+        //copyArrayMaterials[1] = 
+
+        //skinModel.GetComponent<Renderer>().materials = copyArrayMaterials;
+    }
 
 
 }

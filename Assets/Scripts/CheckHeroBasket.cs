@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class CheckHeroBasket : CheckHero
 {
-    // Start is called before the first frame update
+    [Header("—сылка в корзине ShowTakeMoney")]
+    [SerializeField]
+    private Transform UiShowTakeMoney;
+
     void Start()
     {
-        
+        UiShowTakeMoney.gameObject.SetActive(false);
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    protected override void MyMethod(HeroController heroController)
+    protected override void IsHero(HeroController heroController)
     {
         print("Basket  Hero");
 
-        heroController.CheckDoubleInArray();
+        if (heroController.CheckDoubleInArray())
+        {
+            UiShowTakeMoney.gameObject.SetActive(true);
+        }
     }
 }
