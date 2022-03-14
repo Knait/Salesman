@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3654526771985534993
 Transform:
   m_ObjectHideFlags: 0
@@ -166,7 +166,7 @@ BoxCollider:
   m_GameObject: {fileID: 6032602472140332133}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.6237381, y: 0.2434366, z: 0.905349}
   m_Center: {x: -0.0045085847, y: 0.14686225, z: 0.76856315}
@@ -177,17 +177,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6032602472140332133}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12d59d803525a1e4d9dab0d0cbfc6d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneSpotLight: {fileID: 9126201461683112582}
+  defaultMaterial: {fileID: 0}
   currentIDMaterialBot: 0
-  setRandomMaterial: {fileID: 0}
   currentMaterialBot: {fileID: 0}
-  currentColorBot: {r: 0, g: 0, b: 0, a: 0}
-  currentLight: {fileID: 0}
+  _renderer: {fileID: 0}
 --- !u!1 &6522825265094292633
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,6 +201,7 @@ GameObject:
   - component: {fileID: 504720614}
   - component: {fileID: 2009074874815816773}
   - component: {fileID: 6870166020369476380}
+  - component: {fileID: 281660947}
   m_Layer: 0
   m_Name: Shopper
   m_TagString: Untagged
@@ -234,12 +233,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6522825265094292633}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5187118
-  m_Height: 1.30741
+  m_Radius: 0.65816915
+  m_Height: 1.3163383
   m_Direction: 1
-  m_Center: {x: 0.012649298, y: 0.672325, z: 0.23242211}
+  m_Center: {x: 0.012649298, y: 0.672325, z: 0.37187946}
 --- !u!114 &7110846605766301794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +321,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateBot: 0
+  shopperController: {fileID: 0}
+  currentTarget: {fileID: 0}
+--- !u!54 &281660947
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6522825265094292633}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!1001 &6522825264545562605
 PrefabInstance:
   m_ObjectHideFlags: 0

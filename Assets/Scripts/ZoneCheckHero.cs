@@ -6,46 +6,36 @@ using UnityEngine;
 
 public class ZoneCheckHero : MonoBehaviour
 {
-    [Header("Ссылка на подсветку Бота")]
-    [SerializeField]
-    private Transform zoneSpotLight;
+
 
     [SerializeField]
-    private int currentIDMaterialBot;
+    private Material defaultMaterial;
 
-    [SerializeField]
-    private SetRandomMaterial setRandomMaterial;
+    //[HideInInspector]
+    public int currentIDMaterialBot;
 
     [SerializeField]
     private Material currentMaterialBot;
 
     [SerializeField]
-    private Color currentColorBot;
-
-    [SerializeField]
-    private Light currentLight;
-
-
-
+    private Renderer _renderer;
 
     private void Start()
     {
-        setRandomMaterial = GetComponentInParent<SetRandomMaterial>();
-
-        currentLight = zoneSpotLight.GetComponent<Light>();
-
+        _renderer = GetComponent<Renderer>();
+        defaultMaterial = _renderer.material;
     }
 
     private void Update()
     {
-        if (currentIDMaterialBot == 0)
-        {
-            currentIDMaterialBot = setRandomMaterial.IDMaterialClothes;
-            currentMaterialBot = GameSettings.Instance.arrayMaterial[currentIDMaterialBot];
-            currentColorBot = currentMaterialBot.color;
-            currentLight.color = currentColorBot;
+        //if (currentIDMaterialBot == 0)
+        // {
+        //currentIDMaterialBot = setRandomMaterial.IDMaterialClothes;
+        //currentMaterialBot = GameSettings.Instance.arrayMaterial[currentIDMaterialBot];
+        //currentColorBot = currentMaterialBot.color;
+        // currentLight.color = currentColorBot;
 
-        }
+        // }
 
     }
 
@@ -57,9 +47,8 @@ public class ZoneCheckHero : MonoBehaviour
         {
             if (heroController.CompareClothes(currentIDMaterialBot) != 0)
             {
-                SetStateObject(true);
                 print(" hero In zone ");
-
+                SetMaterialObject(GameSettings.Instance.arrayMaterial[currentIDMaterialBot]);
             }
         }
     }
@@ -71,20 +60,26 @@ public class ZoneCheckHero : MonoBehaviour
 
         if (heroController)
         {
-            SetStateObject(false);
-
+            SetMaterialObject();
             print("Hero out zone");
         }
     }
 
     /// <summary>
-    /// Вкл выкл подсветки
+    /// Вкл выкл подсветки Зоны
     /// </summary>
     /// <param name="stateObj"></param>
-    public void SetStateObject(bool stateObj)
+    public void SetMaterialObject(Material materialObj)
     {
-
-        zoneSpotLight.gameObject.SetActive(stateObj);
+        _renderer.material = materialObj;
     }
 
+    /// <summary>
+    /// Вкл выкл подсветки Зоны
+    /// </summary>
+    /// <param name="stateObj"></param>
+    public void SetMaterialObject()
+    {
+        _renderer.material = defaultMaterial;
+    }
 }

@@ -18,6 +18,19 @@ public abstract class CheckHero : MonoBehaviour
         }
     }
 
+    protected void OnTriggerEnter(Collider other)
+    {
+        HeroController heroController = other.gameObject.GetComponent<HeroController>();
+
+        if (heroController)
+        {
+            //print("Hero");
+            IsHero(heroController);
+        }
+    }
+
+
+
     protected abstract void IsHero(HeroController heroController);
 
 }

@@ -15,14 +15,11 @@ public class CheckHeroBot : CheckHero
     private SetRandomMaterial setRandomMaterial;
 
     [SerializeField]
-    private ZoneCheckHero zoneCheckHero;
+    public ZoneCheckHero zoneCheckHero;
 
     void Start()
     {
         setRandomMaterial = GetComponent<SetRandomMaterial>();
-
-        zoneCheckHero = GetComponentInChildren<ZoneCheckHero>();
-
     }
 
     protected override void IsHero(HeroController heroController)
@@ -39,7 +36,7 @@ public class CheckHeroBot : CheckHero
 
             GameController.Instance.countServedShoppers++;
 
-            zoneCheckHero.SetStateObject(false);
+            zoneCheckHero.SetMaterialObject();
         }
     }
 
