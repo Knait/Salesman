@@ -8,6 +8,9 @@ public class SetRandomMaterial : MonoBehaviour
     [SerializeField]
     private Transform skinModel;
 
+    /// <summary>
+    /// Текущий ID цвета бота
+    /// </summary>
     //[HideInInspector]
     public int IDMaterialClothes;
 

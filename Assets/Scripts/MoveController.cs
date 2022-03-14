@@ -36,7 +36,7 @@ public class MoveController : MonoBehaviour
 
     private void Start()
     {
-        speedBegin = GameSettings.Instance.speedBegin;
+        speedBegin = GameSettings.Instance.speedStart;
         multiPlay = GameSettings.Instance.multiPlay;
 
         //upgradeSpeedHeroLevel = GameController.Instance.upgradeSpeedHeroLevel;
