@@ -13,8 +13,8 @@ public enum StateBot
 
 public class StateShopper : MonoBehaviour
 {
-    [SerializeField]
-    private StateBot stateBot;
+    //[HideInInspector]
+    public StateBot stateBot;
 
     [SerializeField]
     private ShopperController shopperController;
@@ -22,11 +22,17 @@ public class StateShopper : MonoBehaviour
     //[HideInInspector]
     public Transform currentTarget;   // текущая цель
 
+    //[HideInInspector]
+    public Transform currentStartPosition;
+
+    [SerializeField]
+    private CheckHeroBot checkHeroBot;
 
     // Start is called before the first frame update
     void Start()
     {
         shopperController = GetComponent<ShopperController>();
+        checkHeroBot = GetComponent<CheckHeroBot>();
     }
 
     // Update is called once per frame
@@ -44,15 +50,15 @@ public class StateShopper : MonoBehaviour
                 break;
 
             case StateBot.Walk:
-
+                shopperController.currentTarget = currentTarget;
                 break;
 
             case StateBot.Buy:
-
+                shopperController.currentTarget = null;
                 break;
 
             case StateBot.Exit:
-
+                shopperController.currentTarget = currentStartPosition;
                 break;
         }
 
@@ -61,4 +67,48 @@ public class StateShopper : MonoBehaviour
 
     }
 
+
+    /// <summary>
+    /// Состояние покупка
+    /// </summary>
+    public void SetStateBuy()
+    {
+        float timerBuy = GameSettings.Instance.startTimerWaitClient;
+        StartCoroutine(TimerBuy(timerBuy));
+
+        stateBot = StateBot.Buy;
+
+    }
+
+    /// <summary>
+    /// Таймер ожидания клиента
+    /// </summary>
+    /// <param name="timerBuy"></param>
+    /// <returns></returns>
+    private IEnumerator TimerBuy(float timerBuy)
+    {
+        yield return new WaitForSeconds(timerBuy);
+        stateBot = StateBot.Exit;
+
+        checkHeroBot.zoneCheckHero.transform.parent.gameObject.SetActive(false);
+    }
+
+
+    /// <summary>
+    /// если пришел на спавн точку выкл
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerEnter(Collider other)
+    {
+        PointSpawn pointSpawn = other.GetComponent<PointSpawn>();
+
+        if (pointSpawn)
+        {
+            if (stateBot == StateBot.Exit)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
+    }
 }

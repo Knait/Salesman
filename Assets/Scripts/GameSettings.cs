@@ -32,6 +32,9 @@ public class GameSettings : MonoBehaviour
     [Header("Кол - во бабла за выбрашенную одежку")]
     public int countMoneyRemove = 10;
 
+    /// <summary>
+    /// Начальный интервал прихода клиента
+    /// </summary>
     [Header("Начальный интервал прихода клиента")]
     public float startDeltaComingClient;
 
@@ -41,6 +44,9 @@ public class GameSettings : MonoBehaviour
     [Header("Сокращение интервала прихода клиента со сложностью")]
     public float reductionDeltaComingClientHard;
 
+    /// <summary>
+    /// Начальное время ожидания клиента
+    /// </summary>
     [Header("Начальное время ожидания клиента")]
     public float startTimerWaitClient;
 

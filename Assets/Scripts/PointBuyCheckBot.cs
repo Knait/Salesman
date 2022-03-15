@@ -19,6 +19,8 @@ public class PointBuyCheckBot : MonoBehaviour
 
         CheckHeroBot checkHeroBot = other.GetComponent<CheckHeroBot>();
 
+        StateShopper stateShopper = other.GetComponent<StateShopper>();
+
         //print(other.name);
 
         if (setRandomMaterial)
@@ -30,6 +32,11 @@ public class PointBuyCheckBot : MonoBehaviour
         {
             checkHeroBot.zoneCheckHero = zoneCheckHero;
         }
+
+        if (stateShopper)
+        {
+            stateShopper.SetStateBuy();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -39,6 +46,7 @@ public class PointBuyCheckBot : MonoBehaviour
         if (setRandomMaterial)
         {
             zoneCheckHero.currentIDMaterialBot = 0;
+            zoneCheckHero.transform.parent.gameObject.SetActive(false);
         }
     }
 

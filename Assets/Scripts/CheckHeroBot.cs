@@ -14,14 +14,25 @@ public class CheckHeroBot : CheckHero
     [SerializeField]
     private SetRandomMaterial setRandomMaterial;
 
-    [SerializeField]
+    //[HideInInspector]
     public ZoneCheckHero zoneCheckHero;
+
+    //[HideInInspector]
+    public StateShopper stateShopper; 
+
+
 
     void Start()
     {
         setRandomMaterial = GetComponent<SetRandomMaterial>();
+        stateShopper = GetComponent<StateShopper>();
+
     }
 
+    /// <summary>
+    /// чекаем героя и проверяем у него одежду таково цвета
+    /// </summary>
+    /// <param name="heroController"></param>
     protected override void IsHero(HeroController heroController)
     {
         print("Bot  Hero");
@@ -32,12 +43,22 @@ public class CheckHeroBot : CheckHero
 
         if (currentIdClothes != 0)
         {
-            heroController.RemoveClothes(currentIdClothes);
-
-            GameController.Instance.countServedShoppers++;
-
-            zoneCheckHero.SetMaterialObject();
+            Buy(heroController, currentIdClothes);
         }
+    }
+
+    /// <summary>
+    /// Покупка
+    /// </summary>
+    private void Buy(HeroController heroController, int currentIdClothes)
+    {
+        heroController.RemoveClothes(currentIdClothes);
+
+        GameController.Instance.countServedShoppers++;
+
+        stateShopper.stateBot = StateBot.Exit;
+
+        zoneCheckHero.SetMaterialObject();
     }
 
 }
