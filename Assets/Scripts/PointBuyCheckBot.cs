@@ -46,7 +46,9 @@ public class PointBuyCheckBot : MonoBehaviour
         if (setRandomMaterial)
         {
             zoneCheckHero.currentIDMaterialBot = 0;
-            zoneCheckHero.transform.parent.gameObject.SetActive(false);
+            //zoneCheckHero.transform.parent.gameObject.SetActive(false);
+            zoneCheckHero.transform.parent.GetComponent<PointBuy>().pointActive = false;
+
         }
     }
 

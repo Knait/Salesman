@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 1444934277700340041}
   - component: {fileID: 1444934277700340042}
   - component: {fileID: 1444934277700340043}
+  - component: {fileID: 3689431632524339999}
   m_Layer: 0
   m_Name: PointBuy
   m_TagString: Untagged
@@ -137,7 +138,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444934277700340040}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.77, y: 0, z: -3.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -156,8 +157,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.79813737, y: 0.1687712, z: 0.40034938}
-  m_Center: {x: -0.035622746, y: 0.07002154, z: -0.2998253}
+  m_Size: {x: 0.47731334, y: 0.17384768, z: 0.30400276}
+  m_Center: {x: -0.001084894, y: -0.002052635, z: -0.094675064}
 --- !u!114 &1444934277700340043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,3 +172,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoneCheckHero: {fileID: 0}
+--- !u!114 &3689431632524339999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444934277700340040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf3c626d62ae154590236b02d3f9558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

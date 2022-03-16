@@ -43,7 +43,7 @@ public class StateShopper : MonoBehaviour
 
     private void UpdateStateShopper()
     {
-        switch(stateBot)
+        switch (stateBot)
         {
             case StateBot.Start:
 
@@ -73,11 +73,15 @@ public class StateShopper : MonoBehaviour
     /// </summary>
     public void SetStateBuy()
     {
-        float timerBuy = GameSettings.Instance.startTimerWaitClient;
-        StartCoroutine(TimerBuy(timerBuy));
+        if (stateBot == StateBot.Walk)
+        {
 
-        stateBot = StateBot.Buy;
+            float timerBuy = GameSettings.Instance.startTimerWaitClient;
+            StartCoroutine(TimerBuy(timerBuy));
 
+            stateBot = StateBot.Buy;
+
+        }
     }
 
     /// <summary>
@@ -90,7 +94,9 @@ public class StateShopper : MonoBehaviour
         yield return new WaitForSeconds(timerBuy);
         stateBot = StateBot.Exit;
 
-        checkHeroBot.zoneCheckHero.transform.parent.gameObject.SetActive(false);
+        //checkHeroBot.zoneCheckHero.transform.parent.gameObject.SetActive(false);
+        checkHeroBot.zoneCheckHero.transform.parent.GetComponent<PointBuy>().pointActive = false;
+
     }
 
 

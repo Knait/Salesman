@@ -66,7 +66,7 @@ public class GameController : MonoBehaviour
     //[Header("Мах кол-во ботов")]
     //private int maxCountBots = 10;
 
-    [HideInInspector]
+    //[HideInInspector]
     public int currentLevel;   //   текущий уровень 
 
     [HideInInspector]
@@ -117,7 +117,7 @@ public class GameController : MonoBehaviour
         spawnerShoppers.gameObject.SetActive(false);
         PanelStartGame.gameObject.SetActive(true);
 
-        currentLevel = LoadData("LevelNumber");
+       // currentLevel = LoadData("LevelNumber");          /// З А Г Р У З К А     Л Е В Е Л А /////////////////////////////////
 
         //maxHealthCastle = LoadData("MaxHealthCastle");
 

@@ -19,22 +19,27 @@ public class SpawnerShoppers : MonoBehaviour
     [SerializeField]
     private float currentDeltaComingClient;
 
+    private int randomIndexPointsSpawn;
+
     // Start is called before the first frame update
     void Start()
     {
         Shoppers = new Transform[10];
         for (int index = 0; index < Shoppers.Length; index++)
         {
-            Shoppers[index] = Instantiate(prefabShopper, new Vector3(0, 0, 0), Quaternion.identity);
+            randomIndexPointsSpawn = Random.Range(0, PointsSpawn.Length);
+
+
+            Shoppers[index] = Instantiate(prefabShopper, PointsSpawn[randomIndexPointsSpawn].position, Quaternion.identity);
             Shoppers[index].gameObject.SetActive(false);
         }
 
         currentDeltaComingClient = GameSettings.Instance.startDeltaComingClient;
 
-        for (int index = 0; index < PointsBuy.Length; index++)
-        {
-            PointsBuy[index].gameObject.SetActive(false);
-        }
+        //for (int index = 0; index < PointsBuy.Length; index++)
+        //{
+        //    PointsBuy[index].gameObject.SetActive(false);
+        //}
 
         //currentDeltaComingClient = 1;
 
@@ -47,42 +52,49 @@ public class SpawnerShoppers : MonoBehaviour
 
     }
 
+    private void FindOpenPointBuy()
+    {
+        for (int i = 0; i < PointsBuy.Length; i++)
+        {
+            if (!PointsBuy[i].GetComponent<PointBuy>().pointActive)
+            {
+                for (int j = 0; j < Shoppers.Length; j++)
+                {
+                    if (!Shoppers[j].gameObject.activeInHierarchy)
+                    {
+                        PointsBuy[i].GetComponent<PointBuy>().pointActive = true;
+                        //PointsBuy[i].gameObject.SetActive(true);
+
+                        Shoppers[j].gameObject.SetActive(true);
+
+                        StateShopper stateShopper = Shoppers[j].GetComponent<StateShopper>();
+
+                        stateShopper.currentStartPosition = PointsSpawn[randomIndexPointsSpawn];
+
+                        stateShopper.currentTarget = PointsBuy[i];
+
+                        stateShopper.stateBot = StateBot.Walk;
+
+                        return;
+                    }
+                }
+
+               
+            }
+
+        }
+    }
+
 
     private IEnumerator TimerSpawnShopper(float timerSpawnShopper)
     {
         while (true)
         {
-            for (int i = 0; i < PointsBuy.Length; i++)
-            {
-                if (!PointsBuy[i].gameObject.activeInHierarchy)
-                {
-                    for (int j = 0; j < Shoppers.Length; j++)
-                    {
-                        if (!Shoppers[j].gameObject.activeInHierarchy)
-                        {
-                            PointsBuy[i].gameObject.SetActive(true);
-
-                            Shoppers[j].gameObject.SetActive(true);
-
-                            int randomIndexPointsSpawn = Random.Range(0, PointsSpawn.Length);
-
-                            //Shoppers[j].position = PointsSpawn[randomIndexPointsSpawn].position;
-
-                            StateShopper stateShopper = Shoppers[j].GetComponent<StateShopper>();
-
-                            stateShopper.currentStartPosition = PointsSpawn[randomIndexPointsSpawn];
-                            stateShopper.currentTarget = PointsBuy[i];
-                            stateShopper.stateBot = StateBot.Walk;
-                            break;
-                        }
-                    }
-
-                    break;
-                }
-
-            }
+            FindOpenPointBuy();
 
             yield return new WaitForSeconds(timerSpawnShopper);
+
+
         }
 
 
