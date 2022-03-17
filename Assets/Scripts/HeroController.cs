@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class HeroController : MonoBehaviour
 {
-  
+
     [Header("—Ò˚ÎÍ‡ Ì‡ Ó‰ÂÊÛ ‚ ÛÍ‡ı")]
     [SerializeField]
-    private Transform clothesInHands;
+    private Transform[] clothesInHands;
 
     [Header("Ã‡ı ÍÓÎ-‚Ó Ó‰ÂÊ‰˚")]
+    [SerializeField]
     private int maxCountClothes;
 
     //[HideInInspector]
@@ -40,6 +41,7 @@ public class HeroController : MonoBehaviour
     {
         maxCountClothes = GameSettings.Instance.maxCountClothes;
         arrayIDMaterialClothes = new int[maxCountClothes + 1];
+        Show—lothesInHands();
     }
 
     /// <summary>
@@ -54,7 +56,8 @@ public class HeroController : MonoBehaviour
             {
                 arrayIDMaterialClothes[index] = IDMaterialClothes;
 
-                Show—lothesInHands(IDMaterialClothes);
+                //Show—lothesInHands(IDMaterialClothes);
+                Show—lothesInHands();
 
                 break;
             }
@@ -71,21 +74,15 @@ public class HeroController : MonoBehaviour
 
         for (int i = 1; i < arrayIDMaterialClothes.Length; i++)
         {
-            for (int j = 1; j < arrayIDMaterialClothes.Length; j++)
+            if (arrayIDMaterialClothes[i] > 0)
             {
-                if (i != j)
-                {
-                    if (arrayIDMaterialClothes[i] == arrayIDMaterialClothes[j] && arrayIDMaterialClothes[i] > 0)
-                    {
-                        RemoveClothes(i);
-                        result = true;
-                        break;
-                    }
-                }
-                else
-                {
-                    continue;
-                }
+                RemoveClothes(i);
+                result = true;
+                break;
+            }
+            else
+            {
+                continue;
             }
         }
 
@@ -128,10 +125,10 @@ public class HeroController : MonoBehaviour
         return result;
     }
 
-    public void Show—lothesInHands(int iDMaterialClothes)
-    {
-        clothesInHands.GetComponent<MeshRenderer>().material = GameSettings.Instance.arrayMaterial[iDMaterialClothes];
-    }
+    //public void Show—lothesInHands(int iDMaterialClothes)
+    //{
+    //    clothesInHands[].GetComponent<MeshRenderer>().material = GameSettings.Instance.arrayMaterial[iDMaterialClothes];
+    //}
 
 
     public void Show—lothesInHands()
@@ -140,12 +137,12 @@ public class HeroController : MonoBehaviour
         {
             if (arrayIDMaterialClothes[index] != 0)
             {
-                clothesInHands.GetComponent<MeshRenderer>().material = GameSettings.Instance.arrayMaterial[arrayIDMaterialClothes[index]];
-                break;
+                clothesInHands[index - 1].GetComponent<MeshRenderer>().material = GameSettings.Instance.arrayMaterial[arrayIDMaterialClothes[index]];
+                //break;
             }
             else
             {
-                clothesInHands.GetComponent<MeshRenderer>().material = GameSettings.Instance.defaultMaterial;
+                clothesInHands[index - 1].GetComponent<MeshRenderer>().material = GameSettings.Instance.defaultMaterial;
             }
         }
     }
