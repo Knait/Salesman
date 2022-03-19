@@ -24,6 +24,7 @@ public class ShowTakeMoney : MonoBehaviour
     private void Start()
     {
         textMeshShowTakeMoney = GetComponent<TMP_Text>();
+        countTakeMoney = GameSettings.Instance.countMoneyRemove;
     }
 
     // Update is called once per frame
@@ -49,11 +50,13 @@ public class ShowTakeMoney : MonoBehaviour
 
         textMeshShowTakeMoney.text = " - " + countTakeMoney.ToString();
 
-        print("start corutine");
+        GameController.Instance.SetCurrentMoney(-countTakeMoney);
+
+        //print("start corutine");      /////////////////////////////////////////////////////
 
         yield return new WaitForSeconds(timer);
 
-        print("stop coroutine");
+        //print("stop coroutine");   ///////////////////////////////////////////
 
         isTimer = false;
 

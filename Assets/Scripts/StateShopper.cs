@@ -95,7 +95,8 @@ public class StateShopper : MonoBehaviour
         stateBot = StateBot.Exit;
 
         //checkHeroBot.zoneCheckHero.transform.parent.gameObject.SetActive(false);
-        checkHeroBot.zoneCheckHero.transform.parent.GetComponent<PointBuy>().pointActive = false;
+        // checkHeroBot.zoneCheckHero.transform.parent.GetComponent<PointBuy>().pointActive = false;
+       // print("Stateshopper point false");
 
     }
 

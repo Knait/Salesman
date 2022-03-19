@@ -1,3 +1,5 @@
+///висит на 
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +10,7 @@ public class CheckHeroBasket : MonoBehaviour
     [SerializeField]
     private Transform UiShowTakeMoney;
 
-    [Header("Таймер выдачи одежды")]
+    [Header("Таймер забора одежды")]
     [SerializeField]
     private float timerGiveClothes;
 
@@ -21,17 +23,6 @@ public class CheckHeroBasket : MonoBehaviour
         UiShowTakeMoney.gameObject.SetActive(false);
 
     }
-
-    //protected override void IsHero(HeroController heroController)
-    //{
-    //    print("Basket  Hero");
-
-    //    if (heroController.CheckDoubleInArray())
-    //    {
-    //        UiShowTakeMoney.gameObject.SetActive(true);
-    //    }
-    //}
-
 
     /// <summary>
     /// чекаем игрока
@@ -53,12 +44,6 @@ public class CheckHeroBasket : MonoBehaviour
                     isGiveClothes = false;
                     StartCoroutine(TimerGiveClothes(timerGiveClothes));
                 }
-
-                //        print(" Take Clothes");
-                //        isGiveClothes = false;
-                //        StartCoroutine(TimerGiveClothes(timerGiveClothes));
-                //        heroController.CountClothes++;
-                //        heroController.TakeClothes(IDMaterialClothes);
             }
         }
 

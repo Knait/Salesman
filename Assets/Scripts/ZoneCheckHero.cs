@@ -49,7 +49,7 @@ public class ZoneCheckHero : MonoBehaviour
             {
                 if (heroController.CompareClothes(currentIDMaterialBot) != 0)
                 {
-                    print(" hero In zone ");
+                   // print(" hero In zone ");                   ////////////////////////////////////////
                     SetMaterialObject(GameSettings.Instance.arrayMaterial[currentIDMaterialBot]);
                 }
             }
@@ -64,7 +64,7 @@ public class ZoneCheckHero : MonoBehaviour
         if (heroController)
         {
             SetMaterialObject();
-            print("Hero out zone");
+            //print("Hero out zone");             /////////////////////////////////////////
         }
     }
 

@@ -1,3 +1,5 @@
+
+/// висит на GameSettings хранит все настраиваемые параметры
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

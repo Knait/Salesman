@@ -1,3 +1,4 @@
+/// висит на GameController управляет игровой логикой
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,10 +20,13 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance;
 
+    /// <summary>
+    /// текущее колво обслужанных клиентов
+    /// </summary>
     [HideInInspector]
     public int countServedShoppers;         // текущее колво обслужанных клиентов
 
-   
+
 
     //[Header("Мах число жизней замка")]
     //public int maxHealthCastle = 10;
@@ -81,8 +85,11 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public int currentCountBots;   //  текущее кол-во ботов
 
-    [HideInInspector]
-    public int currentMoney;   //  текущее кол-во бабла
+    //[HideInInspector]
+    /// <summary>
+    /// текущее кол-во бабла
+    /// </summary>
+    public int currentMoney;  //  текущее кол-во бабла
 
     [HideInInspector]
     public int allMoney;      // всего денях
@@ -99,7 +106,7 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public int currentPriceDoubleShoot;    // цена прокачки DoubleShoot
 
-    [HideInInspector]
+   // [HideInInspector]
     public int upgradeSpeedHeroLevel;      //  // текущий Level SpeedHero
 
     [HideInInspector]
@@ -113,11 +120,11 @@ public class GameController : MonoBehaviour
         PanelGame.SetActive(false);
         PanelWinGame.SetActive(false);
         PanelLoseGame.SetActive(false);
-       // spawnerBullets.gameObject.SetActive(false);
+        // spawnerBullets.gameObject.SetActive(false);
         spawnerShoppers.gameObject.SetActive(false);
         PanelStartGame.gameObject.SetActive(true);
 
-       // currentLevel = LoadData("LevelNumber");          /// З А Г Р У З К А     Л Е В Е Л А /////////////////////////////////
+        // currentLevel = LoadData("LevelNumber");          /// З А Г Р У З К А     Л Е В Е Л А /////////////////////////////////
 
         //maxHealthCastle = LoadData("MaxHealthCastle");
 
@@ -207,7 +214,7 @@ public class GameController : MonoBehaviour
     /// старт игры
     /// </summary>
     public void StartGame()
-    {   
+    {
         stateGame = StateGame.Game;
         //spawnerBullets.gameObject.SetActive(true);
         spawnerShoppers.gameObject.SetActive(true);
@@ -263,12 +270,13 @@ public class GameController : MonoBehaviour
 
     private IEnumerator ShowAnimationMoney()
     {
+        float timerShowAnimationMoney = 0.1f;
         print("ShowAnimationMoney");
         while (currentMoney > 0)
         {
             currentMoney--;
             allMoney++;
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(timerShowAnimationMoney);  //WaitForEndOfFrame();
         }
     }
 
@@ -315,7 +323,7 @@ public class GameController : MonoBehaviour
     //}
     public void LoadScene(int currentScene)
     {
-       
+
 
         int tempLoadScene = currentScene - 1;
 
@@ -365,4 +373,24 @@ public class GameController : MonoBehaviour
     {
         return PlayerPrefs.GetInt(KeyName);
     }
+
+    /// <summary>
+    /// Увел или умень текущ кол-во денех
+    /// </summary>
+    /// <param name="money"></param>
+    //public void SetCurrentMoney(int money) {
+    //    currentMoney =+ money;
+    //    currentMoney = currentMoney < 0 ? 0 : currentMoney; 
+    //}
+
+    public void SetCurrentMoney(int money)
+    {
+        currentMoney += money;
+        currentMoney = currentMoney < 0 ? 0 : currentMoney;
+    }
+
+    public void SetCountServedShoppers() => countServedShoppers++;
+
+
+
 }

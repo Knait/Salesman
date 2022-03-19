@@ -97,7 +97,7 @@ public class HeroController : MonoBehaviour
     /// <param name="index"></param>
     public void RemoveClothes(int index)
     {
-        print("Remove Clothes");
+        //print("Remove Clothes");                  /////////////////////////////////////////////////////
         arrayIDMaterialClothes[index] = 0;
         Show—lothesInHands();
     }
@@ -117,7 +117,7 @@ public class HeroController : MonoBehaviour
             {
                 //result = arrayIDMaterialClothes[index];
                 result = index;
-                print(" Yes Clothes ID " + result);
+                //print(" Yes Clothes ID " + result);      ////////////////////////////////////////////////
 
             }
         }

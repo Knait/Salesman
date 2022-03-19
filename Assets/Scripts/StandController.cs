@@ -38,7 +38,7 @@ public class StandController : MonoBehaviour
         {
             if (isGiveClothes)
             {
-                print(" Take Clothes");
+               // print(" Take Clothes");  /////////////////////////////////////////////////////
                 isGiveClothes = false;
                 StartCoroutine(TimerGiveClothes(timerGiveClothes));
                 heroController.CountClothes++;

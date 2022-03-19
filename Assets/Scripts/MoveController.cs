@@ -18,11 +18,16 @@ public class MoveController : MonoBehaviour
     private GameObject visualPlayer;
 
     [Header("Начальная скорость")]
+    [SerializeField]
     private float speedBegin;
 
+    private float speedStart;
+
+   // [SerializeField]
     [Header("Значение Upgrade скорости")]
     private float multiPlay;
 
+    //[SerializeField]
     private int upgradeSpeedHeroLevel;      //  // текущий Level SpeedHero
 
     private float speed;       // текущая скорость
@@ -36,14 +41,22 @@ public class MoveController : MonoBehaviour
 
     private void Start()
     {
-        speedBegin = GameSettings.Instance.speedStart;
+        speedStart = GameSettings.Instance.speedStart;
         multiPlay = GameSettings.Instance.multiPlay;
 
-        //upgradeSpeedHeroLevel = GameController.Instance.upgradeSpeedHeroLevel;
-        speedBegin = speedBegin + upgradeSpeedHeroLevel * multiPlay;
+
         animator = GetComponentInChildren<Animator>();
         rigidBody = GetComponent<Rigidbody>();
         //speedBegin *= 2;
+    }
+
+    private void Update()
+    {
+        if (GameController.Instance.stateGame == StateGame.Game)
+        {
+            upgradeSpeedHeroLevel = GameController.Instance.upgradeSpeedHeroLevel;
+            speedBegin = speedStart + upgradeSpeedHeroLevel * multiPlay;
+        }
     }
 
     void FixedUpdate()

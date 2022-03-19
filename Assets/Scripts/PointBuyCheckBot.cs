@@ -47,7 +47,9 @@ public class PointBuyCheckBot : MonoBehaviour
         {
             zoneCheckHero.currentIDMaterialBot = 0;
             //zoneCheckHero.transform.parent.gameObject.SetActive(false);
-            zoneCheckHero.transform.parent.GetComponent<PointBuy>().pointActive = false;
+            zoneCheckHero.transform.parent.GetComponent<PointBuy>().pointActive = false;          ///выкл точку покупки
+            //print("PointBuyCheckBot point false");
+
 
         }
     }

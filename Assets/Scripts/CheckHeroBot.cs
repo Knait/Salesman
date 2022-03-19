@@ -35,7 +35,7 @@ public class CheckHeroBot : CheckHero
     /// <param name="heroController"></param>
     protected override void IsHero(HeroController heroController)
     {
-        print("Bot  Hero");
+       // print("Bot  Hero");                      //////////////////////////////////////////
 
         currentIDMaterialBot = setRandomMaterial.IDMaterialClothes;
 
@@ -54,7 +54,9 @@ public class CheckHeroBot : CheckHero
     {
         heroController.RemoveClothes(currentIdClothes);
 
-        GameController.Instance.countServedShoppers++;
+        GameController.Instance.SetCountServedShoppers();
+
+        GameController.Instance.SetCurrentMoney(GameSettings.Instance.countMoneyBuy);
 
         stateShopper.stateBot = StateBot.Exit;
 
