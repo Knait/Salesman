@@ -124,7 +124,7 @@ public class GameController : MonoBehaviour
         spawnerShoppers.gameObject.SetActive(false);
         PanelStartGame.gameObject.SetActive(true);
 
-        // currentLevel = LoadData("LevelNumber");          /// Ç À Ã Ð Ó Ç Ê À     Ë Å Â Å Ë À /////////////////////////////////
+        currentLevel = LoadData("LevelNumber");          /// Ç À Ã Ð Ó Ç Ê À     Ë Å Â Å Ë À /////////////////////////////////
 
         //maxHealthCastle = LoadData("MaxHealthCastle");
 

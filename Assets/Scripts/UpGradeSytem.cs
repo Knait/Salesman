@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class UpGradeSytem : MonoBehaviour
 {
+    /// <summary>
+    /// текущий Level BonusMoney
+    /// </summary>
     [HideInInspector]
-    public int upgradeDoubleShootLevel;           // текущий Level DoubleShoot
+    public int upgradeBonusMoneyLevel;           // текущий Level BonusMoney
+    /// <summary>
+    /// текущий Level SpeedHero
+    /// </summary>
     [HideInInspector]
     public int upgradeSpeedHeroLevel;             // текущий Level SpeedHero
 
 
-    [Header("Ќачальна€ цена прокачки DoubleShoot")]
+    [Header("Ќачальна€ цена прокачки BonusMoney")]
     [SerializeField]
-    private int startPriceDoubleShoot;
-    [Header("—ледующа€ цена прокачки DoubleShoot")]
+    private int startPriceBonusMoney;
+    [Header("—ледующа€ цена прокачки BonusMoney")]
     [SerializeField]
-    private int nextPriceDoubleShoot;
+    private int nextPriceBonusMoney;
 
     [Header("Ќачальна€ цена прокачки SpeedHero")]
     [SerializeField]
@@ -26,7 +32,7 @@ public class UpGradeSytem : MonoBehaviour
 
 
     [SerializeField]
-    private int currentPriceDoubleShoot;        // текуща€ цена 
+    private int currentPriceBonusMoney;        // текуща€ цена 
     [SerializeField]
     private int currentPriceSpeedHero;          // текуща€ цена 
 
@@ -40,7 +46,7 @@ public class UpGradeSytem : MonoBehaviour
     {
         allMoney = GameController.Instance.allMoney;
 
-        upgradeDoubleShootLevel = GameController.Instance.LoadData("upgradeDoubleShootLevel");
+        upgradeBonusMoneyLevel = GameController.Instance.LoadData("upgradeDoubleShootLevel");
         upgradeSpeedHeroLevel = GameController.Instance.LoadData("upgradeSpeedHeroLevel");
 
         ShowUI();
@@ -56,12 +62,12 @@ public class UpGradeSytem : MonoBehaviour
     /// </summary>
     public void BuyUpgradeDoubleShoot()
     {
-        if (allMoney > currentPriceDoubleShoot)
+        if (allMoney > currentPriceBonusMoney)
         {
-            allMoney -= currentPriceDoubleShoot;
-            upgradeDoubleShootLevel++;
+            allMoney -= currentPriceBonusMoney;
+            upgradeBonusMoneyLevel++;
             GameController.Instance.allMoney = allMoney;
-            GameController.Instance.SaveData("upgradeDoubleShootLevel", upgradeDoubleShootLevel);
+            GameController.Instance.SaveData("upgradeDoubleShootLevel", upgradeBonusMoneyLevel);
             GameController.Instance.SaveData("Money", allMoney);
             ShowUI();
         }
@@ -90,11 +96,11 @@ public class UpGradeSytem : MonoBehaviour
     /// </summary>
     void ShowUI()
     {
-        currentPriceDoubleShoot = startPriceDoubleShoot + nextPriceDoubleShoot * upgradeDoubleShootLevel;
+        currentPriceBonusMoney = startPriceBonusMoney + nextPriceBonusMoney * upgradeBonusMoneyLevel;
         currentPriceSpeedHero = startPriceSpeedHero + nextPriceSpeedHero * upgradeSpeedHeroLevel;
 
-        GameController.Instance.upgradeDobleShootLevel = upgradeDoubleShootLevel;
-        GameController.Instance.currentPriceDoubleShoot = currentPriceDoubleShoot;
+        GameController.Instance.upgradeDobleShootLevel = upgradeBonusMoneyLevel;
+        GameController.Instance.currentPriceDoubleShoot = currentPriceBonusMoney;
         GameController.Instance.upgradeSpeedHeroLevel = upgradeSpeedHeroLevel;
         GameController.Instance.currentPriceSpeedHero = currentPriceSpeedHero;
     }

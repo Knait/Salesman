@@ -21,7 +21,9 @@ public class GameSettings : MonoBehaviour
     [Header("Мах кол-во одежды у игрока")]
     public int maxCountClothes;
 
-
+    /// <summary>
+    /// Таймер выдачи одежды
+    /// </summary>
     [Header("Таймер выдачи одежды")]
     public float timerGiveClothes;
 
@@ -40,8 +42,8 @@ public class GameSettings : MonoBehaviour
     [Header("Начальный интервал прихода клиента")]
     public float startDeltaComingClient;
 
-    [Header("Интервал прихода клиента со сложностью")]
-    public float deltaComingClientHard;
+    //[Header("Интервал прихода клиента со сложностью")]
+    //public float deltaComingClientHard;
 
     [Header("Сокращение интервала прихода клиента со сложностью")]
     public float reductionDeltaComingClientHard;
@@ -65,6 +67,8 @@ public class GameSettings : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        startTimerWaitClient -= GameController.Instance.currentLevel * reductionTimerWaitClientHard;
+        startDeltaComingClient -= GameController.Instance.currentLevel * reductionDeltaComingClientHard;
     }
     
 }

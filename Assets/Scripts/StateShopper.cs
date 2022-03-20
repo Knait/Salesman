@@ -28,6 +28,9 @@ public class StateShopper : MonoBehaviour
     [SerializeField]
     private CheckHeroBot checkHeroBot;
 
+    [SerializeField]
+    private float timerBuy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,7 +79,7 @@ public class StateShopper : MonoBehaviour
         if (stateBot == StateBot.Walk)
         {
 
-            float timerBuy = GameSettings.Instance.startTimerWaitClient;
+            timerBuy = GameSettings.Instance.startTimerWaitClient;
             StartCoroutine(TimerBuy(timerBuy));
 
             stateBot = StateBot.Buy;
