@@ -12,9 +12,13 @@ public class StandController : MonoBehaviour
     //[SerializeField]
     private bool isGiveClothes = true;
 
-    [Header("ID материала Стойки Одежды")]
+    [Header("ID Стойки Одежды")]
     [SerializeField]
-    private int IDMaterialClothes;
+    private int IDClothes;
+
+    //[Header("ID материала Стойки Одежды")]
+    //[SerializeField]
+    //private int IDMaterialClothes;
 
     //[HideInInspector]
     //public Material materialStand;
@@ -23,7 +27,7 @@ public class StandController : MonoBehaviour
     {
         timerGiveClothes = GameSettings.Instance.timerGiveClothes;
 
-        SetIDMaterialStand();
+        //SetIDMaterialStand();
     }
 
     /// <summary>
@@ -38,11 +42,11 @@ public class StandController : MonoBehaviour
         {
             if (isGiveClothes)
             {
-               // print(" Take Clothes");  /////////////////////////////////////////////////////
+               print(" Take Clothes");  /////////////////////////////////////////////////////
                 isGiveClothes = false;
                 StartCoroutine(TimerGiveClothes(timerGiveClothes));
-                heroController.CountClothes++;
-                heroController.TakeClothes(IDMaterialClothes);
+                //heroController.CountClothes++;
+                heroController.TakeClothes(IDClothes);
             }
         }
     }
@@ -60,13 +64,20 @@ public class StandController : MonoBehaviour
     }
 
 
-    private void SetIDMaterialStand()
-    {
-        Material[] arrayMaterial;
+    //private void SetIDMaterialStand()
+    //{
+    //    Material[] arrayMaterial;
 
-        arrayMaterial = GameSettings.Instance.arrayMaterial;
+    //    arrayMaterial = GameSettings.Instance.arrayMaterial;
 
-        GetComponent<Renderer>().material = arrayMaterial[IDMaterialClothes];
+        ///GetComponent<Renderer>().material = arrayMaterial[IDMaterialClothes];
+        
+
+
+
+
+
+
 
         //IDMaterialClothes = Random.Range(0, arrayMaterial.Length);
 
@@ -75,7 +86,7 @@ public class StandController : MonoBehaviour
         //copyArrayMaterials[1] = 
 
         //skinModel.GetComponent<Renderer>().materials = copyArrayMaterials;
-    }
+    //}
 
 
 }

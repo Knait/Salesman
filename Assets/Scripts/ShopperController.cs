@@ -52,15 +52,18 @@ public class ShopperController : MonoBehaviour
 
     void UpdateMove()
     {
-        //if (GameController.Instance.stateGame == StateGame.Game && navMeshAgent.speed > 0)
-        if (navMeshAgent.speed > 0)
+        if (GameController.Instance.stateGame == StateGame.Game)
         {
-            RunEnemy();
+            if (navMeshAgent.speed > 0)
+            {
+                RunEnemy();
+            }
+            else
+            {
+                IdleEnemy();
+            }
         }
-        else
-        {
-            IdleEnemy();
-        }
+        
     }
 
     /// <summary>
@@ -68,7 +71,7 @@ public class ShopperController : MonoBehaviour
     /// </summary>
     void RunEnemy()
     {
-       
+
 
         if (animator)
         {
@@ -85,12 +88,16 @@ public class ShopperController : MonoBehaviour
     public void IdleEnemy()
     {
         navMeshAgent.speed = 0;
+
         if (animator) animator.SetBool("Run", false);
     }
 
+
     void UpdateTarget()
     {
-        if (currentTarget)
+
+
+        if (currentTarget && GameController.Instance.stateGame == StateGame.Game)
         {
             navMeshAgent.destination = currentTarget.position;
             navMeshAgent.speed = speedBegin;
@@ -98,8 +105,11 @@ public class ShopperController : MonoBehaviour
         else
         {
             navMeshAgent.speed = 0;
+            IdleEnemy();
+
 
         }
+
 
     }
 

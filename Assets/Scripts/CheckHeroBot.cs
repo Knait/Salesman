@@ -7,12 +7,15 @@ public class CheckHeroBot : CheckHero
     [SerializeField]
     private int currentIDMaterialBot;
 
+    [SerializeField]
+    private int currentIDClothesBot;
+
     [Header("Ссылка на модель визуала")]
     [SerializeField]
     private Transform skinModel;
 
     [SerializeField]
-    private SetRandomMaterial setRandomMaterial;
+    private SetMaterialBot setMaterialBot;
 
     //[HideInInspector]
     public ZoneCheckHero zoneCheckHero;
@@ -24,8 +27,10 @@ public class CheckHeroBot : CheckHero
 
     void Start()
     {
-        setRandomMaterial = GetComponent<SetRandomMaterial>();
+        setMaterialBot = GetComponent<SetMaterialBot>();
         stateShopper = GetComponent<StateShopper>();
+
+        currentIDMaterialBot = setMaterialBot.IDMaterialClothes;
 
     }
 
@@ -37,26 +42,26 @@ public class CheckHeroBot : CheckHero
     {
        // print("Bot  Hero");                      //////////////////////////////////////////
 
-        currentIDMaterialBot = setRandomMaterial.IDMaterialClothes;
+        currentIDMaterialBot = setMaterialBot.IDMaterialClothes;
 
-        int currentIdClothes = heroController.CompareClothes(currentIDMaterialBot);
+        int currentMoneyForBuy = heroController.CompareClothes(currentIDClothesBot, currentIDMaterialBot);
 
-        if (currentIdClothes != 0)
-        {
-            Buy(heroController, currentIdClothes);
-        }
+       // if (currentIdClothes != 0)
+      //  {
+            Buy(currentMoneyForBuy);
+      //  }
     }
 
     /// <summary>
     /// Покупка
     /// </summary>
-    private void Buy(HeroController heroController, int currentIdClothes)
+    private void Buy(int currentMoneyForBuy)
     {
-        heroController.RemoveClothes(currentIdClothes);
+        //heroController.RemoveClothes(currentIdClothes);
 
         GameController.Instance.SetCountServedShoppers();
 
-        GameController.Instance.SetCurrentMoney(GameSettings.Instance.countMoneyBuy);
+        GameController.Instance.SetCurrentMoney(currentMoneyForBuy);
 
         stateShopper.stateBot = StateBot.Exit;
 

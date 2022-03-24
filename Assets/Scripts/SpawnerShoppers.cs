@@ -21,17 +21,30 @@ public class SpawnerShoppers : MonoBehaviour
 
     private int randomIndexPointsSpawn;
 
-    // Start is called before the first frame update
     void Start()
     {
-        Shoppers = new Transform[10];
+        int countShoppers = 8;
+
+        Shoppers = new Transform[countShoppers];
+
+        Material[] arrayMaterial;
+
+        arrayMaterial = GameSettings.Instance.arrayMaterial;
+
+        int j = 0;
+
+        for (int i = 1; i < arrayMaterial.Length; i++)
+        {
+            j = InstantiateBot(i, j);
+            j = InstantiateBot(i, j);
+        }
+
         for (int index = 0; index < Shoppers.Length; index++)
         {
-            randomIndexPointsSpawn = Random.Range(0, PointsSpawn.Length);
 
-
-            Shoppers[index] = Instantiate(prefabShopper, PointsSpawn[randomIndexPointsSpawn].position, Quaternion.identity);
-            Shoppers[index].gameObject.SetActive(false);
+            //randomIndexPointsSpawn = Random.Range(0, PointsSpawn.Length);
+            //Shoppers[index] = Instantiate(prefabShopper, PointsSpawn[randomIndexPointsSpawn].position, Quaternion.identity);
+            //Shoppers[index].gameObject.SetActive(false);
         }
 
         currentDeltaComingClient = GameSettings.Instance.startDeltaComingClient;
@@ -46,7 +59,6 @@ public class SpawnerShoppers : MonoBehaviour
         StartCoroutine(TimerSpawnShopper(currentDeltaComingClient));
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -79,7 +91,6 @@ public class SpawnerShoppers : MonoBehaviour
                     }
                 }
 
-               
             }
 
         }
@@ -100,4 +111,15 @@ public class SpawnerShoppers : MonoBehaviour
 
     }
 
+
+    private int InstantiateBot(int i, int j)
+    {
+        randomIndexPointsSpawn = Random.Range(0, PointsSpawn.Length);
+        Shoppers[j] = Instantiate(prefabShopper, PointsSpawn[randomIndexPointsSpawn].position, Quaternion.identity);
+        Shoppers[j].GetComponent<SetMaterialBot>().SetIDMaterialBot(i);
+        Shoppers[j].gameObject.SetActive(false);
+
+        j++;
+        return j;
+    }
 }

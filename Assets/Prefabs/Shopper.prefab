@@ -110,8 +110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentIDMaterialBot: 0
+  currentIDClothesBot: 1
   skinModel: {fileID: 506217837443034428}
-  setRandomMaterial: {fileID: 0}
+  setMaterialBot: {fileID: 0}
   zoneCheckHero: {fileID: 0}
   stateShopper: {fileID: 0}
 --- !u!114 &504720614
@@ -170,6 +171,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   currentStartPosition: {fileID: 0}
   checkHeroBot: {fileID: 0}
+  timerBuy: 0
 --- !u!54 &281660947
 Rigidbody:
   m_ObjectHideFlags: 0

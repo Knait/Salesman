@@ -3,8 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class HeroController : MonoBehaviour
 {
+    /// <summary>
+    /// Колво за правильную одежку
+    /// </summary>
+    [SerializeField]
+    private int countMoneyClothes;
+
+    /// <summary>
+    /// Колво за правильный цвет
+    /// </summary>
+    [SerializeField]
+    private int countMoneyColor;
 
     [Header("Ссылка на одежу в руках")]
     [SerializeField]
@@ -14,8 +26,15 @@ public class HeroController : MonoBehaviour
     [SerializeField]
     private int maxCountClothes;
 
-    //[HideInInspector]
-    public int[] arrayIDMaterialClothes;         // массив одежды у игрока на руках
+    /// <summary>
+    /// Дефолтный материал белая одежда
+    /// </summary>
+    [SerializeField]
+    private Material defaultMaterial;
+
+
+    //[SerializeField]
+    public Clothes[] arrayClothes;       // массив классов одежды у игрока на руках
 
     private int countClothes;
     public int CountClothes
@@ -40,7 +59,14 @@ public class HeroController : MonoBehaviour
     void Start()
     {
         maxCountClothes = GameSettings.Instance.maxCountClothes;
-        arrayIDMaterialClothes = new int[maxCountClothes + 1];
+
+        arrayClothes = new Clothes[maxCountClothes];
+        for (int index = 0; index < arrayClothes.Length; index++)
+        {
+            arrayClothes[index] = new Clothes();
+        }
+
+        defaultMaterial = clothesInHands[0].GetComponent<MeshRenderer>().material;
         ShowСlothesInHands();
     }
 
@@ -48,21 +74,42 @@ public class HeroController : MonoBehaviour
     /// Берет одежку
     /// </summary>
     /// <param name="materialClothes"></param>
-    public void TakeClothes(int IDMaterialClothes)
+    public void TakeClothes(int IDClothes)
     {
-        for (int index = 1; index < arrayIDMaterialClothes.Length; index++)
+        for (int index = 0; index < arrayClothes.Length; index++)
         {
-            if (arrayIDMaterialClothes[index] == 0)
+            if (arrayClothes[index].IDClothes == 0)
             {
-                arrayIDMaterialClothes[index] = IDMaterialClothes;
+                arrayClothes[index].IDClothes = IDClothes;
 
-                //ShowСlothesInHands(IDMaterialClothes);
                 ShowСlothesInHands();
 
                 break;
             }
         }
     }
+
+
+
+    /// <summary>
+    /// Красим одежку
+    /// </summary>
+    /// <param name="IDMaterialClothes"></param>
+    public void PaintingClothes(int IDMaterialClothes)
+    {
+        for (int index = 0; index < arrayClothes.Length; index++)
+        {
+            if (arrayClothes[index].IDClothes != 0)
+            {
+                arrayClothes[index].IDMaterialClothes = IDMaterialClothes;
+            }
+        }
+
+        ShowСlothesInHands();
+    }
+
+
+
 
 
     /// <summary>
@@ -72,19 +119,19 @@ public class HeroController : MonoBehaviour
     {
         bool result = false;
 
-        for (int i = 1; i < arrayIDMaterialClothes.Length; i++)
-        {
-            if (arrayIDMaterialClothes[i] > 0)
-            {
-                RemoveClothes(i);
-                result = true;
-                break;
-            }
-            else
-            {
-                continue;
-            }
-        }
+        //for (int i = 1; i < arrayIDMaterialClothes.Length; i++)
+        //{
+        //    if (arrayIDMaterialClothes[i] > 0)
+        //    {
+        //        RemoveClothes(i);
+        //        result = true;
+        //        break;
+        //    }
+        //    else
+        //    {
+        //        continue;
+        //    }
+        //}
 
         return result;
     }
@@ -98,7 +145,11 @@ public class HeroController : MonoBehaviour
     public void RemoveClothes(int index)
     {
         //print("Remove Clothes");                  /////////////////////////////////////////////////////
-        arrayIDMaterialClothes[index] = 0;
+        // arrayIDMaterialClothes[index] = 0;
+
+        arrayClothes[index].IDClothes = 0;
+        arrayClothes[index].IDMaterialClothes = 0;
+
         ShowСlothesInHands();
     }
 
@@ -107,18 +158,26 @@ public class HeroController : MonoBehaviour
     /// Сравниваем одекжу Бота и у игрока
     /// </summary>
     /// <param name="clothesBot"></param>
-    public int CompareClothes(int clothesBot)
+    public int CompareClothes(int currentIDClothesBot, int currentIDMaterialBot)
     {
         int result = 0;
 
-        for (int index = 1; index < arrayIDMaterialClothes.Length; index++)
+        for (int index = 0; index < arrayClothes.Length; index++)
         {
-            if (clothesBot == arrayIDMaterialClothes[index])
+            if (currentIDClothesBot == arrayClothes[index].IDClothes)
             {
-                //result = arrayIDMaterialClothes[index];
-                result = index;
-                //print(" Yes Clothes ID " + result);      ////////////////////////////////////////////////
+                result += countMoneyClothes;
+            }
 
+            if (currentIDMaterialBot == arrayClothes[index].IDMaterialClothes)
+            {
+                result += countMoneyColor;
+            }
+
+            if (result > 0)
+            {
+                RemoveClothes(index);
+                break;
             }
         }
 
@@ -131,20 +190,43 @@ public class HeroController : MonoBehaviour
     //}
 
 
+
+
+    /// <summary>
+    /// Показываем одежку в руках и красим
+    /// </summary>
     public void ShowСlothesInHands()
     {
-        for (int index = 1; index < arrayIDMaterialClothes.Length; index++)
+        for (int index = 0; index < arrayClothes.Length; index++)
         {
-            if (arrayIDMaterialClothes[index] != 0)
+            if (arrayClothes[index].IDClothes != 0)
             {
-                clothesInHands[index - 1].GetComponent<MeshRenderer>().material = GameSettings.Instance.arrayMaterial[arrayIDMaterialClothes[index]];
-                //break;
+                clothesInHands[index].gameObject.SetActive(true);
+
+                if (arrayClothes[index].IDMaterialClothes != 0)
+                {
+                    clothesInHands[index].GetComponent<MeshRenderer>().material = GameSettings.Instance.arrayMaterial[arrayClothes[index].IDMaterialClothes];
+                }
+                else
+                {
+                    clothesInHands[index].GetComponent<MeshRenderer>().material = defaultMaterial;
+                }
             }
             else
             {
-                clothesInHands[index - 1].GetComponent<MeshRenderer>().material = GameSettings.Instance.defaultMaterial;
+                
+                clothesInHands[index].gameObject.SetActive(false);
             }
+
         }
     }
+
+    [System.Serializable]
+    public class Clothes
+    {
+        public int IDClothes;
+        public int IDMaterialClothes;
+    }
+
 
 }

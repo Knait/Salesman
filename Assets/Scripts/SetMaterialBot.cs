@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetRandomMaterial : MonoBehaviour
+public class SetMaterialBot : MonoBehaviour
 {
     [Header("—сылка на модель визуала")]
     [SerializeField]
@@ -18,11 +18,11 @@ public class SetRandomMaterial : MonoBehaviour
 
     private void Start()
     {
-        SetIDMaterialBot();
+        //SetIDMaterialBot();
     }
 
 
-    private void SetIDMaterialBot()
+    public void SetIDMaterialBot(int IDMaterialClothes)
     {
         int startIndex = 1;
 
@@ -30,7 +30,9 @@ public class SetRandomMaterial : MonoBehaviour
 
         arrayMaterial = GameSettings.Instance.arrayMaterial;
 
-        IDMaterialClothes = Random.Range(startIndex, arrayMaterial.Length);
+        this.IDMaterialClothes = IDMaterialClothes;
+
+        //IDMaterialClothes = Random.Range(startIndex, arrayMaterial.Length);
 
         Material[] copyArrayMaterials = skinModel.GetComponent<Renderer>().materials;
 
