@@ -23,12 +23,6 @@ public class ShopperController : MonoBehaviour
     [SerializeField]
     private float speedBegin = 3.0f;
 
-    //[Header("Процент выпадания бота")]
-    //public int percentChoiceBot = 10;
-
-    //[Header("Кол-во бабла за Бота")]
-    //public int moneyForBot = 10 ;
-
     [HideInInspector]
     public Vector3 lastPosition;
 

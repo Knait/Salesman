@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CheckHeroBot : CheckHero
 {
-    [SerializeField]
-    private int currentIDMaterialBot;
+   // [HideInInspector]
+    public int currentIDMaterialBot;
 
-    [SerializeField]
-    private int currentIDClothesBot;
+   // [HideInInspector]
+    public int currentIDClothesBot;
 
     [Header("—сылка на модель визуала")]
     [SerializeField]
@@ -42,7 +42,7 @@ public class CheckHeroBot : CheckHero
     {
        // print("Bot  Hero");                      //////////////////////////////////////////
 
-        currentIDMaterialBot = setMaterialBot.IDMaterialClothes;
+        //currentIDMaterialBot = setMaterialBot.IDMaterialClothes;
 
         int currentMoneyForBuy = heroController.CompareClothes(currentIDClothesBot, currentIDMaterialBot);
 

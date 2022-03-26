@@ -143,6 +143,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1444934275920963963}
+  - {fileID: 4343893959890047816}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -175,6 +176,7 @@ MonoBehaviour:
   currentIDMaterialBot: 0
   _renderer: {fileID: 0}
   defaultMaterial: {fileID: 0}
+  showClothesPointBuy: {fileID: 2051934873486924244}
 --- !u!114 &3689431632524339999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,3 +190,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointActive: 0
+--- !u!1 &3271299692522415280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4343893959890047816}
+  - component: {fileID: 2051934873486924244}
+  m_Layer: 0
+  m_Name: PointShowClothes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4343893959890047816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271299692522415280}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.04, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1444934277700340041}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2051934873486924244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271299692522415280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aefb743e7e752d24db506f6e60bcd45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabShowClothes:
+  - {fileID: 3475839499594577693, guid: 12feb4d5f41203d4e89949a241c777fb, type: 3}
+  - {fileID: 3693753265474107268, guid: d5daa145ce141f24390e2a11a31f3c0c, type: 3}
+  - {fileID: 6336864144842673406, guid: 950fef89334e36046b318e187f85a763, type: 3}
+  - {fileID: 5784978512609269553, guid: a4a63ebc9cb506c4d85289a3aeac4916, type: 3}
+  arrayShowClothes: []
