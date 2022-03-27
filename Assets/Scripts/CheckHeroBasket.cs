@@ -30,22 +30,22 @@ public class CheckHeroBasket : MonoBehaviour
     /// <param name="collision"></param>
     private void OnCollisionStay(Collision collision)
     {
-        HeroController heroController = collision.gameObject.GetComponent<HeroController>();
+        //HeroController heroController = collision.gameObject.GetComponent<HeroController>();
 
-        if (heroController)
-        {
-            print("Basket  Hero");
+        //if (heroController)
+        //{
+        //    print("Basket  Hero");
 
-            if (isGiveClothes)
-            {
-                if (heroController.CheckDoubleInArray())
-                {
-                    UiShowTakeMoney.gameObject.SetActive(true);
-                    isGiveClothes = false;
-                    StartCoroutine(TimerGiveClothes(timerGiveClothes));
-                }
-            }
-        }
+        //    if (isGiveClothes)
+        //    {
+        //        if (heroController.CheckDoubleInArray())
+        //        {
+        //            UiShowTakeMoney.gameObject.SetActive(true);
+        //            isGiveClothes = false;
+        //            StartCoroutine(TimerGiveClothes(timerGiveClothes));
+        //        }
+        //    }
+        //}
 
 
 

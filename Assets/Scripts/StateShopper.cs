@@ -31,11 +31,20 @@ public class StateShopper : MonoBehaviour
     [SerializeField]
     private float timerBuy;
 
+    /// <summary>
+    /// Òàéìåð UI Òàéìåðà
+    /// </summary>
+    [SerializeField]
+    private float countTimer;   
+    //
+
     // Start is called before the first frame update
     void Start()
     {
         shopperController = GetComponent<ShopperController>();
         checkHeroBot = GetComponent<CheckHeroBot>();
+        timerBuy = GameSettings.Instance.startTimerWaitClient;
+
     }
 
     // Update is called once per frame
@@ -79,7 +88,6 @@ public class StateShopper : MonoBehaviour
         if (stateBot == StateBot.Walk)
         {
 
-            timerBuy = GameSettings.Instance.startTimerWaitClient;
             StartCoroutine(TimerBuy(timerBuy));
 
             stateBot = StateBot.Buy;
@@ -94,13 +102,31 @@ public class StateShopper : MonoBehaviour
     /// <returns></returns>
     private IEnumerator TimerBuy(float timerBuy)
     {
+        //StartCoroutine
+
+        Coroutine showCalcTimer = StartCoroutine(ShowCalcTimer());
+
         yield return new WaitForSeconds(timerBuy);
+
+        StopCoroutine(showCalcTimer);
+        countTimer = 0;
         stateBot = StateBot.Exit;
 
         //checkHeroBot.zoneCheckHero.transform.parent.gameObject.SetActive(false);
         // checkHeroBot.zoneCheckHero.transform.parent.GetComponent<PointBuy>().pointActive = false;
-       // print("Stateshopper point false");
+        // print("Stateshopper point false");
 
+    }
+
+    private IEnumerator ShowCalcTimer()
+    {
+        
+        while (true)
+        {
+            countTimer += Time.deltaTime;
+            
+            yield return new WaitForEndOfFrame();
+        }
     }
 
 
@@ -120,5 +146,18 @@ public class StateShopper : MonoBehaviour
             }
         }
 
+    }
+
+   
+
+    public float ÑalculationValueTimerUi()
+    {
+        float result = 0;
+
+        result = countTimer / timerBuy;
+
+
+
+        return result;
     }
 }

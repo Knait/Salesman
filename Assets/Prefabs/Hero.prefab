@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &72067971769486644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 74315086982970150}
+  - component: {fileID: 5810188663538149462}
+  m_Layer: 0
+  m_Name: PointUIShow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &74315086982970150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72067971769486644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.54, y: 1.592, z: 0.37}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7547369515183258361}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5810188663538149462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72067971769486644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6c922ceec11ab4394cdad6e601643f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabTimerUI: {fileID: 1703184593067835047, guid: a90496eff5d561346af4458972ab1ba5, type: 3}
+  transformTimerUI: {fileID: 0}
+  timerUI: {fileID: 0}
+  heroController: {fileID: 1449743490}
+  valueTimerUI: 0
 --- !u!1 &3281204474230258186
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +196,7 @@ Transform:
   m_Children:
   - {fileID: 7547369515277294410}
   - {fileID: 7547369514990733338}
+  - {fileID: 74315086982970150}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -216,6 +265,7 @@ MonoBehaviour:
   maxCountClothes: 0
   defaultMaterial: {fileID: 0}
   arrayClothes: []
+  countClothes: 0
 --- !u!1 &7547369515277294413
 GameObject:
   m_ObjectHideFlags: 0

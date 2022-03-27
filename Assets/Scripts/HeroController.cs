@@ -36,6 +36,7 @@ public class HeroController : MonoBehaviour
     //[SerializeField]
     public Clothes[] arrayClothes;       // массив классов одежды у игрока на руках
 
+    [SerializeField]
     private int countClothes;
     public int CountClothes
     {
@@ -81,6 +82,7 @@ public class HeroController : MonoBehaviour
             if (arrayClothes[index].IDClothes == 0)
             {
                 arrayClothes[index].IDClothes = IDClothes;
+                countClothes++;
 
                 ShowСlothesInHands();
 
@@ -115,26 +117,26 @@ public class HeroController : MonoBehaviour
     /// <summary>
     /// Проверяем одежку на двойников если есть удаляем
     /// </summary>
-    public bool CheckDoubleInArray()
-    {
-        bool result = false;
+    //public bool CheckDoubleInArray()
+    //{
+    //    bool result = false;
 
-        //for (int i = 1; i < arrayIDMaterialClothes.Length; i++)
-        //{
-        //    if (arrayIDMaterialClothes[i] > 0)
-        //    {
-        //        RemoveClothes(i);
-        //        result = true;
-        //        break;
-        //    }
-        //    else
-        //    {
-        //        continue;
-        //    }
-        //}
+    //    //for (int i = 1; i < arrayIDMaterialClothes.Length; i++)
+    //    //{
+    //    //    if (arrayIDMaterialClothes[i] > 0)
+    //    //    {
+    //    //        RemoveClothes(i);
+    //    //        result = true;
+    //    //        break;
+    //    //    }
+    //    //    else
+    //    //    {
+    //    //        continue;
+    //    //    }
+    //    //}
 
-        return result;
-    }
+    //    return result;
+    //}
 
 
     /// <summary>
@@ -149,7 +151,8 @@ public class HeroController : MonoBehaviour
 
         arrayClothes[index].IDClothes = 0;
         arrayClothes[index].IDMaterialClothes = 0;
-
+        countClothes--;
+        
         ShowСlothesInHands();
     }
 
@@ -214,12 +217,20 @@ public class HeroController : MonoBehaviour
             }
             else
             {
-                
                 clothesInHands[index].gameObject.SetActive(false);
             }
 
         }
     }
+
+    public float СalculationValueTimerUi()
+    {
+        float result = 0;
+
+        result = (float)countClothes / maxCountClothes;
+        return result;
+    }
+
 
     [System.Serializable]
     public class Clothes
