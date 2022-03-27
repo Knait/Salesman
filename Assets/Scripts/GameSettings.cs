@@ -63,6 +63,10 @@ public class GameSettings : MonoBehaviour
     [Header("Массив материалов Одежды")]
     public Material[] arrayMaterial;
 
+    [Header("Массив ID Одежды")]
+    public int[] arrayIDClothes;
+    
+
 
     private void Awake()
     {

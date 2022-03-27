@@ -18,13 +18,19 @@ public class SetMaterialBot : MonoBehaviour
 
     private void Start()
     {
+        
         //SetIDMaterialBot();
+    }
+
+    private void OnEnable()
+    {
+        IDMaterialClothes = Random.Range(1, 5);
     }
 
 
     public void SetIDMaterialBot(int IDMaterialClothes)
     {
-        int startIndex = 1;
+        //int startIndex = 1;
 
         Material[] arrayMaterial;
 

@@ -23,45 +23,11 @@ public class SpawnerShoppers : MonoBehaviour
 
     void Start()
     {
-        int countShoppers = 8;
-
-        Shoppers = new Transform[countShoppers];
-
-        Material[] arrayMaterial;
-
-        arrayMaterial = GameSettings.Instance.arrayMaterial;
-
-        int j = 0;
-
-        for (int i = 1; i < arrayMaterial.Length; i++)
-        {
-            j = InstantiateBot(i, j);
-            j = InstantiateBot(i, j);
-        }
-
-        for (int index = 0; index < Shoppers.Length; index++)
-        {
-
-            //randomIndexPointsSpawn = Random.Range(0, PointsSpawn.Length);
-            //Shoppers[index] = Instantiate(prefabShopper, PointsSpawn[randomIndexPointsSpawn].position, Quaternion.identity);
-            //Shoppers[index].gameObject.SetActive(false);
-        }
+        InstantiateShoppers();
 
         currentDeltaComingClient = GameSettings.Instance.startDeltaComingClient;
 
-        //for (int index = 0; index < PointsBuy.Length; index++)
-        //{
-        //    PointsBuy[index].gameObject.SetActive(false);
-        //}
-
-        //currentDeltaComingClient = 1;
-
         StartCoroutine(TimerSpawnShopper(currentDeltaComingClient));
-    }
-
-    void Update()
-    {
-
     }
 
     private void FindOpenPointBuy()
@@ -104,22 +70,57 @@ public class SpawnerShoppers : MonoBehaviour
             FindOpenPointBuy();
 
             yield return new WaitForSeconds(timerSpawnShopper);
-
-
         }
 
 
     }
 
 
-    private int InstantiateBot(int i, int j)
+    private int InstantiateBot(int IDClothes, int j)
     {
         randomIndexPointsSpawn = Random.Range(0, PointsSpawn.Length);
+
         Shoppers[j] = Instantiate(prefabShopper, PointsSpawn[randomIndexPointsSpawn].position, Quaternion.identity);
-        Shoppers[j].GetComponent<SetMaterialBot>().SetIDMaterialBot(i);
+        Shoppers[j].GetComponent<CheckHeroBot>().currentIDClothesBot = IDClothes;
         Shoppers[j].gameObject.SetActive(false);
 
         j++;
         return j;
+    }
+
+
+    private void InstantiateShoppers()
+    {
+        int countShoppers = 8;
+
+        Shoppers = new Transform[countShoppers];
+
+        int[] arrayIDClothes;
+
+        arrayIDClothes = GameSettings.Instance.arrayIDClothes;
+
+        int j = 0;
+
+        for (int IDClothes = 0; IDClothes < arrayIDClothes.Length; IDClothes++)
+        {
+            j = InstantiateBot(arrayIDClothes[IDClothes], j);
+            j = InstantiateBot(arrayIDClothes[IDClothes], j);
+        }
+
+        BlendShoppers();
+    }
+
+
+    private void BlendShoppers()
+    {
+        for (int i = Shoppers.Length - 1; i >= 1; i--)
+        {
+            int j = Random.Range(0, i + 1);
+
+            Transform temp = Shoppers[j];
+            Shoppers[j] = Shoppers[i];
+            Shoppers[i] = temp;
+
+        }
     }
 }

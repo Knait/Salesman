@@ -11,11 +11,17 @@ public class PointBuyCheckBot : MonoBehaviour
     //[HideInInspector]
     public int currentIDMaterialBot;
 
+    
+    private int currentIDClothesBot;
+
     [SerializeField]
     private Renderer _renderer;
 
     [SerializeField]
     private Material defaultMaterial;
+
+    [SerializeField]
+    private ShowClothesPointBuy showClothesPointBuy;
 
 
     private void Start()
@@ -27,7 +33,7 @@ public class PointBuyCheckBot : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SetMaterialBot setMaterialBot = other.GetComponent<SetMaterialBot>();
+        //SetMaterialBot setMaterialBot = other.GetComponent<SetMaterialBot>();
 
         CheckHeroBot checkHeroBot = other.GetComponent<CheckHeroBot>();
 
@@ -35,18 +41,27 @@ public class PointBuyCheckBot : MonoBehaviour
 
         //print(other.name);
 
-        if (setMaterialBot)
-        {
-            //zoneCheckHero.currentIDMaterialBot = setRandomMaterial.IDMaterialClothes;
+        //if (setMaterialBot)
+        //{
+        //    //zoneCheckHero.currentIDMaterialBot = setRandomMaterial.IDMaterialClothes;
 
-            currentIDMaterialBot = setMaterialBot.IDMaterialClothes;
+        //    currentIDMaterialBot = setMaterialBot.IDMaterialClothes;
 
-            SetMaterialObject(GameSettings.Instance.arrayMaterial[currentIDMaterialBot]);
-        }
+        //    SetMaterialObject(GameSettings.Instance.arrayMaterial[currentIDMaterialBot]);
+        //}
 
         if (checkHeroBot)
         {
             checkHeroBot.zoneCheckHero = zoneCheckHero;
+
+            currentIDMaterialBot = checkHeroBot.currentIDMaterialBot;
+
+            currentIDClothesBot = checkHeroBot.currentIDClothesBot;
+
+            SetMaterialObject(GameSettings.Instance.arrayMaterial[currentIDMaterialBot]);
+
+            showClothesPointBuy.SetActiveObject(currentIDClothesBot);
+
         }
 
         if (stateShopper)
@@ -65,6 +80,8 @@ public class PointBuyCheckBot : MonoBehaviour
             //zoneCheckHero.transform.parent.gameObject.SetActive(false);
             zoneCheckHero.transform.parent.GetComponent<PointBuy>().pointActive = false;          ///выкл точку покупки
             //print("PointBuyCheckBot point false");
+            showClothesPointBuy.DeActiveObject();
+
             SetMaterialObject();
 
         }
