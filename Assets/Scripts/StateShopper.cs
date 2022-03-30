@@ -25,8 +25,8 @@ public class StateShopper : MonoBehaviour
     //[HideInInspector]
     public Transform currentStartPosition;
 
-    [SerializeField]
-    private CheckHeroBot checkHeroBot;
+    //[SerializeField]
+    //private CheckHeroBot checkHeroBot;
 
     [SerializeField]
     private float timerBuy;
@@ -36,18 +36,14 @@ public class StateShopper : MonoBehaviour
     /// </summary>
     [SerializeField]
     private float countTimer;   
-    //
 
-    // Start is called before the first frame update
     void Start()
     {
         shopperController = GetComponent<ShopperController>();
-        checkHeroBot = GetComponent<CheckHeroBot>();
+      //  checkHeroBot = GetComponent<CheckHeroBot>();
         timerBuy = GameSettings.Instance.startTimerWaitClient;
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateStateShopper();
@@ -73,10 +69,6 @@ public class StateShopper : MonoBehaviour
                 shopperController.currentTarget = currentStartPosition;
                 break;
         }
-
-
-
-
     }
 
 
@@ -87,11 +79,9 @@ public class StateShopper : MonoBehaviour
     {
         if (stateBot == StateBot.Walk)
         {
-
             StartCoroutine(TimerBuy(timerBuy));
 
             stateBot = StateBot.Buy;
-
         }
     }
 
@@ -102,8 +92,6 @@ public class StateShopper : MonoBehaviour
     /// <returns></returns>
     private IEnumerator TimerBuy(float timerBuy)
     {
-        //StartCoroutine
-
         Coroutine showCalcTimer = StartCoroutine(ShowCalcTimer());
 
         yield return new WaitForSeconds(timerBuy);
@@ -111,24 +99,16 @@ public class StateShopper : MonoBehaviour
         StopCoroutine(showCalcTimer);
         countTimer = 0;
         stateBot = StateBot.Exit;
-
-        //checkHeroBot.zoneCheckHero.transform.parent.gameObject.SetActive(false);
-        // checkHeroBot.zoneCheckHero.transform.parent.GetComponent<PointBuy>().pointActive = false;
-        // print("Stateshopper point false");
-
     }
 
     private IEnumerator ShowCalcTimer()
     {
-        
         while (true)
         {
             countTimer += Time.deltaTime;
-            
             yield return new WaitForEndOfFrame();
         }
     }
-
 
     /// <summary>
     /// åñëè ïðèøåë íà ñïàâí òî÷êó âûêë
@@ -145,18 +125,13 @@ public class StateShopper : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-
     }
-
-   
 
     public float ÑalculationValueTimerUi()
     {
         float result = 0;
 
         result = countTimer / timerBuy;
-
-
 
         return result;
     }

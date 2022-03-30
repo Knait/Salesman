@@ -89,13 +89,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6522825265094292632}
   - component: {fileID: 9207103775807342591}
-  - component: {fileID: 7110846605766301794}
-  - component: {fileID: 4322695458733621650}
   - component: {fileID: 504720614}
   - component: {fileID: 2009074874815816773}
   - component: {fileID: 6870166020369476380}
   - component: {fileID: 281660947}
-  - component: {fileID: 2958187374549778549}
+  - component: {fileID: 4197127419164174949}
   m_Layer: 0
   m_Name: Shopper
   m_TagString: Untagged
@@ -128,43 +126,11 @@ CapsuleCollider:
   m_GameObject: {fileID: 6522825265094292633}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
-  m_Radius: 0.52733827
+  m_Enabled: 1
+  m_Radius: 0.46187028
   m_Height: 1.3163383
   m_Direction: 1
-  m_Center: {x: 0.008775055, y: 0.672325, z: 0.252671}
---- !u!114 &7110846605766301794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6522825265094292633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65023307a6639194aa0a6ea22d451793, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinModel: {fileID: 506217837443034428}
-  IDMaterialClothes: 0
---- !u!114 &4322695458733621650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6522825265094292633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3c19184dced8bf4fae2983949a8374d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentIDMaterialBot: 0
-  currentIDClothesBot: 1
-  skinModel: {fileID: 506217837443034428}
-  setMaterialBot: {fileID: 0}
-  zoneCheckHero: {fileID: 0}
-  stateShopper: {fileID: 0}
+  m_Center: {x: 0.01812765, y: 0.672325, z: 0.000151515}
 --- !u!114 &504720614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,19 +205,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
---- !u!65 &2958187374549778549
-BoxCollider:
+--- !u!114 &4197127419164174949
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6522825265094292633}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1.5330968}
-  m_Center: {x: 0, y: 0, z: 0.66870904}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c13f038db07ba4a819688b42e88fb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentIDMaterialBot: 0
+  currentIDClothesBot: 0
 --- !u!1001 &6522825264545562605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -337,11 +304,6 @@ GameObject:
 --- !u!4 &6705581091972126726 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2eece5d36468f334cad3b34343b07a84, type: 3}
-  m_PrefabInstance: {fileID: 6522825264545562605}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &506217837443034428 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -2484921068739079471, guid: 2eece5d36468f334cad3b34343b07a84, type: 3}
   m_PrefabInstance: {fileID: 6522825264545562605}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1129606318

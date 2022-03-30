@@ -1,4 +1,4 @@
-// Гавна скрипт висит на покупателе 
+// Гавна абсрактный скрипт
 // чекает игрока
 using System.Collections;
 using System.Collections.Generic;

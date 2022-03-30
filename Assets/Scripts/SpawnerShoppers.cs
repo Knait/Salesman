@@ -81,7 +81,7 @@ public class SpawnerShoppers : MonoBehaviour
         randomIndexPointsSpawn = Random.Range(0, PointsSpawn.Length);
 
         Shoppers[j] = Instantiate(prefabShopper, PointsSpawn[randomIndexPointsSpawn].position, Quaternion.identity);
-        Shoppers[j].GetComponent<CheckHeroBot>().currentIDClothesBot = IDClothes;
+        Shoppers[j].GetComponent<Shopper>().currentIDClothesBot = IDClothes;
         Shoppers[j].gameObject.SetActive(false);
 
         j++;

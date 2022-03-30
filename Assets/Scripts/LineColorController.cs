@@ -1,24 +1,17 @@
+
+/// Гамна скрипт висит на линии перекраски
+/// 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LineColorController : MonoBehaviour
 {
-
+    /// <summary>
+    /// ID Материал Одежды
+    /// </summary>
     [SerializeField]
-
     private int IDMaterialClothes;
-
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -26,7 +19,7 @@ public class LineColorController : MonoBehaviour
 
         if (heroController)
         {
-                print(" Color Clothes");  /////////////////////////////////////////////////////
+                ///print(" Color Clothes");  /////////////////////////////////////////////////////
                 heroController.PaintingClothes(IDMaterialClothes);
         }
     }

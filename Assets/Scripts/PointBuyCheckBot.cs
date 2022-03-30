@@ -5,14 +5,19 @@ using UnityEngine;
 public class PointBuyCheckBot : MonoBehaviour
 {
 
-    [SerializeField]
-    private ZoneCheckHero zoneCheckHero;
+    //[SerializeField]
+    //private ZoneCheckHero zoneCheckHero;
 
+    /// <summary>
+    /// тек. ID материал бота
+    /// </summary>
     //[HideInInspector]
     public int currentIDMaterialBot;
 
-    
-    private int currentIDClothesBot;
+    /// <summary>
+    /// тек. ID одежды бота
+    /// </summary>
+    public int currentIDClothesBot;
 
     [SerializeField]
     private Renderer _renderer;
@@ -26,39 +31,27 @@ public class PointBuyCheckBot : MonoBehaviour
 
     private void Start()
     {
-        zoneCheckHero = GetComponentInChildren<ZoneCheckHero>();
-        _renderer = zoneCheckHero.GetComponent<Renderer>();
-        defaultMaterial = _renderer.material;
+        //zoneCheckHero = GetComponentInChildren<ZoneCheckHero>();
+        //_renderer = zoneCheckHero.GetComponent<Renderer>();
+        //defaultMaterial = _renderer.material;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //SetMaterialBot setMaterialBot = other.GetComponent<SetMaterialBot>();
 
-        CheckHeroBot checkHeroBot = other.GetComponent<CheckHeroBot>();
+        Shopper shopper = other.GetComponent<Shopper>();
 
         StateShopper stateShopper = other.GetComponent<StateShopper>();
 
-        //print(other.name);
-
-        //if (setMaterialBot)
-        //{
-        //    //zoneCheckHero.currentIDMaterialBot = setRandomMaterial.IDMaterialClothes;
-
-        //    currentIDMaterialBot = setMaterialBot.IDMaterialClothes;
-
-        //    SetMaterialObject(GameSettings.Instance.arrayMaterial[currentIDMaterialBot]);
-        //}
-
-        if (checkHeroBot)
+        if (shopper)
         {
-            checkHeroBot.zoneCheckHero = zoneCheckHero;
+            //checkHeroBot.zoneCheckHero = zoneCheckHero;
 
-            currentIDMaterialBot = checkHeroBot.currentIDMaterialBot;
+            currentIDMaterialBot = shopper.currentIDMaterialBot;
 
-            currentIDClothesBot = checkHeroBot.currentIDClothesBot;
+            currentIDClothesBot = shopper.currentIDClothesBot;
 
-            SetMaterialObject(GameSettings.Instance.arrayMaterial[currentIDMaterialBot]);
+           // SetMaterialObject(GameSettings.Instance.arrayMaterial[currentIDMaterialBot]);
 
             showClothesPointBuy.SetActiveObject(currentIDClothesBot);
 
@@ -70,16 +63,22 @@ public class PointBuyCheckBot : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Чекаем бота
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
-        SetMaterialBot setMaterialBot = other.GetComponent<SetMaterialBot>();
+        Shopper shopper = other.GetComponent<Shopper>();
 
-        if (setMaterialBot)
+        if (shopper)
         {
-            zoneCheckHero.currentIDMaterialBot = 0;
-            //zoneCheckHero.transform.parent.gameObject.SetActive(false);
-            zoneCheckHero.transform.parent.GetComponent<PointBuy>().pointActive = false;          ///выкл точку покупки
-            //print("PointBuyCheckBot point false");
+            currentIDClothesBot = 0;
+
+            currentIDMaterialBot = 0;
+
+            //zoneCheckHero.transform.parent.GetComponent<PointBuy>().pointActive = false;          ///выкл точку покупки
             showClothesPointBuy.DeActiveObject();
 
             SetMaterialObject();
@@ -90,19 +89,18 @@ public class PointBuyCheckBot : MonoBehaviour
     /// <summary>
     /// Вкл выкл подсветки Зоны
     /// </summary>
-    /// <param name="stateObj"></param>
+    /// <param name="materialObj"></param>
     public void SetMaterialObject(Material materialObj)
     {
         _renderer.material = materialObj;
     }
 
     /// <summary>
-    /// выкл подсветки Зоны
+    ///  выкл подсветки Зоны
     /// </summary>
-    /// <param name="stateObj"></param>
     public void SetMaterialObject()
     {
-        _renderer.material = defaultMaterial;
+        //_renderer.material = defaultMaterial;
     }
 
 }

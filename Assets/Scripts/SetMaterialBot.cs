@@ -1,3 +1,6 @@
+
+/// на боте 
+/// 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,31 +17,24 @@ public class SetMaterialBot : MonoBehaviour
     //[HideInInspector]
     public int IDMaterialClothes;
 
-    //private Material[] copyArrayMaterials;
-
-    private void Start()
-    {
-        
-        //SetIDMaterialBot();
-    }
-
     private void OnEnable()
     {
         IDMaterialClothes = Random.Range(1, 5);
     }
 
 
-    public void SetIDMaterialBot(int IDMaterialClothes)
+    /// <summary>
+    /// Сетим ID материал одежды
+    /// </summary>
+    /// <param name="IDMaterialClothes"></param>
+     void SetIDMaterialBot(int IDMaterialClothes)
+    
     {
-        //int startIndex = 1;
-
         Material[] arrayMaterial;
 
         arrayMaterial = GameSettings.Instance.arrayMaterial;
 
         this.IDMaterialClothes = IDMaterialClothes;
-
-        //IDMaterialClothes = Random.Range(startIndex, arrayMaterial.Length);
 
         Material[] copyArrayMaterials = skinModel.GetComponent<Renderer>().materials;
 
