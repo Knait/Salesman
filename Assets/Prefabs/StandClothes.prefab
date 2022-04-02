@@ -378,6 +378,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19803840, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.92136884
+      objectReference: {fileID: 0}
+    - target: {fileID: 19803840, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 19803840, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.92136884
+      objectReference: {fileID: 0}
+    - target: {fileID: 19805732, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.96724814
+      objectReference: {fileID: 0}
+    - target: {fileID: 19805732, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 19805732, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.96724814
+      objectReference: {fileID: 0}
+    - target: {fileID: 19888488, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.91237986
+      objectReference: {fileID: 0}
+    - target: {fileID: 19888488, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 19888488, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.91237986
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
 --- !u!4 &8319860380668660478 stripped

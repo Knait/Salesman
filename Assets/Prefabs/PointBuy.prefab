@@ -94,8 +94,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9999998, y: 2.043785, z: 0.5305724}
-  m_Center: {x: 0, y: 0.5218925, z: -0.2347107}
+  m_Size: {x: 1.2241893, y: 2.043785, z: 0.82014024}
+  m_Center: {x: -0.024909208, y: 0.5218925, z: 0.068020254}
 --- !u!114 &1444934275920963964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +177,7 @@ MonoBehaviour:
   showClothesPointBuy: {fileID: 2051934873486924244}
   particleEffect: {fileID: 4836669555812454180}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
+  stateShopper: {fileID: 0}
 --- !u!114 &3689431632524339999
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,12 +35,17 @@ public class StateShopper : MonoBehaviour
     /// Таймер UI Таймера
     /// </summary>
     [SerializeField]
-    private float countTimer;   
+    private float countTimer;
+
+    /// <summary>
+    ///ССылка на корутину
+    /// </summary>
+    //[SerializeField]
+    private Coroutine showCalcTimer;
 
     void Start()
     {
         shopperController = GetComponent<ShopperController>();
-      //  checkHeroBot = GetComponent<CheckHeroBot>();
         timerBuy = GameSettings.Instance.startTimerWaitClient;
     }
 
@@ -67,6 +72,9 @@ public class StateShopper : MonoBehaviour
 
             case StateBot.Exit:
                 shopperController.currentTarget = currentStartPosition;
+
+                SetTimerUI();
+
                 break;
         }
     }
@@ -92,12 +100,10 @@ public class StateShopper : MonoBehaviour
     /// <returns></returns>
     private IEnumerator TimerBuy(float timerBuy)
     {
-        Coroutine showCalcTimer = StartCoroutine(ShowCalcTimer());
+        showCalcTimer = StartCoroutine(ShowCalcTimer());
 
         yield return new WaitForSeconds(timerBuy);
-
-        StopCoroutine(showCalcTimer);
-        countTimer = 0;
+       
         stateBot = StateBot.Exit;
     }
 
@@ -134,5 +140,12 @@ public class StateShopper : MonoBehaviour
         result = countTimer / timerBuy;
 
         return result;
+    }
+
+
+    private void SetTimerUI()
+    {
+        StopCoroutine(showCalcTimer);
+        countTimer = 0;
     }
 }

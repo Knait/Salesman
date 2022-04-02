@@ -626,7 +626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 407130481}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.38, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2035825594}
@@ -1083,6 +1083,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1444934277700340041, guid: c94bf20b13b311d48b017aa2052ebaed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836669555812194772, guid: c94bf20b13b311d48b017aa2052ebaed, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1959,6 +1963,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capsule
       objectReference: {fileID: 0}
+    - target: {fileID: 3693753265474107274, guid: d5daa145ce141f24390e2a11a31f3c0c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cc4afd34d1e7b7647be991626266dcc5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5daa145ce141f24390e2a11a31f3c0c, type: 3}
 --- !u!4 &851171976 stripped
@@ -2843,6 +2851,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 396738276}
     m_Modifications:
+    - target: {fileID: 6336864144842673392, guid: 950fef89334e36046b318e187f85a763, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cc4afd34d1e7b7647be991626266dcc5, type: 2}
     - target: {fileID: 6336864144842673405, guid: 950fef89334e36046b318e187f85a763, type: 3}
       propertyPath: m_Name
       value: Cylinder
@@ -3140,6 +3152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sphere
       objectReference: {fileID: 0}
+    - target: {fileID: 5784978512609269567, guid: a4a63ebc9cb506c4d85289a3aeac4916, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cc4afd34d1e7b7647be991626266dcc5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4a63ebc9cb506c4d85289a3aeac4916, type: 3}
 --- !u!1001 &1532338694
@@ -4033,6 +4049,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 2818425552073564132, guid: 12feb4d5f41203d4e89949a241c777fb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cc4afd34d1e7b7647be991626266dcc5, type: 2}
     - target: {fileID: 3475839499594577693, guid: 12feb4d5f41203d4e89949a241c777fb, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5377,7 +5397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621782170547795826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.32, z: 0}
+  m_LocalPosition: {x: -0.47, y: 0.32, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3758686858330361726}
