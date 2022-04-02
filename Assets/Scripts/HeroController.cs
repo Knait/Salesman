@@ -68,6 +68,9 @@ public class HeroController : MonoBehaviour
         }
     }
 
+    //[SerializeField]
+    //int[] resultTemp;
+
     void Start()
     {
         maxCountClothes = GameSettings.Instance.maxCountClothes;
@@ -144,7 +147,13 @@ public class HeroController : MonoBehaviour
     /// <param name="clothesBot"></param>
     public int CompareClothes(int currentIDClothesBot, int currentIDMaterialBot)
     {
+        int indexArrayClothes = 0;
+
         int result = 0;
+
+        //int[]
+
+        int[] resultTemp = new int[2];
 
         if (countClothes > 0)
         {
@@ -152,23 +161,42 @@ public class HeroController : MonoBehaviour
             {
                 if (currentIDClothesBot == arrayClothes[index].IDClothes)
                 {
-                    result += countMoneyClothes;
-                }
+                    resultTemp[index] += countMoneyClothes;
 
+                }
                 if (currentIDMaterialBot == arrayClothes[index].IDMaterialClothes)
                 {
-                    result += countMoneyColor;
+                    resultTemp[index] += countMoneyColor;
                 }
-
-                //if (result > 0)
-                //{
-                RemoveClothes(index);
-                //    break;
-                //}
             }
+
+            if (resultTemp[0] >= resultTemp[1])
+            {
+                result = resultTemp[0];
+                indexArrayClothes = 0;
+            }
+            else
+            {
+                result = resultTemp[1];
+                indexArrayClothes = 1;
+            }
+
+
+            print(" index " + indexArrayClothes);
+            RemoveClothes(indexArrayClothes);
         }
+        else
+        {
+            result = -1;
+        }
+
         return result;
     }
+
+
+
+
+
 
     /// <summary>
     /// Показываем одежку в руках и красим

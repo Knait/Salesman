@@ -6,38 +6,14 @@ using UnityEngine;
 
 public class ZoneCheckHero : MonoBehaviour
 {
-
-
-    [SerializeField]
-    private Material defaultMaterial;
-
-    //[HideInInspector]
+    // [HideInInspector]
     public int currentIDMaterialBot;
 
-    [SerializeField]
-    private Material currentMaterialBot;
+    // [HideInInspector]
+    public int currentIDClothesBot;
 
     [SerializeField]
-    private Renderer _renderer;
-
-    private void Start()
-    {
-        _renderer = GetComponent<Renderer>();
-        defaultMaterial = _renderer.material;
-    }
-
-    private void Update()
-    {
-        //if (currentIDMaterialBot == 0)
-        // {
-        //currentIDMaterialBot = setRandomMaterial.IDMaterialClothes;
-        //currentMaterialBot = GameSettings.Instance.arrayMaterial[currentIDMaterialBot];
-        //currentColorBot = currentMaterialBot.color;
-        // currentLight.color = currentColorBot;
-
-        // }
-
-    }
+    private PointBuyCheckBot pointBuyCheckBot;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -45,12 +21,18 @@ public class ZoneCheckHero : MonoBehaviour
 
         if (heroController)
         {
+            currentIDMaterialBot = pointBuyCheckBot.currentIDMaterialBot;
+            currentIDClothesBot = pointBuyCheckBot.currentIDClothesBot;
+
             if (currentIDMaterialBot != 0)
             {
-                if (heroController.CompareClothes(currentIDMaterialBot, 1) != 0)
+                int currentMoneyForBuy = heroController.CompareClothes(currentIDClothesBot, currentIDMaterialBot);
+
+                if (currentMoneyForBuy != -1)
                 {
-                   // print(" hero In zone ");                   ////////////////////////////////////////
-                    //SetMaterialObject(GameSettings.Instance.arrayMaterial[currentIDMaterialBot]);
+                    //print(" hero In zone ");                   ////////////////////////////////////////
+                    print(" Result Buy " + currentMoneyForBuy);
+                    Buy(currentMoneyForBuy);
                 }
             }
         }
@@ -63,26 +45,26 @@ public class ZoneCheckHero : MonoBehaviour
 
         if (heroController)
         {
-            SetMaterialObject();
-            //print("Hero out zone");             /////////////////////////////////////////
+
+
         }
     }
 
     /// <summary>
-    /// Вкл выкл подсветки Зоны
+    /// Покупка
     /// </summary>
-    /// <param name="stateObj"></param>
-    public void SetMaterialObject(Material materialObj)
+    private void Buy(int currentMoneyForBuy)
     {
-        _renderer.material = materialObj;
+        GameController.Instance.SetCountServedShoppers();
+
+        GameController.Instance.SetCurrentMoney(currentMoneyForBuy);
+
+        StateShopper stateShopper = pointBuyCheckBot.stateShopper;
+
+        stateShopper.stateBot = StateBot.Exit;
+
     }
 
-    /// <summary>
-    /// Вкл выкл подсветки Зоны
-    /// </summary>
-    /// <param name="stateObj"></param>
-    public void SetMaterialObject()
-    {
-        _renderer.material = defaultMaterial;
-    }
+
+
 }

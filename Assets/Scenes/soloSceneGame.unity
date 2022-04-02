@@ -1708,9 +1708,9 @@ MonoBehaviour:
   countMoneyBuy: 10
   countMoneyGame: 10
   countMoneyRemove: 5
-  startDeltaComingClient: 5
+  startDeltaComingClient: 15
   reductionDeltaComingClientHard: 0.05
-  startTimerWaitClient: 5
+  startTimerWaitClient: 15
   reductionTimerWaitClientHard: 0.05
   defaultMaterial: {fileID: 2100000, guid: cc4afd34d1e7b7647be991626266dcc5, type: 2}
   arrayMaterial:

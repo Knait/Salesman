@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/soloScene.unity
     guid: 9909cc1885b89b6458fdb4fb869a7571
   m_configObjects: {}

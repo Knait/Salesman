@@ -41,7 +41,6 @@ public class SpawnerShoppers : MonoBehaviour
                     if (!Shoppers[j].gameObject.activeInHierarchy)
                     {
                         PointsBuy[i].GetComponent<PointBuy>().pointActive = true;        //вкл точку покупки
-                        //PointsBuy[i].gameObject.SetActive(true);
 
                         Shoppers[j].gameObject.SetActive(true);
 

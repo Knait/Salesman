@@ -7,9 +7,9 @@ using UnityEngine;
 
 public class SetMaterialBot : MonoBehaviour
 {
-    [Header("Ссылка на модель визуала")]
-    [SerializeField]
-    private Transform skinModel;
+    //[Header("Ссылка на модель визуала")]
+    //[SerializeField]
+    //private Transform skinModel;
 
     /// <summary>
     /// Текущий ID цвета бота
@@ -23,24 +23,24 @@ public class SetMaterialBot : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Сетим ID материал одежды
-    /// </summary>
-    /// <param name="IDMaterialClothes"></param>
-     void SetIDMaterialBot(int IDMaterialClothes)
+    ///// <summary>
+    ///// Сетим ID материал одежды
+    ///// </summary>
+    ///// <param name="IDMaterialClothes"></param>
+    // void SetIDMaterialBot(int IDMaterialClothes)
     
-    {
-        Material[] arrayMaterial;
+    //{
+    //    Material[] arrayMaterial;
 
-        arrayMaterial = GameSettings.Instance.arrayMaterial;
+    //    arrayMaterial = GameSettings.Instance.arrayMaterial;
 
-        this.IDMaterialClothes = IDMaterialClothes;
+    //    this.IDMaterialClothes = IDMaterialClothes;
 
-        Material[] copyArrayMaterials = skinModel.GetComponent<Renderer>().materials;
+    //    Material[] copyArrayMaterials = skinModel.GetComponent<Renderer>().materials;
 
-        copyArrayMaterials[1] = arrayMaterial[IDMaterialClothes];
+    //    copyArrayMaterials[1] = arrayMaterial[IDMaterialClothes];
 
-        skinModel.GetComponent<Renderer>().materials = copyArrayMaterials;
-    }
+    //    skinModel.GetComponent<Renderer>().materials = copyArrayMaterials;
+    //}
 
 }

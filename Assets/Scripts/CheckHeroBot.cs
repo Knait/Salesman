@@ -65,7 +65,7 @@ public class CheckHeroBot : CheckHero
 
         stateShopper.stateBot = StateBot.Exit;
 
-        zoneCheckHero.SetMaterialObject();
+        //zoneCheckHero.SetMaterialObject();
     }
 
 }

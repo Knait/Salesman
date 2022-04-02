@@ -94,8 +94,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9999998, y: 2.043785, z: 1.0395107}
-  m_Center: {x: 0, y: 0.5218925, z: 0.019758487}
+  m_Size: {x: 0.9999998, y: 2.043785, z: 0.5305724}
+  m_Center: {x: 0, y: 0.5218925, z: -0.2347107}
 --- !u!114 &1444934275920963964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,10 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d59d803525a1e4d9dab0d0cbfc6d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: 0}
   currentIDMaterialBot: 0
-  currentMaterialBot: {fileID: 0}
-  _renderer: {fileID: 0}
+  currentIDClothesBot: 0
+  pointBuyCheckBot: {fileID: 1444934277700340043}
 --- !u!1 &1444934277700340040
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,11 +172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cea48a3cbe2dd4b9243de87c39331d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneCheckHero: {fileID: 0}
   currentIDMaterialBot: 0
-  _renderer: {fileID: 0}
-  defaultMaterial: {fileID: 0}
+  currentIDClothesBot: 0
   showClothesPointBuy: {fileID: 2051934873486924244}
+  particleEffect: {fileID: 4836669555812454180}
+  currentColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &3689431632524339999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,6 +311,10 @@ PrefabInstance:
     - target: {fileID: 191608, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
       propertyPath: m_Name
       value: BasicZoneGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 191608, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 457352, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
       propertyPath: m_RootOrder

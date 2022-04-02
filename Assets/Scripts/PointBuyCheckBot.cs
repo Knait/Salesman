@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PointBuyCheckBot : MonoBehaviour
 {
-
-    //[SerializeField]
-    //private ZoneCheckHero zoneCheckHero;
-
     /// <summary>
     /// тек. ID материал бота
     /// </summary>
@@ -20,20 +16,26 @@ public class PointBuyCheckBot : MonoBehaviour
     public int currentIDClothesBot;
 
     [SerializeField]
-    private Renderer _renderer;
-
-    [SerializeField]
-    private Material defaultMaterial;
-
-    [SerializeField]
     private ShowClothesPointBuy showClothesPointBuy;
+
+    [Header("—сылка на Particle Effect")]
+    [SerializeField]
+    private Transform particleEffect;
+
+    [SerializeField]
+    private Color currentColor;
+
+    private ParticleSystem particleSys;
+
+    [HideInInspector]
+    public StateShopper stateShopper;
+
+
 
 
     private void Start()
     {
-        //zoneCheckHero = GetComponentInChildren<ZoneCheckHero>();
-        //_renderer = zoneCheckHero.GetComponent<Renderer>();
-        //defaultMaterial = _renderer.material;
+        particleSys = particleEffect.GetComponent<ParticleSystem>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,20 +43,18 @@ public class PointBuyCheckBot : MonoBehaviour
 
         Shopper shopper = other.GetComponent<Shopper>();
 
-        StateShopper stateShopper = other.GetComponent<StateShopper>();
+        stateShopper = other.GetComponent<StateShopper>();
 
         if (shopper)
         {
-            //checkHeroBot.zoneCheckHero = zoneCheckHero;
-
             currentIDMaterialBot = shopper.currentIDMaterialBot;
-
             currentIDClothesBot = shopper.currentIDClothesBot;
 
-           // SetMaterialObject(GameSettings.Instance.arrayMaterial[currentIDMaterialBot]);
-
             showClothesPointBuy.SetActiveObject(currentIDClothesBot);
-
+           
+            particleEffect.gameObject.SetActive(true);
+            currentColor = GameSettings.Instance.arrayMaterial[currentIDMaterialBot].color;
+            particleSys.startColor = currentColor;
         }
 
         if (stateShopper)
@@ -75,32 +75,13 @@ public class PointBuyCheckBot : MonoBehaviour
         if (shopper)
         {
             currentIDClothesBot = 0;
-
             currentIDMaterialBot = 0;
 
-            //zoneCheckHero.transform.parent.GetComponent<PointBuy>().pointActive = false;          ///выкл точку покупки
+            transform.GetComponent<PointBuy>().pointActive = false;          ///выкл точку покупки
+
             showClothesPointBuy.DeActiveObject();
-
-            SetMaterialObject();
-
+            particleEffect.gameObject.SetActive(false);
         }
-    }
-
-    /// <summary>
-    /// ¬кл выкл подсветки «оны
-    /// </summary>
-    /// <param name="materialObj"></param>
-    public void SetMaterialObject(Material materialObj)
-    {
-        _renderer.material = materialObj;
-    }
-
-    /// <summary>
-    ///  выкл подсветки «оны
-    /// </summary>
-    public void SetMaterialObject()
-    {
-        //_renderer.material = defaultMaterial;
     }
 
 }
