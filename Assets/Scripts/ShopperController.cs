@@ -1,5 +1,5 @@
 
-// ГАВНА скрипт весит на противнике
+// ГАВНА скрипт весит на покупателе
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -44,6 +44,9 @@ public class ShopperController : MonoBehaviour
         UpdateTarget();
     }
 
+    /// <summary>
+    /// Обновление движения
+    /// </summary>
     void UpdateMove()
     {
         if (GameController.Instance.stateGame == StateGame.Game)
@@ -65,8 +68,6 @@ public class ShopperController : MonoBehaviour
     /// </summary>
     void RunEnemy()
     {
-
-
         if (animator)
         {
             //if (navMeshAgent.speed == speedBegin)
@@ -87,10 +88,11 @@ public class ShopperController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// обновляем цель
+    /// </summary>
     void UpdateTarget()
     {
-
-
         if (currentTarget && GameController.Instance.stateGame == StateGame.Game)
         {
             navMeshAgent.destination = currentTarget.position;
@@ -100,12 +102,7 @@ public class ShopperController : MonoBehaviour
         {
             navMeshAgent.speed = 0;
             IdleEnemy();
-
-
         }
-
-
     }
-
 }
 

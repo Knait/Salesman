@@ -44,7 +44,7 @@ public class CheckHeroBot : CheckHero
 
         //currentIDMaterialBot = setMaterialBot.IDMaterialClothes;
 
-        int currentMoneyForBuy = heroController.CompareClothes(currentIDClothesBot, currentIDMaterialBot);
+        int currentMoneyForBuy = heroController.CompareClothes(currentIDClothesBot, currentIDMaterialBot, out int currentBuyIDMaterialClothes);
 
        // if (currentIdClothes != 0)
       //  {

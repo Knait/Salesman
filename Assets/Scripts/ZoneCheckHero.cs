@@ -1,4 +1,4 @@
-//говно скрипт висит на зоне чека игрока для подсветки
+//говно скрипт висит на зоне чека игрока
 
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +15,11 @@ public class ZoneCheckHero : MonoBehaviour
     [SerializeField]
     private PointBuyCheckBot pointBuyCheckBot;
 
+    /// <summary>
+    /// текущий материал проданой шмотки
+    /// </summary>
+    private int currentBuyIDMaterialClothes;
+
     private void OnTriggerEnter(Collider other)
     {
         HeroController heroController = other.gameObject.GetComponent<HeroController>();
@@ -24,9 +29,9 @@ public class ZoneCheckHero : MonoBehaviour
             currentIDMaterialBot = pointBuyCheckBot.currentIDMaterialBot;
             currentIDClothesBot = pointBuyCheckBot.currentIDClothesBot;
 
-            if (currentIDMaterialBot != 0)
-            {
-                int currentMoneyForBuy = heroController.CompareClothes(currentIDClothesBot, currentIDMaterialBot);
+            //if (currentIDMaterialBot != 0)                 
+            //{
+                int currentMoneyForBuy = heroController.CompareClothes(currentIDClothesBot, currentIDMaterialBot, out currentBuyIDMaterialClothes);
 
                 if (currentMoneyForBuy != -1)
                 {
@@ -34,19 +39,7 @@ public class ZoneCheckHero : MonoBehaviour
                     print(" Result Buy " + currentMoneyForBuy);
                     Buy(currentMoneyForBuy);
                 }
-            }
-        }
-    }
-
-
-    private void OnTriggerExit(Collider other)
-    {
-        HeroController heroController = other.gameObject.GetComponent<HeroController>();
-
-        if (heroController)
-        {
-
-
+            //}
         }
     }
 
@@ -61,10 +54,9 @@ public class ZoneCheckHero : MonoBehaviour
 
         StateShopper stateShopper = pointBuyCheckBot.stateShopper;
 
+        stateShopper.SetStateBag(true, currentBuyIDMaterialClothes);
+
         stateShopper.stateBot = StateBot.Exit;
-
     }
-
-
 
 }

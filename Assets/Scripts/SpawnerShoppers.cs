@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class SpawnerShoppers : MonoBehaviour
 {
-    public Transform[] PointsBuy;
+    public Transform[] pointsBuy;
 
-    public Transform[] Shoppers;
+    public Transform[] shoppers;
 
-    public Transform[] PointsSpawn;
+    public Transform[] pointsSpawn;
 
     [SerializeField]
     private Transform prefabShopper;
+
+    [SerializeField]
+    List<Transform> tempPointsBuy;
 
     /// <summary>
     /// Текущий интервал прихода клиента
@@ -30,38 +33,52 @@ public class SpawnerShoppers : MonoBehaviour
         StartCoroutine(TimerSpawnShopper(currentDeltaComingClient));
     }
 
+    /// <summary>
+    /// Находим свободную точку покупки и сетим покупателя
+    /// </summary>
     private void FindOpenPointBuy()
     {
-        for (int i = 0; i < PointsBuy.Length; i++)
+        for (int index = 0; index < pointsBuy.Length; index++)
         {
-            if (!PointsBuy[i].GetComponent<PointBuy>().pointActive)
+            if (!pointsBuy[index].GetComponent<PointBuy>().pointActive)            ///Находим все свободные точки покупки
             {
-                for (int j = 0; j < Shoppers.Length; j++)
-                {
-                    if (!Shoppers[j].gameObject.activeInHierarchy)
-                    {
-                        PointsBuy[i].GetComponent<PointBuy>().pointActive = true;        //вкл точку покупки
-
-                        Shoppers[j].gameObject.SetActive(true);
-
-                        StateShopper stateShopper = Shoppers[j].GetComponent<StateShopper>();
-
-                        stateShopper.currentStartPosition = PointsSpawn[randomIndexPointsSpawn];
-
-                        stateShopper.currentTarget = PointsBuy[i];
-
-                        stateShopper.stateBot = StateBot.Walk;
-
-                        return;
-                    }
-                }
-
+                tempPointsBuy.Add(pointsBuy[index]);                                /// заносим в промеж массив 
             }
 
+           // print("find index = " + index);
+        }
+
+        int i = Random.Range(0, tempPointsBuy.Count);                             /// выбираем в промеж массиве рандомно точку
+
+        for (int j = 0; j < shoppers.Length; j++)                                // ищем выкл покупателей
+        {
+            if (!shoppers[j].gameObject.activeInHierarchy)                         // если покупатель выкл
+            {
+                tempPointsBuy[i].GetComponent<PointBuy>().pointActive = true;        //вкл точку покупки
+
+                shoppers[j].gameObject.SetActive(true);                               // вкл покупателя
+
+                StateShopper stateShopper = shoppers[j].GetComponent<StateShopper>();
+
+                stateShopper.currentStartPosition = pointsSpawn[randomIndexPointsSpawn];           // сетим точку спавна
+
+                stateShopper.currentTarget = tempPointsBuy[i];                                      //сетим точку покупки
+
+                tempPointsBuy.Clear();                                                        //очищаем врем массив
+
+                stateShopper.stateBot = StateBot.Walk;                                     // покупатель бежит 
+
+                return;
+            }
         }
     }
 
 
+    /// <summary>
+    /// таймер спавна покупателя
+    /// </summary>
+    /// <param name="timerSpawnShopper"></param>
+    /// <returns></returns>
     private IEnumerator TimerSpawnShopper(float timerSpawnShopper)
     {
         while (true)
@@ -75,24 +92,34 @@ public class SpawnerShoppers : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// создаем покупателя
+    /// </summary>
+    /// <param name="IDClothes"></param>
+    /// <param name="j"></param>
+    /// <returns></returns>
     private int InstantiateBot(int IDClothes, int j)
     {
-        randomIndexPointsSpawn = Random.Range(0, PointsSpawn.Length);
+        randomIndexPointsSpawn = Random.Range(0, pointsSpawn.Length);
 
-        Shoppers[j] = Instantiate(prefabShopper, PointsSpawn[randomIndexPointsSpawn].position, Quaternion.identity);
-        Shoppers[j].GetComponent<Shopper>().currentIDClothesBot = IDClothes;
-        Shoppers[j].gameObject.SetActive(false);
+        shoppers[j] = Instantiate(prefabShopper, pointsSpawn[randomIndexPointsSpawn].position, Quaternion.identity);
+        shoppers[j].GetComponent<Shopper>().currentIDClothesBot = IDClothes;
+        shoppers[j].gameObject.SetActive(false);
 
         j++;
         return j;
     }
 
 
+
+    /// <summary>
+    /// логика создания покупателей
+    /// </summary>
     private void InstantiateShoppers()
     {
         int countShoppers = 8;
 
-        Shoppers = new Transform[countShoppers];
+        shoppers = new Transform[countShoppers];
 
         int[] arrayIDClothes;
 
@@ -109,16 +136,18 @@ public class SpawnerShoppers : MonoBehaviour
         BlendShoppers();
     }
 
-
+    /// <summary>
+    /// перемес покупателей в массиве
+    /// </summary>
     private void BlendShoppers()
     {
-        for (int i = Shoppers.Length - 1; i >= 1; i--)
+        for (int i = shoppers.Length - 1; i >= 1; i--)
         {
             int j = Random.Range(0, i + 1);
 
-            Transform temp = Shoppers[j];
-            Shoppers[j] = Shoppers[i];
-            Shoppers[i] = temp;
+            Transform temp = shoppers[j];
+            shoppers[j] = shoppers[i];
+            shoppers[i] = temp;
 
         }
     }

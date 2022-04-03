@@ -145,13 +145,13 @@ public class HeroController : MonoBehaviour
     /// Сравниваем одекжу Бота и игрока
     /// </summary>
     /// <param name="clothesBot"></param>
-    public int CompareClothes(int currentIDClothesBot, int currentIDMaterialBot)
+    public int CompareClothes(int currentIDClothesBot, int currentIDMaterialBot, out int currentBuyIDMaterialClothes)
     {
+        currentBuyIDMaterialClothes = 0;
+
         int indexArrayClothes = 0;
 
         int result = 0;
-
-        //int[]
 
         int[] resultTemp = new int[2];
 
@@ -170,7 +170,12 @@ public class HeroController : MonoBehaviour
                 }
             }
 
-            if (resultTemp[0] >= resultTemp[1])
+            if (resultTemp[0] > resultTemp[1])
+            {
+                result = resultTemp[0];
+                indexArrayClothes = 0;
+            }
+            else if (arrayClothes[0].IDClothes != 0)
             {
                 result = resultTemp[0];
                 indexArrayClothes = 0;
@@ -181,13 +186,14 @@ public class HeroController : MonoBehaviour
                 indexArrayClothes = 1;
             }
 
+         //   print(" index " + indexArrayClothes);
+            currentBuyIDMaterialClothes = arrayClothes[indexArrayClothes].IDMaterialClothes;       //сетим ID материал проданной шмотки
 
-            print(" index " + indexArrayClothes);
-            RemoveClothes(indexArrayClothes);
+            RemoveClothes(indexArrayClothes);                                               // удаляем из массива одежды игрока одежду которую отдали
         }
         else
         {
-            result = -1;
+            result = -1;                    // ничего не продали
         }
 
         return result;

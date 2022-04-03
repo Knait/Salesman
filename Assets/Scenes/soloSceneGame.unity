@@ -920,7 +920,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465316592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.05}
+  m_LocalPosition: {x: 0, y: 0, z: -0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 500682310}
@@ -1712,9 +1712,9 @@ MonoBehaviour:
   countMoneyBuy: 10
   countMoneyGame: 10
   countMoneyRemove: 5
-  startDeltaComingClient: 15
+  startDeltaComingClient: 5
   reductionDeltaComingClientHard: 0.05
-  startTimerWaitClient: 15
+  startTimerWaitClient: 10
   reductionTimerWaitClientHard: 0.05
   defaultMaterial: {fileID: 2100000, guid: cc4afd34d1e7b7647be991626266dcc5, type: 2}
   arrayMaterial:
@@ -4155,18 +4155,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286bc0054610ba543860d519dba25797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointsBuy:
+  pointsBuy:
   - {fileID: 500682310}
   - {fileID: 1889574500}
   - {fileID: 241632021}
   - {fileID: 432809263}
-  Shoppers: []
-  PointsSpawn:
+  shoppers: []
+  pointsSpawn:
   - {fileID: 1461050503}
   - {fileID: 631406940}
   - {fileID: 1883129821}
   - {fileID: 1731598620}
   prefabShopper: {fileID: 6522825265094292632, guid: f5cf94e46d61ba448b1b2f2780e32387, type: 3}
+  tempPointsBuy: []
   currentDeltaComingClient: 0
 --- !u!4 &2058568575
 Transform:

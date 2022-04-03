@@ -1,8 +1,13 @@
+// на боте управление состоянием бота
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
+
+/// <summary>
+/// состояния бота
+/// </summary>
 public enum StateBot
 {
     Start,
@@ -16,6 +21,10 @@ public class StateShopper : MonoBehaviour
     //[HideInInspector]
     public StateBot stateBot;
 
+    [Header("Сылка на Сумку")]
+    [SerializeField]
+    private Transform bag;
+
     [SerializeField]
     private ShopperController shopperController;
 
@@ -24,9 +33,6 @@ public class StateShopper : MonoBehaviour
 
     //[HideInInspector]
     public Transform currentStartPosition;
-
-    //[SerializeField]
-    //private CheckHeroBot checkHeroBot;
 
     [SerializeField]
     private float timerBuy;
@@ -46,7 +52,13 @@ public class StateShopper : MonoBehaviour
     void Start()
     {
         shopperController = GetComponent<ShopperController>();
-        timerBuy = GameSettings.Instance.startTimerWaitClient;
+
+        timerBuy = GameSettings.Instance.startTimerWaitClient;          // время ожидания клиента
+    }
+
+    private void OnEnable()
+    {
+        SetStateBag(false, 1);             // выкл сумку
     }
 
     void Update()
@@ -54,6 +66,11 @@ public class StateShopper : MonoBehaviour
         UpdateStateShopper();
     }
 
+
+
+    /// <summary>
+    /// состояния покупателя
+    /// </summary>
     private void UpdateStateShopper()
     {
         switch (stateBot)
@@ -62,22 +79,36 @@ public class StateShopper : MonoBehaviour
 
                 break;
 
-            case StateBot.Walk:
-                shopperController.currentTarget = currentTarget;
+            case StateBot.Walk: 
+                shopperController.currentTarget = currentTarget;               // сетим цель покупателя на точку покупки
                 break;
 
             case StateBot.Buy:
-                shopperController.currentTarget = null;
+                shopperController.currentTarget = null;            // сброс цели покупателя
                 break;
 
             case StateBot.Exit:
-                shopperController.currentTarget = currentStartPosition;
+                shopperController.currentTarget = currentStartPosition;         // сетим цель покупателя на выход 
+                 
 
                 SetTimerUI();
 
                 break;
         }
     }
+
+    /// <summary>
+    /// Вкл и красим сумку
+    /// </summary>
+    /// <param name="active">Вкл выкл </param>
+    /// <param name="IDMaterialClothes">Цвет</param>
+    public void SetStateBag(bool active, int IDMaterialClothes)
+    {
+        bag.gameObject.SetActive(active);     // вкл выкл сумки
+
+        bag.GetComponent<MeshRenderer>().material = GameSettings.Instance.arrayMaterial[IDMaterialClothes];          // красим сумку
+    }
+
 
 
     /// <summary>
@@ -87,9 +118,9 @@ public class StateShopper : MonoBehaviour
     {
         if (stateBot == StateBot.Walk)
         {
-            StartCoroutine(TimerBuy(timerBuy));
+            StartCoroutine(TimerBuy(timerBuy));    ///вкл корутины покупки
 
-            stateBot = StateBot.Buy;
+            stateBot = StateBot.Buy;                  // сетим покупателя в Buy
         }
     }
 
@@ -103,10 +134,14 @@ public class StateShopper : MonoBehaviour
         showCalcTimer = StartCoroutine(ShowCalcTimer());
 
         yield return new WaitForSeconds(timerBuy);
-       
+
         stateBot = StateBot.Exit;
     }
 
+    /// <summary>
+    /// корутина UI таймера
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ShowCalcTimer()
     {
         while (true)
@@ -133,6 +168,10 @@ public class StateShopper : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Расчет значения для UI таймера
+    /// </summary>
+    /// <returns></returns>
     public float СalculationValueTimerUi()
     {
         float result = 0;
@@ -142,7 +181,9 @@ public class StateShopper : MonoBehaviour
         return result;
     }
 
-
+    /// <summary>
+    /// обновляем UI таймер
+    /// </summary>
     private void SetTimerUI()
     {
         StopCoroutine(showCalcTimer);
