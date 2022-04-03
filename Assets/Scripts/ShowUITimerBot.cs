@@ -33,6 +33,14 @@ public class ShowUITimerBot : MonoBehaviour
     {
         valueTimerUI = stateShopper.ÑalculationValueTimerUi();
 
-        //if (valueTimerUI > 1) valueTimerUI = 1;
+        if (GameController.Instance.stateGame != StateGame.Game)
+        {
+            transformTimerUI.gameObject.SetActive(false);
+        }
+        else
+        {
+            transformTimerUI.gameObject.SetActive(true);
+        }
+
     }
 }

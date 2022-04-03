@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class ShowClothesPointBuy : MonoBehaviour
 {
+    [Header("Префабы одежды")]
     [SerializeField]
     private Transform[] prefabShowClothes;
 
+    [Header("Массив одежды")]
     [HideInInspector]
     public Transform[] arrayShowClothes;
 
+    /// <summary>
+    /// текущая шмотка на точке покупки
+    /// </summary>
     private int currentIDClothes;
 
     void Start()
@@ -33,12 +38,15 @@ public class ShowClothesPointBuy : MonoBehaviour
     
     }
 
+
     public void SetActiveObject(int IDClothes)
     {
         arrayShowClothes[IDClothes].gameObject.SetActive(true);
 
         currentIDClothes = IDClothes;
     }
+
+    
 
     public void DeActiveObject()
     {

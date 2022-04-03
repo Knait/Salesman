@@ -33,5 +33,15 @@ public class PointUiShow : MonoBehaviour
     void Update()
     {
         valueTimerUI = heroController.ÑalculationValueTimerUi();
+
+        if (GameController.Instance.stateGame != StateGame.Game)
+        {
+            transformTimerUI.gameObject.SetActive(false);
+        }
+        else
+        {
+            transformTimerUI.gameObject.SetActive(true);
+        }
+
     }
 }

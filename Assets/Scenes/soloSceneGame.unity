@@ -1704,7 +1704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290978d9440485e448ea8056e000c876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTimeGame: 60
+  maxTimeGame: 20
   speedStart: 3
   multiPlay: 0.05
   maxCountClothes: 2

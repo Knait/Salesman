@@ -100,11 +100,11 @@ public class StateShopper : MonoBehaviour
     /// <summary>
     /// ¬кл и красим сумку
     /// </summary>
-    /// <param name="active">¬кл выкл </param>
+    /// <param name="isActive">¬кл выкл </param>
     /// <param name="IDMaterialClothes">÷вет</param>
-    public void SetStateBag(bool active, int IDMaterialClothes)
+    public void SetStateBag(bool isActive, int IDMaterialClothes)
     {
-        bag.gameObject.SetActive(active);     // вкл выкл сумки
+        bag.gameObject.SetActive(isActive);     // вкл выкл сумки
 
         bag.GetComponent<MeshRenderer>().material = GameSettings.Instance.arrayMaterial[IDMaterialClothes];          // красим сумку
     }

@@ -15,8 +15,8 @@ public class PointBuyCheckBot : MonoBehaviour
     /// </summary>
     public int currentIDClothesBot;
 
-    [SerializeField]
-    private ShowClothesPointBuy showClothesPointBuy;
+    //[HideInInspector]
+    public ShowClothesPointBuy showClothesPointBuy;
 
     [Header("—сылка на Particle Effect")]
     [SerializeField]
@@ -51,8 +51,8 @@ public class PointBuyCheckBot : MonoBehaviour
             currentIDClothesBot = shopper.currentIDClothesBot;
 
             showClothesPointBuy.SetActiveObject(currentIDClothesBot);
-           
-            particleEffect.gameObject.SetActive(true);
+
+            SetActiveParticeEffect(true);
             currentColor = GameSettings.Instance.arrayMaterial[currentIDMaterialBot].color;
             particleSys.startColor = currentColor;
         }
@@ -80,8 +80,18 @@ public class PointBuyCheckBot : MonoBehaviour
             transform.GetComponent<PointBuy>().pointActive = false;          ///выкл точку покупки
 
             showClothesPointBuy.DeActiveObject();
-            particleEffect.gameObject.SetActive(false);
+            SetActiveParticeEffect(false);
         }
+    }
+
+
+    /// <summary>
+    /// вкл выкл партиклов
+    /// </summary>
+    /// <param name="isActive"></param>
+    public void SetActiveParticeEffect(bool isActive)
+    {
+        particleEffect.gameObject.SetActive(isActive);
     }
 
 }

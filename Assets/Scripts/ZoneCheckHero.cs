@@ -29,8 +29,8 @@ public class ZoneCheckHero : MonoBehaviour
             currentIDMaterialBot = pointBuyCheckBot.currentIDMaterialBot;
             currentIDClothesBot = pointBuyCheckBot.currentIDClothesBot;
 
-            //if (currentIDMaterialBot != 0)                 
-            //{
+            if (currentIDMaterialBot != 0)                 
+            {
                 int currentMoneyForBuy = heroController.CompareClothes(currentIDClothesBot, currentIDMaterialBot, out currentBuyIDMaterialClothes);
 
                 if (currentMoneyForBuy != -1)
@@ -39,7 +39,7 @@ public class ZoneCheckHero : MonoBehaviour
                     print(" Result Buy " + currentMoneyForBuy);
                     Buy(currentMoneyForBuy);
                 }
-            //}
+            }
         }
     }
 
@@ -55,6 +55,9 @@ public class ZoneCheckHero : MonoBehaviour
         StateShopper stateShopper = pointBuyCheckBot.stateShopper;
 
         stateShopper.SetStateBag(true, currentBuyIDMaterialClothes);
+        pointBuyCheckBot.SetActiveParticeEffect(false);
+        pointBuyCheckBot.showClothesPointBuy.DeActiveObject();
+
 
         stateShopper.stateBot = StateBot.Exit;
     }
