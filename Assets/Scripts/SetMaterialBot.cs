@@ -22,25 +22,4 @@ public class SetMaterialBot : MonoBehaviour
         IDMaterialClothes = Random.Range(1, 5);
     }
 
-
-    ///// <summary>
-    ///// Сетим ID материал одежды
-    ///// </summary>
-    ///// <param name="IDMaterialClothes"></param>
-    // void SetIDMaterialBot(int IDMaterialClothes)
-    
-    //{
-    //    Material[] arrayMaterial;
-
-    //    arrayMaterial = GameSettings.Instance.arrayMaterial;
-
-    //    this.IDMaterialClothes = IDMaterialClothes;
-
-    //    Material[] copyArrayMaterials = skinModel.GetComponent<Renderer>().materials;
-
-    //    copyArrayMaterials[1] = arrayMaterial[IDMaterialClothes];
-
-    //    skinModel.GetComponent<Renderer>().materials = copyArrayMaterials;
-    //}
-
 }

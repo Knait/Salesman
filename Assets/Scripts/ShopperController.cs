@@ -60,7 +60,7 @@ public class ShopperController : MonoBehaviour
                 IdleEnemy();
             }
         }
-        
+
     }
 
     /// <summary>
@@ -72,7 +72,9 @@ public class ShopperController : MonoBehaviour
         {
             //if (navMeshAgent.speed == speedBegin)
             //{
-            animator.SetBool("Run", true);
+            animator.SetBool("Walk", true);         // вкл идти
+            animator.SetBool("Angry", false);        // выкл недовольного
+
             // }
         }
     }
@@ -84,7 +86,11 @@ public class ShopperController : MonoBehaviour
     {
         navMeshAgent.speed = 0;
 
-        if (animator) animator.SetBool("Run", false);
+        if (animator)
+        {
+            animator.SetBool("Walk", false);
+        }
+
     }
 
 
@@ -104,5 +110,19 @@ public class ShopperController : MonoBehaviour
             IdleEnemy();
         }
     }
+
+
+    /// <summary>
+    /// Сетим состояние аниматора
+    /// </summary>
+    /// <param name="parametrAnimation"></param>
+    /// <param name="flag"></param>
+    public void SetAnimatorState(string parametrAnimation, bool flag)
+    {
+        animator.SetBool(parametrAnimation, flag);
+    }
+
+
+
 }
 

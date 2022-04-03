@@ -71,8 +71,13 @@ public class HeroController : MonoBehaviour
     //[SerializeField]
     //int[] resultTemp;
 
+    [SerializeField]
+    private MoveController moveController;
+
     void Start()
     {
+        moveController = GetComponent<MoveController>();
+
         maxCountClothes = GameSettings.Instance.maxCountClothes;
 
         arrayClothes = new Clothes[maxCountClothes];
@@ -186,7 +191,7 @@ public class HeroController : MonoBehaviour
                 indexArrayClothes = 1;
             }
 
-         //   print(" index " + indexArrayClothes);
+            //   print(" index " + indexArrayClothes);
             currentBuyIDMaterialClothes = arrayClothes[indexArrayClothes].IDMaterialClothes;       //сетим ID материал проданной шмотки
 
             RemoveClothes(indexArrayClothes);                                               // удаляем из массива одежды игрока одежду которую отдали
@@ -209,6 +214,9 @@ public class HeroController : MonoBehaviour
     /// </summary>
     public void ShowСlothesInHands()
     {
+
+        moveController.SetAnimatorWithBox(countClothes > 0);                  // сетим состояние аниматора с коробкой
+
         for (int index = 0; index < arrayClothes.Length; index++)
         {
             if (arrayClothes[index].IDClothes != 0)

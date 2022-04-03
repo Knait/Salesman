@@ -22,6 +22,9 @@ public class PointBuyCheckBot : MonoBehaviour
     [SerializeField]
     private Transform particleEffect;
 
+    /// <summary>
+    /// Текущий материал у бота
+    /// </summary>
     [SerializeField]
     private Color currentColor;
 

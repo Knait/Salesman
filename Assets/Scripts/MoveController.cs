@@ -23,7 +23,7 @@ public class MoveController : MonoBehaviour
 
     private float speedStart;
 
-   // [SerializeField]
+    // [SerializeField]
     [Header("Значение Upgrade скорости")]
     private float multiPlay;
 
@@ -35,6 +35,17 @@ public class MoveController : MonoBehaviour
     [Header("Аниматор")]
     [SerializeField]
     private Animator animator;
+
+
+    /// <summary>
+    /// Есть коробка
+    /// </summary>
+    //[HideInInspector]
+    public bool isBox;
+
+
+    private float horizMove;
+    private float verticalMove;
 
 
 
@@ -57,11 +68,13 @@ public class MoveController : MonoBehaviour
             upgradeSpeedHeroLevel = GameController.Instance.upgradeSpeedHeroLevel;
             speedBegin = speedStart + upgradeSpeedHeroLevel * multiPlay;
         }
+
+        UpdateMove();
+
     }
 
     void FixedUpdate()
     {
-        //if (!GameController.Instance) return;
         Move();
     }
 
@@ -70,14 +83,28 @@ public class MoveController : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        float horizMove = JoystickStick.Instance.VerticalAxis();
-        float verticalMove = JoystickStick.Instance.HorizontalAxis();
+        Vector3 movement = new Vector3(verticalMove, 0, horizMove) * speed;
+        transform.Translate(movement * Time.fixedDeltaTime);
+
+        //speed *= 5;
+        //Vector3 movement = new Vector3(verticalMove, 0, horizMove) * speed;
+        //rigidBody.AddForce(movement);
+        //rigidBody.velocity = movement;
+    }
+
+
+    void UpdateMove()
+    {
+        horizMove = JoystickStick.Instance.VerticalAxis();
+        verticalMove = JoystickStick.Instance.HorizontalAxis();
 
         if ((horizMove == 0.0f && verticalMove == 0.0f) || (GameController.Instance.stateGame != StateGame.Game))
         {
             if (animator)
             {
                 animator.SetBool("Run", false);
+                animator.SetBool("RunWithBox", false);
+
                 speed = 0;
                 rigidBody.velocity = Vector3.zero;
             }
@@ -95,18 +122,25 @@ public class MoveController : MonoBehaviour
         {
             if (speed == speedBegin)
             {
-                animator.SetBool("Run", true);
+                if (!isBox)
+                {
+                    animator.SetBool("Run", true);
+                    animator.SetBool("RunWithBox", false);
+                }
+                else
+                {
+                    animator.SetBool("RunWithBox", true);
+                    animator.SetBool("Run", false);
+                }
             }
 
         }
+    }
 
-        Vector3 movement = new Vector3(verticalMove, 0, horizMove) * speed;
-        transform.Translate(movement * Time.fixedDeltaTime);
-
-        //speed *= 5;
-        //Vector3 movement = new Vector3(verticalMove, 0, horizMove) * speed;
-        //rigidBody.AddForce(movement);
-        //rigidBody.velocity = movement;
+    public void SetAnimatorWithBox(bool flag)
+    {
+        animator.SetBool("IsBox", flag);
+        isBox = flag;
     }
 
 }

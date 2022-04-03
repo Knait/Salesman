@@ -54,6 +54,9 @@ public class GameSettings : MonoBehaviour
     [Header("Начальное время ожидания клиента")]
     public float startTimerWaitClient;
 
+    [Header("Сколько времени до недовольства")]
+    public float timerAngry;
+
     [Header("Сокращение времени ожидания клиента со сложностью")]
     public float reductionTimerWaitClientHard;
 
@@ -65,6 +68,7 @@ public class GameSettings : MonoBehaviour
 
     [Header("Массив ID Одежды")]
     public int[] arrayIDClothes;
+
     
 
 

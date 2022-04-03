@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 74315086982970150}
   - component: {fileID: 5810188663538149462}
   m_Layer: 0
-  m_Name: PointUIShow
+  m_Name: PointShowUIClothes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,8 +390,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149039796533}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bc0fc28fc85ea514590f48bf700cb471, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 997e66c6db093904a9d1ae992b729c04, type: 3}
+  m_Controller: {fileID: 9100000, guid: e9f65ffbd03ef3b48880e0f83ba2118a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

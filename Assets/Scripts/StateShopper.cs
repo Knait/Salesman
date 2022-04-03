@@ -34,6 +34,9 @@ public class StateShopper : MonoBehaviour
     //[HideInInspector]
     public Transform currentStartPosition;
 
+    /// <summary>
+    ///  врем€ ожидани€ клиента
+    /// </summary>
     [SerializeField]
     private float timerBuy;
 
@@ -79,7 +82,7 @@ public class StateShopper : MonoBehaviour
 
                 break;
 
-            case StateBot.Walk: 
+            case StateBot.Walk:
                 shopperController.currentTarget = currentTarget;               // сетим цель покупател€ на точку покупки
                 break;
 
@@ -89,7 +92,7 @@ public class StateShopper : MonoBehaviour
 
             case StateBot.Exit:
                 shopperController.currentTarget = currentStartPosition;         // сетим цель покупател€ на выход 
-                 
+
 
                 SetTimerUI();
 
@@ -107,6 +110,12 @@ public class StateShopper : MonoBehaviour
         bag.gameObject.SetActive(isActive);     // вкл выкл сумки
 
         bag.GetComponent<MeshRenderer>().material = GameSettings.Instance.arrayMaterial[IDMaterialClothes];          // красим сумку
+
+        if (shopperController)
+        {
+            shopperController.SetAnimatorState("IsBag", isActive);
+        }
+        
     }
 
 
@@ -147,9 +156,26 @@ public class StateShopper : MonoBehaviour
         while (true)
         {
             countTimer += Time.deltaTime;
+
+            CheckAngry();
+
             yield return new WaitForEndOfFrame();
         }
     }
+
+    /// <summary>
+    /// ѕровер€ем недовольного
+    /// </summary>
+    private void CheckAngry()
+    {
+        float deltaTimer = timerBuy - countTimer;           // матан кошда вкл недовольного
+
+        if (deltaTimer < GameSettings.Instance.timerAngry)
+        {
+            shopperController.SetAnimatorState("Angry", true);    /// вкл недовольного
+        }
+    }
+
 
     /// <summary>
     /// если пришел на спавн точку выкл
