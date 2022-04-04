@@ -18,6 +18,10 @@ public class UiController : MonoBehaviour
     [SerializeField]
     private TMP_Text textCurrentTimer;
 
+    [Header("Cсылка UI Level PanelStartGame")]
+    [SerializeField]
+    private TMP_Text textCurrentLevelPanelStartGame;
+
     [Header("Cсылка UI Level PanelLose")]
     [SerializeField]
     private TMP_Text textCurrentLevelPanelLose;
@@ -46,13 +50,13 @@ public class UiController : MonoBehaviour
     [SerializeField]
     private TMP_Text textAllMoneyPanelLose;
 
-    [Header("Cсылка UI Upgrade DobleShoot Level")]
+    [Header("Cсылка UI Upgrade 1 Level")]
     [SerializeField]
-    private TMP_Text upgradeDobleShootLevel;
+    private TMP_Text upgrade1level;
 
-    [Header("Cсылка UI Upgrade DobleShoot Price")]
+    [Header("Cсылка UI Upgrade 1 Price")]
     [SerializeField]
-    private TMP_Text upgradeDobleShootPrice;
+    private TMP_Text upgrade1Price;
 
     [Header("Cсылка UI Upgrade SpeedHero Level")]
     [SerializeField]
@@ -67,12 +71,14 @@ public class UiController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        textCurrentLevelPanelStartGame.text = GameController.Instance.currentLevel.ToString();
         textMoneyPanelStartGame.text = GameController.Instance.allMoney.ToString();
 
         textCountServedShoppers.text = GameController.Instance.countServedShoppers.ToString();
         textCurrentTimer.text = GameController.Instance.currentTimerGame.ToString();
 
         
+
         textCurrentLevelPanelLose.text = GameController.Instance.currentLevel.ToString();
         textMoneyPanelLose.text = GameController.Instance.currentMoney.ToString();
 
@@ -84,8 +90,8 @@ public class UiController : MonoBehaviour
         textMoneyPanelWin.text = GameController.Instance.currentMoney.ToString();
 
         int tempLevel = GameController.Instance.upgradeDobleShootLevel + 1;
-        upgradeDobleShootLevel.text = tempLevel.ToString();
-        upgradeDobleShootPrice.text = GameController.Instance.currentPriceDoubleShoot.ToString();
+        upgrade1level.text = tempLevel.ToString();
+        upgrade1Price.text = GameController.Instance.currentPriceDoubleShoot.ToString();
         tempLevel = GameController.Instance.upgradeSpeedHeroLevel + 1;
         upgradeSpeedHeroLevel.text = tempLevel.ToString();
         upgradeSpeedHeroPrice.text = GameController.Instance.currentPriceSpeedHero.ToString();

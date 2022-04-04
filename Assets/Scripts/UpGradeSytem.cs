@@ -60,7 +60,7 @@ public class UpGradeSytem : MonoBehaviour
     /// <summary>
     /// Покупаем прокачку 
     /// </summary>
-    public void BuyUpgradeDoubleShoot()
+    public void BuyUpgrade1()
     {
         if (allMoney > currentPriceBonusMoney)
         {

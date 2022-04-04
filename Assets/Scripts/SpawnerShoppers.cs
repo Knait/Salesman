@@ -33,6 +33,7 @@ public class SpawnerShoppers : MonoBehaviour
         StartCoroutine(TimerSpawnShopper(currentDeltaComingClient));
     }
 
+
     /// <summary>
     /// Находим свободную точку покупки и сетим покупателя
     /// </summary>
@@ -44,31 +45,35 @@ public class SpawnerShoppers : MonoBehaviour
             {
                 tempPointsBuy.Add(pointsBuy[index]);                                /// заносим в промеж массив 
             }
-
-           // print("find index = " + index);
         }
 
-        int i = Random.Range(0, tempPointsBuy.Count);                             /// выбираем в промеж массиве рандомно точку
+        // print("tempPointsBuy.Count " + tempPointsBuy.Count);
 
-        for (int j = 0; j < shoppers.Length; j++)                                // ищем выкл покупателей
+        if (tempPointsBuy.Count > 0)                                                  // если массив не пустой
         {
-            if (!shoppers[j].gameObject.activeInHierarchy)                         // если покупатель выкл
+            int i = Random.Range(0, tempPointsBuy.Count);                             /// выбираем в промеж массиве рандомно точку
+
+            //print("Random Buy " + i);
+            for (int j = 0; j < shoppers.Length; j++)                                // ищем выкл покупателей
             {
-                tempPointsBuy[i].GetComponent<PointBuy>().pointActive = true;        //вкл точку покупки
+                if (!shoppers[j].gameObject.activeInHierarchy)                         // если покупатель выкл
+                {
+                    tempPointsBuy[i].GetComponent<PointBuy>().pointActive = true;        //вкл точку покупки
 
-                shoppers[j].gameObject.SetActive(true);                               // вкл покупателя
+                    shoppers[j].gameObject.SetActive(true);                               // вкл покупателя
 
-                StateShopper stateShopper = shoppers[j].GetComponent<StateShopper>();
+                    StateShopper stateShopper = shoppers[j].GetComponent<StateShopper>();
 
-                stateShopper.currentStartPosition = pointsSpawn[randomIndexPointsSpawn];           // сетим точку спавна
+                    stateShopper.currentStartPosition = pointsSpawn[randomIndexPointsSpawn];           // сетим точку спавна
 
-                stateShopper.currentTarget = tempPointsBuy[i];                                      //сетим точку покупки
+                    stateShopper.currentTarget = tempPointsBuy[i];                                      //сетим точку покупки
 
-                tempPointsBuy.Clear();                                                        //очищаем врем массив
+                    tempPointsBuy.Clear();                                                        //очищаем врем массив
 
-                stateShopper.stateBot = StateBot.Walk;                                     // покупатель бежит 
+                    stateShopper.stateBot = StateBot.Walk;                                     // покупатель бежит 
 
-                return;
+                    return;
+                }
             }
         }
     }
