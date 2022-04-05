@@ -19,6 +19,13 @@ public class HeroController : MonoBehaviour
     private int countMoneyColor;
 
     /// <summary>
+    /// —сылка поздравлени€ на игроке
+    /// </summary>
+    [Header("ShowCongratulation на игроке")]
+    [SerializeField]
+    private ShowCongratulation showCongratulation;
+
+    /// <summary>
     /// ћассив ссылка на одежу в руках
     /// </summary>
     [Header("ћассив ссылка на одежу в руках")]
@@ -201,6 +208,7 @@ public class HeroController : MonoBehaviour
             result = -1;                    // ничего не продали
         }
 
+        StartCoroutine(showCongratulation.ShowCongratulate(result));
         return result;
     }
 
