@@ -18,17 +18,17 @@ public class PointBuyCheckBot : MonoBehaviour
     //[HideInInspector]
     public ShowClothesPointBuy showClothesPointBuy;
 
-    [Header("Ссылка на Particle Effect")]
-    [SerializeField]
-    private Transform particleEffect;
+    //[Header("Ссылка на Particle Effect")]
+    //[SerializeField]
+    //private ChangeMaterialObj particleEffect;
 
     /// <summary>
     /// Текущий материал у бота
     /// </summary>
     [SerializeField]
-    private Color currentColor;
+    //private Color currentColor;
 
-    private ParticleSystem particleSys;
+   // private ParticleSystem particleSys;
 
     [HideInInspector]
     public StateShopper stateShopper;
@@ -38,7 +38,7 @@ public class PointBuyCheckBot : MonoBehaviour
 
     private void Start()
     {
-        particleSys = particleEffect.GetComponent<ParticleSystem>();
+        //particleSys = particleEffect.GetComponent<ParticleSystem>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,11 +53,11 @@ public class PointBuyCheckBot : MonoBehaviour
             currentIDMaterialBot = shopper.currentIDMaterialBot;
             currentIDClothesBot = shopper.currentIDClothesBot;
 
-            showClothesPointBuy.SetActiveObject(currentIDClothesBot);
+            showClothesPointBuy.SetActiveObject(currentIDClothesBot, currentIDMaterialBot);
 
-            SetActiveParticeEffect(true);
-            currentColor = GameSettings.Instance.arrayMaterial[currentIDMaterialBot].color;
-            particleSys.startColor = currentColor;
+            //SetActiveParticeEffect(true, currentIDMaterialBot);
+            //currentColor = GameSettings.Instance.arrayMaterial[currentIDMaterialBot].color;
+           // particleSys.startColor = currentColor;
         }
 
         if (stateShopper)
@@ -83,7 +83,7 @@ public class PointBuyCheckBot : MonoBehaviour
             transform.GetComponent<PointBuy>().pointActive = false;          ///выкл точку покупки
 
             showClothesPointBuy.DeActiveObject();
-            SetActiveParticeEffect(false);
+            //SetActiveParticeEffect(false, currentIDMaterialBot);
         }
     }
 
@@ -92,9 +92,9 @@ public class PointBuyCheckBot : MonoBehaviour
     /// вкл выкл партиклов
     /// </summary>
     /// <param name="isActive"></param>
-    public void SetActiveParticeEffect(bool isActive)
+    public void SetActiveParticeEffect(bool isActive, int currentIDMaterialBot)
     {
-        particleEffect.gameObject.SetActive(isActive);
+       // particleEffect.gameObject.SetActive(isActive);
     }
 
 }

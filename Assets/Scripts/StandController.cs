@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class StandController : MonoBehaviour
 {
+    [Header("Ссылка точки показа одежды")]
+    [SerializeField]
+    private Transform PointShowClothes;
+
     /// <summary>
     /// Таймер выдачи одежды
     /// </summary>
@@ -27,6 +31,8 @@ public class StandController : MonoBehaviour
     void Start()
     {
         timerGiveClothes = GameSettings.Instance.timerGiveClothes;
+
+        ShowClothes();
     }
 
     /// <summary>
@@ -35,14 +41,14 @@ public class StandController : MonoBehaviour
     /// <param name="collision"></param>
     private void OnCollisionStay(Collision collision)
     {
-        
+
         HeroController heroController = collision.gameObject.GetComponent<HeroController>();
 
         if (heroController)
         {
             if (isGiveClothes)
             {
-              // print(" Take Clothes");  /////////////////////////////////////////////////////
+                // print(" Take Clothes");  /////////////////////////////////////////////////////
                 isGiveClothes = false;
                 StartCoroutine(TimerGiveClothes(timerGiveClothes));
                 heroController.TakeClothes(IDClothes);
@@ -62,4 +68,13 @@ public class StandController : MonoBehaviour
         isGiveClothes = true;
     }
 
+
+    /// <summary>
+    /// Вкл одежду согласно IDClothes
+    /// 
+    /// </summary>
+    private void ShowClothes()
+    {
+        Transform tempObj = Instantiate(GameSettings.Instance.prefabShowClothes[IDClothes - 1], PointShowClothes.position, Quaternion.Euler(90, 0, 0), PointShowClothes);
+    }
 }

@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 1444934277700340043}
   - component: {fileID: 3689431632524339999}
   m_Layer: 0
-  m_Name: PointBuy
+  m_Name: PointBuy2
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,9 @@ MonoBehaviour:
   currentIDMaterialBot: 0
   currentIDClothesBot: 0
   showClothesPointBuy: {fileID: 2051934873486924244}
-  particleEffect: {fileID: 6884701438667392615}
+  particleEffect: {fileID: 4836669555812454180}
+  ObjectChangeMaterial: {fileID: 0}
+  currentColor: {r: 0, g: 0, b: 0, a: 0}
   stateShopper: {fileID: 0}
 --- !u!114 &3689431632524339999
 MonoBehaviour:
@@ -164,7 +166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3271299692522415280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.072, z: 1.9599998}
+  m_LocalPosition: {x: 0, y: 1.04, z: 1.9599998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1444934277700340041}
@@ -198,7 +200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5888251796231650710
 Transform:
   m_ObjectHideFlags: 0
@@ -318,25 +320,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
---- !u!1 &4836669555812194772 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 191608, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
-  m_PrefabInstance: {fileID: 4836669555812283820}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4836669555812454180 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 457352, guid: 6dacaf644ce792d42a9aeb31ba15865a, type: 3}
   m_PrefabInstance: {fileID: 4836669555812283820}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6884701438667392615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4836669555812194772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 418d69f0ad127ee429c91d86b639e643, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

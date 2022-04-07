@@ -69,7 +69,10 @@ public class GameSettings : MonoBehaviour
     [Header("Массив ID Одежды")]
     public int[] arrayIDClothes;
 
-    
+    [Header("Префабы одежды")]
+    public Transform[] prefabShowClothes;
+
+
 
 
     private void Awake()

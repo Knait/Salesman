@@ -7,6 +7,10 @@ using UnityEngine;
 
 public class LineColorController : MonoBehaviour
 {
+    [SerializeField]
+    [Header("Массив Система частиц")]
+    private ParticleSystem[] ParticleSys;
+
     /// <summary>
     /// ID Материал Одежды
     /// </summary>
@@ -19,8 +23,18 @@ public class LineColorController : MonoBehaviour
 
         if (heroController)
         {
-                ///print(" Color Clothes");  /////////////////////////////////////////////////////
-                heroController.PaintingClothes(IDMaterialClothes);
+            ///print(" Color Clothes");  /////////////////////////////////////////////////////
+            heroController.PaintingClothes(IDMaterialClothes);
+
+            for (int index = 0; index < ParticleSys.Length; index++)
+            {
+                if (ParticleSys[index])
+                {
+                    //print(" Particle Play " + index);
+                    ParticleSys[index].Play();
+                }
+            }
+
         }
     }
 

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ShowClothesPointBuy : MonoBehaviour
 {
-    [Header("Префабы одежды")]
-    [SerializeField]
-    private Transform[] prefabShowClothes;
+    //[Header("Префабы одежды")]
+    //[SerializeField]
+    //private Transform[] prefabShowClothes;
 
     [Header("Массив одежды")]
     [HideInInspector]
@@ -19,35 +19,38 @@ public class ShowClothesPointBuy : MonoBehaviour
 
     void Start()
     {
-        arrayShowClothes = new Transform[prefabShowClothes.Length + 1];
+        arrayShowClothes = new Transform[GameSettings.Instance.prefabShowClothes.Length + 1];
 
         Transform transPos = transform;
 
-        for (int i = 0; i < prefabShowClothes.Length; i++)
+        for (int i = 0; i < GameSettings.Instance.prefabShowClothes.Length; i++)
         {
-            arrayShowClothes[i + 1] = Instantiate(prefabShowClothes[i], transform.position, Quaternion.identity);
+            arrayShowClothes[i + 1] = Instantiate(GameSettings.Instance.prefabShowClothes[i], transform.position, Quaternion.identity);
             arrayShowClothes[i + 1].localScale = new Vector3(0.3f, 0.3f, 0.3f);
             arrayShowClothes[i + 1].rotation = Quaternion.Euler(90, 0, 0);
             arrayShowClothes[i + 1].gameObject.SetActive(false);
         }
     }
 
-    void Update()
+    /// <summary>
+    /// вкл одежку и меняем цвет
+    /// </summary>
+    /// <param name="IDClothes"></param>
+    /// <param name="currentIDMaterialBot"></param>
+    public void SetActiveObject(int IDClothes, int currentIDMaterialBot)
     {
-
-    
-    }
-
-
-    public void SetActiveObject(int IDClothes)
-    {
-        arrayShowClothes[IDClothes].gameObject.SetActive(true);
+        arrayShowClothes[IDClothes].gameObject.SetActive(true);        ///вкл
 
         currentIDClothes = IDClothes;
+
+        arrayShowClothes[IDClothes].GetComponent<SpriteRenderer>().material = GameSettings.Instance.arrayMaterial[currentIDMaterialBot];   // смена цвета
+        
     }
 
     
-
+    /// <summary>
+    /// выкл одежку
+    /// </summary>
     public void DeActiveObject()
     {
         arrayShowClothes[currentIDClothes].gameObject.SetActive(false);

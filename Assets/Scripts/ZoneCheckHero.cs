@@ -55,7 +55,7 @@ public class ZoneCheckHero : MonoBehaviour
         StateShopper stateShopper = pointBuyCheckBot.stateShopper;
 
         stateShopper.SetStateBag(true, currentBuyIDMaterialClothes);
-        pointBuyCheckBot.SetActiveParticeEffect(false);
+        pointBuyCheckBot.SetActiveParticeEffect(false, currentIDMaterialBot);
         pointBuyCheckBot.showClothesPointBuy.DeActiveObject();
 
 

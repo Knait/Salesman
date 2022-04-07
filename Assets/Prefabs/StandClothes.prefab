@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6137057670553021304
 Transform:
   m_ObjectHideFlags: 0
@@ -166,7 +166,7 @@ Transform:
   m_GameObject: {fileID: 6555920288026691609}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.07299972, y: 0.24815759, z: -1.6163678}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 2999404476961245620}
   m_RootOrder: 2
@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75832b31ddfb0944927ab2282ef6344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PointShowClothes: {fileID: 6177041477957286613}
   timerGiveClothes: 0
   IDClothes: 0
 --- !u!1 &7796869849756704835
