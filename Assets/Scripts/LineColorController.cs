@@ -24,17 +24,19 @@ public class LineColorController : MonoBehaviour
         if (heroController)
         {
             ///print(" Color Clothes");  /////////////////////////////////////////////////////
-            heroController.PaintingClothes(IDMaterialClothes);
+            bool isPaint = heroController.PaintingClothes(IDMaterialClothes);
 
-            for (int index = 0; index < ParticleSys.Length; index++)
+            if (isPaint)
             {
-                if (ParticleSys[index])
+                for (int index = 0; index < ParticleSys.Length; index++)
                 {
-                    //print(" Particle Play " + index);
-                    ParticleSys[index].Play();
+                    if (ParticleSys[index])
+                    {
+                        //print(" Particle Play " + index);
+                        ParticleSys[index].Play();
+                    }
                 }
             }
-
         }
     }
 

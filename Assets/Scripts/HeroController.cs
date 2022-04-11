@@ -123,17 +123,22 @@ public class HeroController : MonoBehaviour
     /// Êğàñèì îäåæêó
     /// </summary>
     /// <param name="IDMaterialClothes"></param>
-    public void PaintingClothes(int IDMaterialClothes)
+    public bool PaintingClothes(int IDMaterialClothes)
     {
+        bool result = false;
+
         for (int index = 0; index < arrayClothes.Length; index++)
         {
             if (arrayClothes[index].IDClothes != 0)
             {
                 arrayClothes[index].IDMaterialClothes = IDMaterialClothes;
+                result = true;
             }
         }
 
         ShowÑlothesInHands();
+
+        return result;
     }
 
     /// <summary>
