@@ -25,7 +25,7 @@ public class PointBuyCheckBot : MonoBehaviour
     /// <summary>
     /// Текущий материал у бота
     /// </summary>
-    [SerializeField]
+   // [SerializeField]
     //private Color currentColor;
 
    // private ParticleSystem particleSys;

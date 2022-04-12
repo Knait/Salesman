@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 public class ShowCongratulation : MonoBehaviour
 {
+    [SerializeField]
+    private float timerShowCongratulation;
 
     private string[] samlpeCongratulation = { "","Best", "Excellent", "Good", "Badly" };
 
@@ -45,8 +47,9 @@ public class ShowCongratulation : MonoBehaviour
 
         textCongratulation.text = samlpeCongratulation[indexSamlpeCongratulation];
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(timerShowCongratulation);
         textCongratulation.text = samlpeCongratulation[0];
+        gameObject.SetActive(false);
 
     }
 

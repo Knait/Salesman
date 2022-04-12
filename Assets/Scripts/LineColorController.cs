@@ -17,6 +17,11 @@ public class LineColorController : MonoBehaviour
     [SerializeField]
     private int IDMaterialClothes;
 
+    private void Start()
+    {
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         HeroController heroController = other.gameObject.GetComponent<HeroController>();

@@ -25,6 +25,10 @@ public class StateShopper : MonoBehaviour
     [SerializeField]
     private Transform bag;
 
+    [Header("Сылка на ParticleSystem")]
+    //[HideInInspector]
+    public ParticleSystem particleSys;
+
     [SerializeField]
     private ShopperController shopperController;
 
@@ -118,7 +122,7 @@ public class StateShopper : MonoBehaviour
         
     }
 
-
+    
 
     /// <summary>
     /// Состояние покупка
@@ -214,5 +218,13 @@ public class StateShopper : MonoBehaviour
     {
         StopCoroutine(showCalcTimer);
         countTimer = 0;
+    }
+
+    public void PlayParticle()
+    {
+        if (particleSys)
+        {
+            particleSys.Play();
+        }
     }
 }

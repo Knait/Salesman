@@ -95,6 +95,9 @@ public class HeroController : MonoBehaviour
 
         defaultMaterial = clothesInHands[0].GetComponent<MeshRenderer>().material;
         ShowСlothesInHands();
+
+        showCongratulation.gameObject.SetActive(false);       /// выкл обьект поздравления
+
     }
 
     /// <summary>
@@ -213,7 +216,10 @@ public class HeroController : MonoBehaviour
             result = -1;                    // ничего не продали
         }
 
+        showCongratulation.gameObject.SetActive(true);
+
         StartCoroutine(showCongratulation.ShowCongratulate(result));
+
         return result;
     }
 
