@@ -213,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4484523807610121828, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -150
+      value: -143
       objectReference: {fileID: 0}
     - target: {fileID: 4484523807610121828, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -227,6 +227,10 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5268811162535171487, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4a686964e0f3f3849b97cd70d8b3439a, type: 3}
     - target: {fileID: 9137919634402351708, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -315,13 +319,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: PanelGame
       objectReference: {fileID: 0}
+    - target: {fileID: 9137919634402351709, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137919634464135691, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
+      propertyPath: m_text
+      value: '100
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 9137919634464135691, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
       propertyPath: m_fontSize
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9137919634464135691, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
+      propertyPath: m_margin.z
+      value: 115.335655
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137919634464135691, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
       propertyPath: m_fontSizeBase
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137919634464135691, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9137919634464135692, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
       propertyPath: m_SizeDelta.x
@@ -329,7 +351,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9137919634464135692, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -103
+      value: -123
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137919634464135693, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
+      propertyPath: m_Name
+      value: TextCurrentMoney
       objectReference: {fileID: 0}
     - target: {fileID: 9137919635004478645, guid: 319ee6d7a0eedcf41894ad731fbff5be, type: 3}
       propertyPath: m_fontSize
@@ -6038,7 +6064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169caa6ccb648d8449e3ff2096771b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textCountServedShoppers: {fileID: 1289644509}
+  textCurrentMoney: {fileID: 1289644509}
   textCurrentTimer: {fileID: 98436260}
   textCurrentLevelPanelStartGame: {fileID: 626640017}
   textCurrentLevelPanelLose: {fileID: 427908034}

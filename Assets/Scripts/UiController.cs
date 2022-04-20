@@ -10,9 +10,9 @@ using TMPro;
 /// </summary>
 public class UiController : MonoBehaviour
 {
-    [Header("Cсылка UI кол-во  обсл-ых клиентов")]
+    [Header("Cсылка UI кол-во текущ бобла")]
     [SerializeField]
-    private TMP_Text textCountServedShoppers;
+    private TMP_Text textCurrentMoney;
 
     [Header("Cсылка UI таймер")]
     [SerializeField]
@@ -74,7 +74,7 @@ public class UiController : MonoBehaviour
         textCurrentLevelPanelStartGame.text = GameController.Instance.currentLevel.ToString();
         textMoneyPanelStartGame.text = GameController.Instance.allMoney.ToString();
 
-        textCountServedShoppers.text = GameController.Instance.countServedShoppers.ToString();
+        textCurrentMoney.text = GameController.Instance.currentMoney.ToString();
         textCurrentTimer.text = GameController.Instance.currentTimerGame.ToString();
 
         
