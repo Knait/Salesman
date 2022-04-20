@@ -23,7 +23,7 @@ public class HeroController : MonoBehaviour
     /// </summary>
     [Header("ShowCongratulation на игроке")]
     [SerializeField]
-    private ShowCongratulation showCongratulation;
+    private PointShowCongratilation showCongratulation;
 
     /// <summary>
     /// ћассив ссылка на одежу в руках

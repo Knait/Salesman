@@ -58,6 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9112951290438453065}
   - component: {fileID: 3081846190693367806}
+  - component: {fileID: 1216199004}
   m_Layer: 0
   m_Name: PointShowCongratulation
   m_TagString: Untagged
@@ -73,7 +74,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353148246460093306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 2.27, z: 0.58}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3530055792962562634}
@@ -88,14 +89,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353148246460093306}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7f1f7e09a2e6954896388194a792f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerShowCongratulation: 0.7
   textCongratulation:
-  - {fileID: 0}
+  - {fileID: 6712705939448423977}
+  - {fileID: 474312222536742403}
+--- !u!114 &1216199004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353148246460093306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f722ee6c3e740449b09ffe8953a18ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabUIShowCongratilation: {fileID: 4909165585875017015, guid: d1fe5d5e11ac62a47a59af2dcfccc113, type: 3}
+  transformUIShowCongratilation: []
+  congratilationUI: []
 --- !u!1 &3281204474230258186
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3530055792962562634
 RectTransform:
   m_ObjectHideFlags: 0
@@ -338,7 +354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7662961543523199077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -691,7 +707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countMoneyClothes: 7
   countMoneyColor: 3
-  showCongratulation: {fileID: 0}
+  showCongratulation: {fileID: 1216199004}
   clothesInHands:
   - {fileID: 6497873297911106157}
   - {fileID: 8113375812531490586}
