@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
 /// <summary>
 /// состояния бота
 /// </summary>

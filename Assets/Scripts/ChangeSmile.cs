@@ -4,9 +4,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChangeSmile : MonoBehaviour
 {
+    [SerializeField]
+    private Transform prefabUISmile;
+
+    [SerializeField]
+    private Transform transformUISmile;
+
+    [SerializeField]
+    private Smile smile;
+
     [Header("Массив смайлики")]
     [SerializeField]
     private Sprite[] sprites;
@@ -14,9 +24,12 @@ public class ChangeSmile : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        transformUISmile = Instantiate(prefabUISmile, Vector3.zero, Quaternion.identity);
+        transformUISmile.transform.SetParent(GameObject.Find("Canvas").transform);
+        smile = transformUISmile.GetComponent<Smile>();
+        smile.parentObject = gameObject.transform;
     }
 
     public void ShowSmile(int currentMoneyForBuy)
@@ -41,7 +54,11 @@ public class ChangeSmile : MonoBehaviour
                 indexSamlpeCongratulation = 3;
                 break;
         }
-        spriteRenderer.sprite = sprites[indexSamlpeCongratulation];
+
+
+        transformUISmile.gameObject.SetActive(false);   // запускаем 
+        transformUISmile.gameObject.SetActive(true);      //   спрайт 
+        smile.imageSmileUI.sprite = sprites[indexSamlpeCongratulation];
     }
 }
 

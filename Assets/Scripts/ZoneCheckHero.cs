@@ -42,8 +42,7 @@ public class ZoneCheckHero : MonoBehaviour
                     print(" Result Buy " + currentMoneyForBuy);
                     Buy(currentMoneyForBuy);
 
-                    changeSmile.gameObject.SetActive(false);   // заупскаем 
-                    changeSmile.gameObject.SetActive(true);      //   спрайт 
+                   
                     changeSmile.ShowSmile(currentMoneyForBuy);    //  смайлика
 
 
