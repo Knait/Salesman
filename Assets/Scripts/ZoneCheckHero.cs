@@ -42,8 +42,10 @@ public class ZoneCheckHero : MonoBehaviour
                     print(" Result Buy " + currentMoneyForBuy);
                     Buy(currentMoneyForBuy);
 
-                    StateShopper stateShopper = pointBuyCheckBot.stateShopper;
 
+                    StateShopper stateShopper = pointBuyCheckBot.stateShopper; // получаем позицию покупателя
+                    changeSmile.gameObject.SetActive(false);   // заупскаем 
+                    changeSmile.gameObject.SetActive(true);      //   спрайт 
                     changeSmile.ShowSmile(currentMoneyForBuy, stateShopper.transform);    //  смайлика
 
 

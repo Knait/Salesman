@@ -54,10 +54,6 @@ public class PointBuyCheckBot : MonoBehaviour
             currentIDClothesBot = shopper.currentIDClothesBot;
 
             showClothesPointBuy.SetActiveObject(currentIDClothesBot, currentIDMaterialBot);
-
-            //SetActiveParticeEffect(true, currentIDMaterialBot);
-            //currentColor = GameSettings.Instance.arrayMaterial[currentIDMaterialBot].color;
-           // particleSys.startColor = currentColor;
         }
 
         if (stateShopper)
@@ -83,7 +79,6 @@ public class PointBuyCheckBot : MonoBehaviour
             transform.GetComponent<PointBuy>().pointActive = false;          ///выкл точку покупки
 
             showClothesPointBuy.DeActiveObject();
-            //SetActiveParticeEffect(false, currentIDMaterialBot);
         }
     }
 

@@ -1,53 +1,33 @@
-
 /// висит на точке продаж
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ChangeSmile : MonoBehaviour
 {
-    [SerializeField]
-    private Transform prefabUISmile;
-
-    [SerializeField]
-    private Transform transformUISmile;
-
-    [SerializeField]
-    private Smile smile;
-
-    //[SerializeField]
-    //private Transform parentObject;
-
     [Header("Массив смайлики")]
     [SerializeField]
     private Sprite[] sprites;
 
-    //private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
 
-    // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        transformUISmile = Instantiate(prefabUISmile, Vector3.zero, Quaternion.identity);
-        //transformUISmile.transform.SetParent(GameObject.Find("Canvas").transform);
-        //smile = transformUISmile.GetComponent<Smile>();
-        smile = transformUISmile.GetComponentInChildren<Smile>();
-        //smile.parentObject = gameObject.transform;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
+
+
 
     public void ShowSmile(int currentMoneyForBuy, Transform parentObject)
     {
+        Vector3 currentPosition = transform.position;
 
-        Vector3 currentPosition = parentObject.position;
+        currentPosition.x = parentObject.position.x;
+
+        currentPosition.z = parentObject.position.z;
 
         gameObject.transform.position = currentPosition;
-
-        Vector3 parentObjectPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-
-        smile.rectTransform.position = Camera.main.WorldToScreenPoint(parentObjectPosition);
-
-        smile.parentObject = transform;
 
         int indexSamlpeCongratulation = 0;
 
@@ -70,11 +50,7 @@ public class ChangeSmile : MonoBehaviour
                 break;
         }
 
-
-        transformUISmile.gameObject.SetActive(false);   // запускаем 
-        transformUISmile.gameObject.SetActive(true);      //   спрайт 
-        //Debug.LogError("Ha");
-        smile.imageSmileUI.sprite = sprites[indexSamlpeCongratulation];
+       
+        spriteRenderer.sprite = sprites[indexSamlpeCongratulation];
     }
 }
-

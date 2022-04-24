@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ShowClothesPointBuy : MonoBehaviour
 {
-    //[Header("Префабы одежды")]
-    //[SerializeField]
-    //private Transform[] prefabShowClothes;
 
     [Header("Массив одежды")]
     [HideInInspector]
