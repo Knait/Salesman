@@ -17,23 +17,38 @@ public class ChangeSmile : MonoBehaviour
     [SerializeField]
     private Smile smile;
 
+    //[SerializeField]
+    //private Transform parentObject;
+
     [Header("Массив смайлики")]
     [SerializeField]
     private Sprite[] sprites;
 
-    private SpriteRenderer spriteRenderer;
+    //private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Awake()
     {
         transformUISmile = Instantiate(prefabUISmile, Vector3.zero, Quaternion.identity);
-        transformUISmile.transform.SetParent(GameObject.Find("Canvas").transform);
-        smile = transformUISmile.GetComponent<Smile>();
-        smile.parentObject = gameObject.transform;
+        //transformUISmile.transform.SetParent(GameObject.Find("Canvas").transform);
+        //smile = transformUISmile.GetComponent<Smile>();
+        smile = transformUISmile.GetComponentInChildren<Smile>();
+        //smile.parentObject = gameObject.transform;
     }
 
-    public void ShowSmile(int currentMoneyForBuy)
+    public void ShowSmile(int currentMoneyForBuy, Transform parentObject)
     {
+
+        Vector3 currentPosition = parentObject.position;
+
+        gameObject.transform.position = currentPosition;
+
+        Vector3 parentObjectPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
+        smile.rectTransform.position = Camera.main.WorldToScreenPoint(parentObjectPosition);
+
+        smile.parentObject = transform;
+
         int indexSamlpeCongratulation = 0;
 
         switch (currentMoneyForBuy)
@@ -58,6 +73,7 @@ public class ChangeSmile : MonoBehaviour
 
         transformUISmile.gameObject.SetActive(false);   // запускаем 
         transformUISmile.gameObject.SetActive(true);      //   спрайт 
+        //Debug.LogError("Ha");
         smile.imageSmileUI.sprite = sprites[indexSamlpeCongratulation];
     }
 }

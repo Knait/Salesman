@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b5cee35b247514181c7abb96d8628d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabUISmile: {fileID: 8342070223355398701, guid: d5a80785808f76c4bb519a2e9746ef18, type: 3}
+  prefabUISmile: {fileID: 738254612787072871, guid: 05e2c51d03ebcd840a400c138ae5e41c, type: 3}
   transformUISmile: {fileID: 0}
   smile: {fileID: 0}
   sprites:

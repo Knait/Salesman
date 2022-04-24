@@ -7,7 +7,7 @@ public class Smile : MonoBehaviour
 {
     public Transform parentObject;
 
-    private RectTransform rectTransform;
+    public RectTransform rectTransform;
     
     public Image imageSmileUI;
 
@@ -16,8 +16,28 @@ public class Smile : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         imageSmileUI = GetComponent<Image>();
 
-        Vector3 parentObjectPosition = new Vector3(parentObject.position.x, parentObject.position.y, parentObject.position.z);
-        rectTransform.position = Camera.main.WorldToScreenPoint(parentObjectPosition);
+       // Vector3 parentObjectPosition = new Vector3(parentObject.position.x, parentObject.position.y, parentObject.position.z);
+       // rectTransform.position = Camera.main.WorldToScreenPoint(parentObjectPosition);
         gameObject.SetActive(false);   
     }
+
+    private void OnEnable()
+    {
+        StartCoroutine(Activate());
+    }
+
+    private void Update()
+    {
+        Vector3 parentObjectPosition = new Vector3(parentObject.position.x, parentObject.position.y, parentObject.position.z);
+
+        rectTransform.position = Camera.main.WorldToScreenPoint(parentObjectPosition);
+    }
+
+    IEnumerator Activate()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        gameObject.SetActive(false);
+    }
+
 }

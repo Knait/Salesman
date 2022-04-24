@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8342070223355398703}
   - component: {fileID: 8342070223355398700}
   - component: {fileID: -3942055151438053711}
-  - component: {fileID: 1896953180}
+  - component: {fileID: 778224363298425181}
   m_Layer: 5
   m_Name: UISmile
   m_TagString: Untagged
@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60.396706, y: 105}
+  m_AnchoredPosition: {x: 0, y: -722}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8342070223355398703
@@ -90,8 +90,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentObject: {fileID: 0}
+  rectTransform: {fileID: 0}
   imageSmileUI: {fileID: 0}
---- !u!95 &1896953180
+--- !u!95 &778224363298425181
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -99,12 +100,12 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8342070223355398698}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 288f07f0719c18245af52ac23628ff86, type: 2}
+  m_Controller: {fileID: 9100000, guid: 45d1b1dee4e9d7b4ea136eca0fca7650, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
