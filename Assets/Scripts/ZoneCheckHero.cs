@@ -23,6 +23,11 @@ public class ZoneCheckHero : MonoBehaviour
     [SerializeField]
     private ChangeSmile changeSmile;
 
+    private StateShopper stateShopper;
+
+    [HideInInspector]
+    public int tempCurrentMoneyForBuy;
+
     private void OnTriggerEnter(Collider other)
     {
         HeroController heroController = other.gameObject.GetComponent<HeroController>();
@@ -42,13 +47,10 @@ public class ZoneCheckHero : MonoBehaviour
                     print(" Result Buy " + currentMoneyForBuy);
                     Buy(currentMoneyForBuy);
 
-
-                    StateShopper stateShopper = pointBuyCheckBot.stateShopper; // получаем позицию покупателя
+                    stateShopper = pointBuyCheckBot.stateShopper; // получаем позицию покупателя
                     changeSmile.gameObject.SetActive(false);   // заупскаем 
                     changeSmile.gameObject.SetActive(true);      //   спрайт 
-                    changeSmile.ShowSmile(currentMoneyForBuy, stateShopper.transform);    //  смайлика
-
-
+                    changeSmile.ShowSmile(tempCurrentMoneyForBuy, stateShopper.transform);    //  смайлика
 
                 }
             }

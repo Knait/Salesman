@@ -18,6 +18,9 @@ public class PointBuyCheckBot : MonoBehaviour
     //[HideInInspector]
     public ShowClothesPointBuy showClothesPointBuy;
 
+    [SerializeField]
+    private ZoneCheckHero zoneCheckHero;
+
     //[Header("—сылка на Particle Effect")]
     //[SerializeField]
     //private ChangeMaterialObj particleEffect;
@@ -38,7 +41,11 @@ public class PointBuyCheckBot : MonoBehaviour
 
     private void Start()
     {
+        zoneCheckHero = GetComponent<ZoneCheckHero>();
+
         //particleSys = particleEffect.GetComponent<ParticleSystem>();
+
+
     }
 
     private void OnTriggerEnter(Collider other)

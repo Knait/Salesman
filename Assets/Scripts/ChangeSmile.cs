@@ -17,8 +17,6 @@ public class ChangeSmile : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-
-
     public void ShowSmile(int currentMoneyForBuy, Transform parentObject)
     {
         Vector3 currentPosition = transform.position;
@@ -47,6 +45,10 @@ public class ChangeSmile : MonoBehaviour
 
             case 0:
                 indexSamlpeCongratulation = 3;
+                break;
+
+            case -2:
+                indexSamlpeCongratulation = 4;
                 break;
         }
 

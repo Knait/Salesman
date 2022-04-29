@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40200b913ae3ac74faa34fea41f1cc75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabTimerUI: {fileID: 1703184593067835047, guid: 78ccc57d6fe68fd4c89c2a0533cde618, type: 3}
+  prefabTimerUI: {fileID: 4138298344825124808, guid: f64844ba5682a8743b5a9ec3acaf97ae, type: 3}
   transformTimerUI: {fileID: 0}
   TimerUIBot: {fileID: 0}
   stateShopper: {fileID: 6870166020369476380}

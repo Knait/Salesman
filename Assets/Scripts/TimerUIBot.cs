@@ -11,22 +11,22 @@ public class TimerUIBot : MonoBehaviour
 
     private RectTransform rectTransform;
 
+    [SerializeField]
     private Image imageTimerUI;
+
+    [SerializeField]
+    private Image backGround;
 
     [SerializeField]
     private ShowUITimerBot showUITimerBot;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        imageTimerUI = GetComponent<Image>();
         showUITimerBot = parentObject.GetComponent<ShowUITimerBot>();
         imageTimerUI.fillAmount = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateShowTimer();
@@ -40,11 +40,19 @@ public class TimerUIBot : MonoBehaviour
         Vector3 parentObjectPosition = new Vector3(parentObject.position.x, parentObject.position.y, parentObject.position.z);
 
         rectTransform.position = Camera.main.WorldToScreenPoint(parentObjectPosition);
-
     }
 
     private void UpdateValueTimerUi()
     {
+        if (showUITimerBot.valueTimerUI == 0)
+        {
+            backGround.gameObject.SetActive(false);
+        }
+        else
+        {
+            backGround.gameObject.SetActive(true);
+        }
+
         imageTimerUI.fillAmount = showUITimerBot.valueTimerUI;
     }
 }
