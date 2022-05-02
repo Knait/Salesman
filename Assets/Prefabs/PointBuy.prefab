@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 709738136430911441}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.15, z: 0.2}
+  m_LocalScale: {x: 0.4, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 2565509876248970789}
   m_RootOrder: 0
@@ -182,6 +182,7 @@ MonoBehaviour:
   currentIDClothesBot: 0
   pointBuyCheckBot: {fileID: 1444934277700340043}
   changeSmile: {fileID: 4017255017974387865}
+  tempCurrentMoneyForBuy: 0
 --- !u!1 &1444934277700340040
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +248,7 @@ MonoBehaviour:
   currentIDMaterialBot: 0
   currentIDClothesBot: 0
   showClothesPointBuy: {fileID: 2051934873486924244}
+  zoneCheckHero: {fileID: 0}
   stateShopper: {fileID: 0}
 --- !u!114 &3689431632524339999
 MonoBehaviour:
