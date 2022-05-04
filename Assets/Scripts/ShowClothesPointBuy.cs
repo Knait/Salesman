@@ -40,11 +40,12 @@ public class ShowClothesPointBuy : MonoBehaviour
 
         currentIDClothes = IDClothes;
 
-        arrayShowClothes[IDClothes].GetComponent<SpriteRenderer>().material = GameSettings.Instance.arrayMaterial[currentIDMaterialBot];   // смена цвета
-        
+        arrayShowClothes[IDClothes].GetComponent<SpriteRenderer>().material = GameSettings.Instance.arrayMaterial[currentIDMaterialBot];
+        arrayShowClothes[IDClothes].GetChild(0).GetComponent<SpriteRenderer>().material = GameSettings.Instance.arrayMaterial[currentIDMaterialBot];
+        // смена цвета
     }
 
-    
+
     /// <summary>
     /// выкл одежку
     /// </summary>

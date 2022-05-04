@@ -17,7 +17,6 @@ public class TimerUI : MonoBehaviour
     [SerializeField]
     private PointUiShow pointUiShow;
     
-
     // Start is called before the first frame update
     void Start()
     {

@@ -32,7 +32,7 @@ public class PointUiShow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        valueTimerUI = heroController.ÑalculationValueTimerUi();
+      //  valueTimerUI = heroController.ÑalculationValueTimerUi();
 
         if (GameController.Instance.stateGame != StateGame.Game)
         {

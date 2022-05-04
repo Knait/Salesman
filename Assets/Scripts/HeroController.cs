@@ -87,11 +87,11 @@ public class HeroController : MonoBehaviour
 
         maxCountClothes = GameSettings.Instance.maxCountClothes;
 
-        arrayClothes = new Clothes[maxCountClothes];
+       /* arrayClothes = new Clothes[maxCountClothes];
         for (int index = 0; index < arrayClothes.Length; index++)
         {
             arrayClothes[index] = new Clothes();
-        }
+        }*/
 
         defaultMaterial = clothesInHands[0].GetComponent<MeshRenderer>().material;
         Show—lothesInHands();
@@ -111,6 +111,8 @@ public class HeroController : MonoBehaviour
             if (arrayClothes[index].IDClothes == 0)
             {
                 arrayClothes[index].IDClothes = IDClothes;
+                arrayClothes[index].clatch.gameObject.SetActive(true);
+                arrayClothes[index].clatch.color = Color.white;
                 countClothes++;
 
                 Show—lothesInHands();
@@ -135,6 +137,8 @@ public class HeroController : MonoBehaviour
             if (arrayClothes[index].IDClothes != 0)
             {
                 arrayClothes[index].IDMaterialClothes = IDMaterialClothes;
+                arrayClothes[index].clatch.color = GameSettings.Instance.arrayMaterial[arrayClothes[index].IDMaterialClothes].color;
+
                 result = true;
             }
         }
@@ -155,6 +159,9 @@ public class HeroController : MonoBehaviour
 
         arrayClothes[index].IDClothes = 0;
         arrayClothes[index].IDMaterialClothes = 0;
+        arrayClothes[index].clatch.color = Color.white;
+        arrayClothes[index].clatch.gameObject.SetActive(false);
+
         countClothes--;
 
         Show—lothesInHands();
@@ -286,6 +293,8 @@ public class HeroController : MonoBehaviour
         /// ID Ã‡ÚÂË‡ÎÓ‚ Ó‰ÂÊ‰˚ 
         /// </summary>
         public int IDMaterialClothes;
+
+        public UnityEngine.UI.Image clatch;
     }
 
 
