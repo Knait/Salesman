@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShowClothesPointBuy : MonoBehaviour
 {
-
     [Header("Массив одежды")]
     [HideInInspector]
     public Transform[] arrayShowClothes;
@@ -17,9 +16,7 @@ public class ShowClothesPointBuy : MonoBehaviour
     void Start()
     {
         arrayShowClothes = new Transform[GameSettings.Instance.prefabShowClothes.Length + 1];
-
         Transform transPos = transform;
-
         for (int i = 0; i < GameSettings.Instance.prefabShowClothes.Length; i++)
         {
             arrayShowClothes[i + 1] = Instantiate(GameSettings.Instance.prefabShowClothes[i], transform.position, Quaternion.identity);
@@ -37,14 +34,10 @@ public class ShowClothesPointBuy : MonoBehaviour
     public void SetActiveObject(int IDClothes, int currentIDMaterialBot)
     {
         arrayShowClothes[IDClothes].gameObject.SetActive(true);        ///вкл
-
         currentIDClothes = IDClothes;
-
         arrayShowClothes[IDClothes].GetComponent<SpriteRenderer>().material = GameSettings.Instance.arrayMaterial[currentIDMaterialBot];
         arrayShowClothes[IDClothes].GetChild(0).GetComponent<SpriteRenderer>().material = GameSettings.Instance.arrayMaterial[currentIDMaterialBot];
-        // смена цвета
     }
-
 
     /// <summary>
     /// выкл одежку
@@ -52,8 +45,5 @@ public class ShowClothesPointBuy : MonoBehaviour
     public void DeActiveObject()
     {
         arrayShowClothes[currentIDClothes].gameObject.SetActive(false);
-
     }
-
-
 }

@@ -1,4 +1,3 @@
-// на боте управление состоянием бота
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,48 +16,39 @@ public enum StateBot
 
 public class StateShopper : MonoBehaviour
 {
-    //[HideInInspector]
+    [Header("Сылка на ParticleSystem")]
+    public ParticleSystem particleSys;
+    [HideInInspector]
     public StateBot stateBot;
+    [HideInInspector]
+    public Transform currentTarget;   // текущая цель
+    [HideInInspector]
+    public Transform currentStartPosition;
 
     [Header("Сылка на Сумку")]
     [SerializeField]
     private Transform bag;
-
-    [Header("Сылка на ParticleSystem")]
-    //[HideInInspector]
-    public ParticleSystem particleSys;
-
     [SerializeField]
     private ShopperController shopperController;
-
-    //[HideInInspector]
-    public Transform currentTarget;   // текущая цель
-
-    //[HideInInspector]
-    public Transform currentStartPosition;
 
     /// <summary>
     ///  время ожидания клиента
     /// </summary>
     [SerializeField]
     private float timerBuy;
-
     /// <summary>
     /// Таймер UI Таймера
     /// </summary>
     [SerializeField]
     private float countTimer;
-
     /// <summary>
     ///ССылка на корутину
     /// </summary>
-    //[SerializeField]
     private Coroutine showCalcTimer;
 
     void Start()
     {
         shopperController = GetComponent<ShopperController>();
-
         timerBuy = GameSettings.Instance.startTimerWaitClient;          // время ожидания клиента
     }
 
@@ -95,10 +85,7 @@ public class StateShopper : MonoBehaviour
 
             case StateBot.Exit:
                 shopperController.currentTarget = currentStartPosition;         // сетим цель покупателя на выход 
-
-
                 SetTimerUI();
-
                 break;
         }
     }
@@ -111,14 +98,11 @@ public class StateShopper : MonoBehaviour
     public void SetStateBag(bool isActive, int IDMaterialClothes)
     {
         bag.gameObject.SetActive(isActive);     // вкл выкл сумки
-
         bag.GetComponent<MeshRenderer>().material = GameSettings.Instance.arrayMaterial[IDMaterialClothes];          // красим сумку
-
         if (shopperController)
         {
             shopperController.SetAnimatorState("IsBag", isActive);
         }
-        
     }
 
     
@@ -131,7 +115,6 @@ public class StateShopper : MonoBehaviour
         if (stateBot == StateBot.Walk)
         {
             StartCoroutine(TimerBuy(timerBuy));    ///вкл корутины покупки
-
             stateBot = StateBot.Buy;                  // сетим покупателя в Buy
         }
     }
@@ -144,9 +127,7 @@ public class StateShopper : MonoBehaviour
     private IEnumerator TimerBuy(float timerBuy)
     {
         showCalcTimer = StartCoroutine(ShowCalcTimer());
-
         yield return new WaitForSeconds(timerBuy);
-
         stateBot = StateBot.Exit;
     }
 
@@ -159,9 +140,7 @@ public class StateShopper : MonoBehaviour
         while (true)
         {
             countTimer += Time.deltaTime;
-
             CheckAngry();
-
             yield return new WaitForEndOfFrame();
         }
     }
@@ -172,7 +151,6 @@ public class StateShopper : MonoBehaviour
     private void CheckAngry()
     {
         float deltaTimer = timerBuy - countTimer;           // матан кошда вкл недовольного
-
         if (deltaTimer < GameSettings.Instance.timerAngry)
         {
             shopperController.SetAnimatorState("Angry", true);    /// вкл недовольного
@@ -187,7 +165,6 @@ public class StateShopper : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         PointSpawn pointSpawn = other.GetComponent<PointSpawn>();
-
         if (pointSpawn)
         {
             if (stateBot == StateBot.Exit)
@@ -204,9 +181,7 @@ public class StateShopper : MonoBehaviour
     public float СalculationValueTimerUi()
     {
         float result = 0;
-
         result = countTimer / timerBuy;
-
         return result;
     }
 

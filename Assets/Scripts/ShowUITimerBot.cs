@@ -6,17 +6,14 @@ public class ShowUITimerBot : MonoBehaviour
 {
     [SerializeField]
     private Transform prefabTimerUI;
-
     [SerializeField]
     private Transform transformTimerUI;
-
     [SerializeField]
     private TimerUIBot TimerUIBot;
-
     [SerializeField]
     private StateShopper stateShopper;
 
-    //[HideInInspector]
+    [HideInInspector]
     public float valueTimerUI;
 
     void Start()
@@ -30,7 +27,6 @@ public class ShowUITimerBot : MonoBehaviour
     void Update()
     {
         valueTimerUI = stateShopper.ÑalculationValueTimerUi();
-
         if (GameController.Instance.stateGame != StateGame.Game)
         {
             transformTimerUI.gameObject.SetActive(false);
@@ -39,6 +35,5 @@ public class ShowUITimerBot : MonoBehaviour
         {
             transformTimerUI.gameObject.SetActive(true);
         }
-
     }
 }

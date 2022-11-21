@@ -7,6 +7,6 @@ public class PointBuy : MonoBehaviour
     /// <summary>
     /// Активность точки покупки
     /// </summary>
-    //[HideInInspector]
+    [HideInInspector]
     public bool pointActive;
 }

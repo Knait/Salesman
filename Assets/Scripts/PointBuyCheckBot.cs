@@ -7,59 +7,34 @@ public class PointBuyCheckBot : MonoBehaviour
     /// <summary>
     /// тек. ID материал бота
     /// </summary>
-    //[HideInInspector]
+    [HideInInspector]
     public int currentIDMaterialBot;
-
     /// <summary>
     /// тек. ID одежды бота
     /// </summary>
     public int currentIDClothesBot;
 
-    //[HideInInspector]
+    [HideInInspector]
     public ShowClothesPointBuy showClothesPointBuy;
-
     [SerializeField]
     private ZoneCheckHero zoneCheckHero;
-
-    //[Header("Ссылка на Particle Effect")]
-    //[SerializeField]
-    //private ChangeMaterialObj particleEffect;
-
-    /// <summary>
-    /// Текущий материал у бота
-    /// </summary>
-   // [SerializeField]
-    //private Color currentColor;
-
-   // private ParticleSystem particleSys;
-
     [HideInInspector]
     public StateShopper stateShopper;
-
-
-
 
     private void Start()
     {
         zoneCheckHero = GetComponent<ZoneCheckHero>();
-
-        //particleSys = particleEffect.GetComponent<ParticleSystem>();
-
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-
         Shopper shopper = other.GetComponent<Shopper>();
-
         stateShopper = other.GetComponent<StateShopper>();
 
         if (shopper)
         {
             currentIDMaterialBot = shopper.currentIDMaterialBot;
             currentIDClothesBot = shopper.currentIDClothesBot;
-
             showClothesPointBuy.SetActiveObject(currentIDClothesBot, currentIDMaterialBot);
         }
 
@@ -69,7 +44,6 @@ public class PointBuyCheckBot : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// Чекаем бота
     /// </summary>
@@ -77,26 +51,12 @@ public class PointBuyCheckBot : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Shopper shopper = other.GetComponent<Shopper>();
-
         if (shopper)
         {
             currentIDClothesBot = 0;
             currentIDMaterialBot = 0;
-
             transform.GetComponent<PointBuy>().pointActive = false;          ///выкл точку покупки
-
             showClothesPointBuy.DeActiveObject();
         }
     }
-
-
-    /// <summary>
-    /// вкл выкл партиклов
-    /// </summary>
-    /// <param name="isActive"></param>
-    public void SetActiveParticeEffect(bool isActive, int currentIDMaterialBot)
-    {
-       // particleEffect.gameObject.SetActive(isActive);
-    }
-
 }

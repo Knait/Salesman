@@ -1,9 +1,12 @@
-// говноСкрипт висит на игроке
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-
+/// <summary>
+/// висит на игроке
+/// </summary>
 public class HeroController : MonoBehaviour
 {
     /// <summary>
@@ -48,7 +51,6 @@ public class HeroController : MonoBehaviour
     /// <summary>
     /// массив классов одежды у игрока на руках
     /// </summary>
-    //[SerializeField]
     public Clothes[] arrayClothes;
 
     /// <summary>
@@ -75,29 +77,15 @@ public class HeroController : MonoBehaviour
         }
     }
 
-    //[SerializeField]
-    //int[] resultTemp;
-
     [SerializeField]
     private MoveController moveController;
 
     void Start()
     {
         moveController = GetComponent<MoveController>();
-
         maxCountClothes = GameSettings.Instance.maxCountClothes;
-
-       /* arrayClothes = new Clothes[maxCountClothes];
-        for (int index = 0; index < arrayClothes.Length; index++)
-        {
-            arrayClothes[index] = new Clothes();
-        }*/
-
         defaultMaterial = clothesInHands[0].GetComponent<MeshRenderer>().material;
         ShowСlothesInHands();
-
-        //showCongratulation.gameObject.SetActive(false);       /// выкл обьект поздравления
-
     }
 
     /// <summary>
@@ -114,9 +102,7 @@ public class HeroController : MonoBehaviour
                 arrayClothes[index].clatch.gameObject.SetActive(true);
                 arrayClothes[index].clatch.color = Color.white;
                 countClothes++;
-
                 ShowСlothesInHands();
-
                 break;
             }
         }
@@ -138,13 +124,10 @@ public class HeroController : MonoBehaviour
             {
                 arrayClothes[index].IDMaterialClothes = IDMaterialClothes;
                 arrayClothes[index].clatch.color = GameSettings.Instance.arrayMaterial[arrayClothes[index].IDMaterialClothes].color;
-
                 result = true;
             }
         }
-
         ShowСlothesInHands();
-
         return result;
     }
 
@@ -155,15 +138,11 @@ public class HeroController : MonoBehaviour
     /// <param name="index"></param>
     public void RemoveClothes(int index)
     {
-        //print("Remove Clothes");                  /////////////////////////////////////////////////////
-
         arrayClothes[index].IDClothes = 0;
         arrayClothes[index].IDMaterialClothes = 0;
         arrayClothes[index].clatch.color = Color.white;
         arrayClothes[index].clatch.gameObject.SetActive(false);
-
         countClothes--;
-
         ShowСlothesInHands();
     }
 
@@ -175,11 +154,8 @@ public class HeroController : MonoBehaviour
     public int CompareClothes(int currentIDClothesBot, int currentIDMaterialBot, out int currentBuyIDMaterialClothes)
     {
         currentBuyIDMaterialClothes = 0;
-
         int indexArrayClothes = 0;
-
         int result = 0;
-
         int[] resultTemp = new int[2];
 
         if (countClothes > 0)
@@ -189,7 +165,6 @@ public class HeroController : MonoBehaviour
                 if (currentIDClothesBot == arrayClothes[index].IDClothes)
                 {
                     resultTemp[index] += countMoneyClothes;
-
                 }
                 if (currentIDMaterialBot == arrayClothes[index].IDMaterialClothes)
                 {
@@ -212,43 +187,29 @@ public class HeroController : MonoBehaviour
                 result = resultTemp[1];
                 indexArrayClothes = 1;
             }
-
-            //   print(" index " + indexArrayClothes);
-            currentBuyIDMaterialClothes = arrayClothes[indexArrayClothes].IDMaterialClothes;       //сетим ID материал проданной шмотки
-
-            RemoveClothes(indexArrayClothes);                                               // удаляем из массива одежды игрока одежду которую отдали
+            currentBuyIDMaterialClothes = arrayClothes[indexArrayClothes].IDMaterialClothes;   //сетим ID материал проданной шмотки
+            RemoveClothes(indexArrayClothes);                                                  // удаляем из массива одежды игрока одежду которую отдали
         }
         else
         {
             result = -1;                    // ничего не продали
         }
 
-        //showCongratulation.gameObject.SetActive(true);
-
         showCongratulation.ShowCongratulate(result);
-
         return result;
     }
-
-
-
-
-
 
     /// <summary>
     /// Показываем одежку в руках и красим
     /// </summary>
     public void ShowСlothesInHands()
     {
-
         moveController.SetAnimatorWithBox(countClothes > 0);                  // сетим состояние аниматора с коробкой
-
         for (int index = 0; index < arrayClothes.Length; index++)
         {
             if (arrayClothes[index].IDClothes != 0)
             {
                 clothesInHands[index].gameObject.SetActive(true);
-
                 if (arrayClothes[index].IDMaterialClothes != 0)
                 {
                     clothesInHands[index].GetComponent<MeshRenderer>().material = GameSettings.Instance.arrayMaterial[arrayClothes[index].IDMaterialClothes];
@@ -262,7 +223,6 @@ public class HeroController : MonoBehaviour
             {
                 clothesInHands[index].gameObject.SetActive(false);
             }
-
         }
     }
 
@@ -273,7 +233,6 @@ public class HeroController : MonoBehaviour
     public float СalculationValueTimerUi()
     {
         float result = 0;
-
         result = (float)countClothes / maxCountClothes;
         return result;
     }
@@ -293,9 +252,6 @@ public class HeroController : MonoBehaviour
         /// ID Материалов одежды 
         /// </summary>
         public int IDMaterialClothes;
-
-        public UnityEngine.UI.Image clatch;
+        public Image clatch;
     }
-
-
 }

@@ -2,23 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
 public class PointShowCongratilation : MonoBehaviour
 {
     [Header("Cсылка prefab")]
     [SerializeField]
     private Transform prefabUIShowCongratilation;
-
     [SerializeField]
     private Transform[] transformUIShowCongratilation;
-
     [SerializeField]
     private CongratilationUI[] congratilationUI;
-
-
     private TMP_Text[] textCongratulation;
-
     private string[] samlpeCongratulation = { "", "Best", "Excellent", "Good", "Badly" };
-
     private int i = 0;
 
     void Start()
@@ -42,7 +37,6 @@ public class PointShowCongratilation : MonoBehaviour
         i = 0;
     }
 
-    // Update is called once per frame
     public void ShowCongratulate(int currentMoneyForBuy)
     {
         int indexSamlpeCongratulation = 0;
@@ -77,8 +71,4 @@ public class PointShowCongratilation : MonoBehaviour
             i = 0;
         }
     }
-
-
-
-
 }

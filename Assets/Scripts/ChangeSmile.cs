@@ -1,9 +1,10 @@
-/// висит на точке продаж
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// висит на точке продаж
+/// </summary>
 public class ChangeSmile : MonoBehaviour
 {
     [Header("Массив смайлики")]
@@ -20,15 +21,10 @@ public class ChangeSmile : MonoBehaviour
     public void ShowSmile(int currentMoneyForBuy, Transform parentObject)
     {
         Vector3 currentPosition = transform.position;
-
         currentPosition.x = parentObject.position.x;
-
         currentPosition.z = parentObject.position.z;
-
         gameObject.transform.position = currentPosition;
-
         int indexSamlpeCongratulation = 0;
-
         switch (currentMoneyForBuy)
         {
             case 10:
@@ -52,7 +48,6 @@ public class ChangeSmile : MonoBehaviour
                 break;
         }
 
-       
         spriteRenderer.sprite = sprites[indexSamlpeCongratulation];
     }
 }

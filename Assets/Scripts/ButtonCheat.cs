@@ -5,9 +5,7 @@ using UnityEngine.EventSystems;
 
 public class ButtonCheat : MonoBehaviour, IPointerClickHandler
 {
-
     private int countPush;
-
 
     public void OnPointerClick(PointerEventData eventData)
     {

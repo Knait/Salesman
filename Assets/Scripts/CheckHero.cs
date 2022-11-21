@@ -1,19 +1,15 @@
-// Гавна абсрактный скрипт
-// чекает игрока
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class CheckHero : MonoBehaviour
 {
-   
     protected  void OnCollisionEnter(Collision collision)
     {
         HeroController heroController = collision.gameObject.GetComponent<HeroController>();
 
         if (heroController)
         {
-            //print("Hero");
             IsHero(heroController);
         }
     }
@@ -24,7 +20,6 @@ public abstract class CheckHero : MonoBehaviour
 
         if (heroController)
         {
-            //print("Hero");
             IsHero(heroController);
         }
     }

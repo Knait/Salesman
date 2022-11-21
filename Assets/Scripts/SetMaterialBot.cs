@@ -1,20 +1,16 @@
-
-/// на боте 
-/// 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// висит на боте 
+/// </summary>
 public class SetMaterialBot : MonoBehaviour
 {
-    //[Header("Ссылка на модель визуала")]
-    //[SerializeField]
-    //private Transform skinModel;
-
     /// <summary>
     /// Текущий ID цвета бота
     /// </summary>
-    //[HideInInspector]
+    [HideInInspector]
     public int IDMaterialClothes;
 
     private void OnEnable()

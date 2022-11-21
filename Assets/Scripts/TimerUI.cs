@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,17 +6,13 @@ using UnityEngine.UI;
 
 public class TimerUI : MonoBehaviour
 {
-    //[HideInInspector]
+    [HideInInspector]
     public Transform parentObject;
-
     private RectTransform rectTransform;
-
-    private Image imageTimerUI;
-
     [SerializeField]
     private PointUiShow pointUiShow;
+    private Image imageTimerUI;
     
-    // Start is called before the first frame update
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -26,19 +21,15 @@ public class TimerUI : MonoBehaviour
         imageTimerUI.fillAmount = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateShowTimer();
-
         UpdateValueTimerUi();
-
     }
 
     private void UpdateShowTimer()
     {
         Vector3 parentObjectPosition = new Vector3(parentObject.position.x, parentObject.position.y, parentObject.position.z);
-
         rectTransform.position = Camera.main.WorldToScreenPoint(parentObjectPosition);
 
     }

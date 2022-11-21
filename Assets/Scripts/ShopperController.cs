@@ -1,43 +1,31 @@
-
-// ГАВНА скрипт весит на покупателе
 using UnityEngine;
 using UnityEngine.AI;
 
 
 /// <summary>
-/// Движение бота
+/// Движение бота скрипт весит на покупателе
 /// </summary>
 public class ShopperController : MonoBehaviour
 {
     [HideInInspector]
     public NavMeshAgent navMeshAgent;
-
-    //[HideInInspector]
+    [HideInInspector]
+    public Vector3 lastPosition;
+    [HideInInspector]
     public Transform currentTarget;   // текущая цель
 
     [Header("Аниматор")]
     [SerializeField]
     private Animator animator;
-
     [Header("Начальная скорость перемещения")]
     [SerializeField]
     private float speedBegin = 3.0f;
-
-    [HideInInspector]
-    public Vector3 lastPosition;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>() as NavMeshAgent;
         animator = GetComponentInChildren<Animator>();
     }
-
-    void Start()
-    {
-
-    }
-
-
     void Update()
     {
         UpdateMove();
@@ -70,12 +58,8 @@ public class ShopperController : MonoBehaviour
     {
         if (animator)
         {
-            //if (navMeshAgent.speed == speedBegin)
-            //{
             animator.SetBool("Walk", true);         // вкл идти
             animator.SetBool("Angry", false);        // выкл недовольного
-
-            // }
         }
     }
 
@@ -90,7 +74,6 @@ public class ShopperController : MonoBehaviour
         {
             animator.SetBool("Walk", false);
         }
-
     }
 
 
@@ -121,8 +104,5 @@ public class ShopperController : MonoBehaviour
     {
         animator.SetBool(parametrAnimation, flag);
     }
-
-
-
 }
 

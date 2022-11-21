@@ -6,27 +6,23 @@ using UnityEngine;
 
 public class ZoneCheckHero : MonoBehaviour
 {
-    // [HideInInspector]
+    [HideInInspector]
     public int currentIDMaterialBot;
-
-    // [HideInInspector]
+    [HideInInspector]
     public int currentIDClothesBot;
+    [HideInInspector]
+    public int tempCurrentMoneyForBuy;
 
     [SerializeField]
     private PointBuyCheckBot pointBuyCheckBot;
+    [SerializeField]
+    private ChangeSmile changeSmile;
 
     /// <summary>
     /// текущий материал проданой шмотки
     /// </summary>
     private int currentBuyIDMaterialClothes;
-
-    [SerializeField]
-    private ChangeSmile changeSmile;
-
     private StateShopper stateShopper;
-
-    [HideInInspector]
-    public int tempCurrentMoneyForBuy;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -43,13 +39,10 @@ public class ZoneCheckHero : MonoBehaviour
 
                 if (currentMoneyForBuy != -1)
                 {
-                    //print(" hero In zone ");                   ////////////////////////////////////////
-                    print(" Result Buy " + currentMoneyForBuy);
                     Buy(currentMoneyForBuy);
-
                     stateShopper = pointBuyCheckBot.stateShopper; // получаем позицию покупателя
-                    changeSmile.gameObject.SetActive(false);   // заупскаем 
-                    changeSmile.gameObject.SetActive(true);      //   спрайт 
+                    changeSmile.gameObject.SetActive(false);      // заупскаем 
+                    changeSmile.gameObject.SetActive(true);       //   спрайт 
                     changeSmile.ShowSmile(tempCurrentMoneyForBuy, stateShopper.transform);    //  смайлика
 
                 }

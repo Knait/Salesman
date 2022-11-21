@@ -4,34 +4,25 @@ using UnityEngine;
 
 public class CheckHeroBot : CheckHero
 {
-   // [HideInInspector]
+    [HideInInspector]
     public int currentIDMaterialBot;
-
-   // [HideInInspector]
+    [HideInInspector]
     public int currentIDClothesBot;
-
+    [HideInInspector]
+    public ZoneCheckHero zoneCheckHero;
+    [HideInInspector]
+    public StateShopper stateShopper;
     [Header("—сылка на модель визуала")]
     [SerializeField]
     private Transform skinModel;
-
-    [SerializeField]
     private SetMaterialBot setMaterialBot;
-
-    //[HideInInspector]
-    public ZoneCheckHero zoneCheckHero;
-
-    //[HideInInspector]
-    public StateShopper stateShopper; 
-
 
 
     void Start()
     {
         setMaterialBot = GetComponent<SetMaterialBot>();
         stateShopper = GetComponent<StateShopper>();
-
         currentIDMaterialBot = setMaterialBot.IDMaterialClothes;
-
     }
 
     /// <summary>
@@ -40,16 +31,8 @@ public class CheckHeroBot : CheckHero
     /// <param name="heroController"></param>
     protected override void IsHero(HeroController heroController)
     {
-       // print("Bot  Hero");                      //////////////////////////////////////////
-
-        //currentIDMaterialBot = setMaterialBot.IDMaterialClothes;
-
         int currentMoneyForBuy = heroController.CompareClothes(currentIDClothesBot, currentIDMaterialBot, out int currentBuyIDMaterialClothes);
-
-       // if (currentIdClothes != 0)
-      //  {
-            Buy(currentMoneyForBuy);
-      //  }
+        Buy(currentMoneyForBuy);
     }
 
     /// <summary>
@@ -57,15 +40,8 @@ public class CheckHeroBot : CheckHero
     /// </summary>
     private void Buy(int currentMoneyForBuy)
     {
-        //heroController.RemoveClothes(currentIdClothes);
-
         GameController.Instance.SetCountServedShoppers();
-
         GameController.Instance.SetCurrentMoney(currentMoneyForBuy);
-
         stateShopper.stateBot = StateBot.Exit;
-
-        //zoneCheckHero.SetMaterialObject();
     }
-
 }

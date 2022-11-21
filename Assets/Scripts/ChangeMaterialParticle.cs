@@ -8,6 +8,4 @@ public class ChangeMaterialParticle : ChangeMaterialObj
     {
         Debug.Log("Change Material Particle");
     }
-
-
 }

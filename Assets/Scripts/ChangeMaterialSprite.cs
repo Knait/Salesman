@@ -8,6 +8,4 @@ public class ChangeMaterialSprite : ChangeMaterialObj
     {
         Debug.Log("Change Material Sprite");
     }
-
-
 }

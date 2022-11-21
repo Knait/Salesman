@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class PointUiShow : MonoBehaviour
 {
-
     [SerializeField]
     private Transform prefabTimerUI;
-
     [SerializeField]
     private Transform transformTimerUI;
-
     [SerializeField]
     private TimerUI timerUI;
-
     [SerializeField]
     private HeroController heroController;
 
-    //[HideInInspector]
+    [HideInInspector]
     public float valueTimerUI;
 
-    // Start is called before the first frame update
     void Start()
     {
         transformTimerUI = Instantiate(prefabTimerUI, Vector3.zero, Quaternion.identity);
@@ -29,11 +24,8 @@ public class PointUiShow : MonoBehaviour
         timerUI.parentObject = gameObject.transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-      //  valueTimerUI = heroController.ÑalculationValueTimerUi();
-
         if (GameController.Instance.stateGame != StateGame.Game)
         {
             transformTimerUI.gameObject.SetActive(false);
@@ -42,6 +34,5 @@ public class PointUiShow : MonoBehaviour
         {
             transformTimerUI.gameObject.SetActive(true);
         }
-
     }
 }

@@ -6,17 +6,13 @@ using UnityEngine.UI;
 
 public class TimerUIBot : MonoBehaviour
 {
-    //[HideInInspector]
+    [HideInInspector]
     public Transform parentObject;
-
     private RectTransform rectTransform;
-
     [SerializeField]
     private Image imageTimerUI;
-
     [SerializeField]
     private Image backGround;
-
     [SerializeField]
     private ShowUITimerBot showUITimerBot;
 
@@ -30,7 +26,6 @@ public class TimerUIBot : MonoBehaviour
     void Update()
     {
         UpdateShowTimer();
-
         UpdateValueTimerUi();
 
     }
@@ -38,7 +33,6 @@ public class TimerUIBot : MonoBehaviour
     private void UpdateShowTimer()
     {
         Vector3 parentObjectPosition = new Vector3(parentObject.position.x, parentObject.position.y, parentObject.position.z);
-
         rectTransform.position = Camera.main.WorldToScreenPoint(parentObjectPosition);
     }
 

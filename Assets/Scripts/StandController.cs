@@ -1,37 +1,35 @@
-// ГамноСкрипт висит на стойке с одежой
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Скрипт висит на стойке с одежой
+/// </summary>
 public class StandController : MonoBehaviour
 {
     [Header("Ссылка точки показа одежды")]
     [SerializeField]
     private Transform PointShowClothes;
-
     /// <summary>
     /// Таймер выдачи одежды
     /// </summary>
     [Header("Таймер выдачи одежды")]
     [SerializeField]
     private float timerGiveClothes;
-
-    /// <summary>
-    /// Готов выдать одежу
-    /// </summary>
-    private bool isGiveClothes = true;
-
     /// <summary>
     /// ID Стойки Одежды
     /// </summary>
     [Header("ID Стойки Одежды")]
     [SerializeField]
     private int IDClothes;
+    /// <summary>
+    /// Готов выдать одежу
+    /// </summary>
+    private bool isGiveClothes = true;
 
     void Start()
     {
         timerGiveClothes = GameSettings.Instance.timerGiveClothes;
-
         ShowClothes();
     }
 
@@ -41,14 +39,11 @@ public class StandController : MonoBehaviour
     /// <param name="collision"></param>
     private void OnCollisionStay(Collision collision)
     {
-
         HeroController heroController = collision.gameObject.GetComponent<HeroController>();
-
         if (heroController)
         {
             if (isGiveClothes)
             {
-                // print(" Take Clothes");  /////////////////////////////////////////////////////
                 isGiveClothes = false;
                 StartCoroutine(TimerGiveClothes(timerGiveClothes));
                 heroController.TakeClothes(IDClothes);

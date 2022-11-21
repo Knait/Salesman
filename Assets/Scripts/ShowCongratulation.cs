@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
 public class ShowCongratulation : MonoBehaviour
 {
-    //[SerializeField]
-    //private float timerShowCongratulation;
-
-    private string[] samlpeCongratulation = { "", "Best", "Excellent", "Good", "Badly" };
-
     [SerializeField]
     private TMP_Text[] textCongratulation;
-
     private int i = 0;
+    private string[] samlpeCongratulation = { "", "Best", "Excellent", "Good", "Badly" };
 
     void Start()
     {
@@ -20,7 +16,6 @@ public class ShowCongratulation : MonoBehaviour
         {
             textCongratulation[i].text = "";
         }
-
         i = 0;
     }
 
@@ -28,7 +23,6 @@ public class ShowCongratulation : MonoBehaviour
     public void ShowCongratulate(int currentMoneyForBuy)
     {
         int indexSamlpeCongratulation = 0;
-
         switch (currentMoneyForBuy)
         {
             case 10:
@@ -59,6 +53,4 @@ public class ShowCongratulation : MonoBehaviour
             i = 0;
         }
     }
-
-
 }

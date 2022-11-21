@@ -1,11 +1,10 @@
-//висит на игроке
-// 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 /// <summary>
+/// висит на игроке
 /// движение персонажа и анимация
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
@@ -16,49 +15,33 @@ public class MoveController : MonoBehaviour
     [Header("Rotate")]
     [SerializeField]
     private GameObject visualPlayer;
-
     [Header("Начальная скорость")]
     [SerializeField]
     private float speedBegin;
-
-    private float speedStart;
-
-    // [SerializeField]
     [Header("Значение Upgrade скорости")]
     private float multiPlay;
-
-    //[SerializeField]
-    private int upgradeSpeedHeroLevel;      //  // текущий Level SpeedHero
-
-    private float speed;       // текущая скорость
-
     [Header("Аниматор")]
     [SerializeField]
     private Animator animator;
 
+    private float speedStart;
+    private int upgradeSpeedHeroLevel;      // текущий Level SpeedHero
+    private float speed;                    // текущая скорость
+    private float horizMove;
+    private float verticalMove;
 
     /// <summary>
     /// Есть коробка
     /// </summary>
-    //[HideInInspector]
+    [HideInInspector]
     public bool isBox;
-
-
-    private float horizMove;
-    private float verticalMove;
-
-
-
 
     private void Start()
     {
         speedStart = GameSettings.Instance.speedStart;
         multiPlay = GameSettings.Instance.multiPlay;
-
-
         animator = GetComponentInChildren<Animator>();
         rigidBody = GetComponent<Rigidbody>();
-        //speedBegin *= 2;
     }
 
     private void Update()
@@ -68,9 +51,7 @@ public class MoveController : MonoBehaviour
             upgradeSpeedHeroLevel = GameController.Instance.upgradeSpeedHeroLevel;
             speedBegin = speedStart + upgradeSpeedHeroLevel * multiPlay;
         }
-
         UpdateMove();
-
     }
 
     void FixedUpdate()
@@ -85,11 +66,6 @@ public class MoveController : MonoBehaviour
     {
         Vector3 movement = new Vector3(verticalMove, 0, horizMove) * speed;
         transform.Translate(movement * Time.fixedDeltaTime);
-
-        //speed *= 5;
-        //Vector3 movement = new Vector3(verticalMove, 0, horizMove) * speed;
-        //rigidBody.AddForce(movement);
-        //rigidBody.velocity = movement;
     }
 
 
@@ -104,7 +80,6 @@ public class MoveController : MonoBehaviour
             {
                 animator.SetBool("Run", false);
                 animator.SetBool("RunWithBox", false);
-
                 speed = 0;
                 rigidBody.velocity = Vector3.zero;
             }
@@ -133,7 +108,6 @@ public class MoveController : MonoBehaviour
                     animator.SetBool("Run", false);
                 }
             }
-
         }
     }
 
@@ -142,7 +116,6 @@ public class MoveController : MonoBehaviour
         animator.SetBool("IsBox", flag);
         isBox = flag;
     }
-
 }
 
 
