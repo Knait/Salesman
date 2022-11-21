@@ -1,9 +1,8 @@
-//говно скрипт висит на зоне чека игрока
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///  скрипт висит на зоне чека игрока
+/// </summary>
 public class ZoneCheckHero : MonoBehaviour
 {
     [HideInInspector]
@@ -17,7 +16,6 @@ public class ZoneCheckHero : MonoBehaviour
     private PointBuyCheckBot pointBuyCheckBot;
     [SerializeField]
     private ChangeSmile changeSmile;
-
     /// <summary>
     /// текущий материал проданой шмотки
     /// </summary>
@@ -57,23 +55,14 @@ public class ZoneCheckHero : MonoBehaviour
     private void Buy(int currentMoneyForBuy)
     {
         GameController.Instance.SetCountServedShoppers();
-
         GameController.Instance.SetCurrentMoney(currentMoneyForBuy);
-
         StateShopper stateShopper = pointBuyCheckBot.stateShopper;
-
         stateShopper.SetStateBag(true, currentBuyIDMaterialClothes);
-
         if (currentMoneyForBuy == 10)
         {
             stateShopper.PlayParticle();
         }
-
-        //pointBuyCheckBot.SetActiveParticeEffect(false, currentIDMaterialBot);
-
         pointBuyCheckBot.showClothesPointBuy.DeActiveObject();
-
         stateShopper.stateBot = StateBot.Exit;
     }
-
 }

@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 /// <summary>
-/// скрипт весит на кноке reset
+/// скрипт весит на кнопке reset
 /// </summary>
 public class ResetScene : MonoBehaviour, IPointerClickHandler
 {

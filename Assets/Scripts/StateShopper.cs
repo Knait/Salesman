@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 /// <summary>
 /// состояния бота
@@ -61,8 +59,6 @@ public class StateShopper : MonoBehaviour
     {
         UpdateStateShopper();
     }
-
-
 
     /// <summary>
     /// состояния покупателя

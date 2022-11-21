@@ -1,9 +1,8 @@
-/// висит на GameSettings хранит все настраиваемые параметры
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
+/// <summary>
+/// висит на GameSettings хранит все настраиваемые параметры
+/// </summary>
 public class GameSettings : MonoBehaviour
 {
     public static GameSettings Instance;
